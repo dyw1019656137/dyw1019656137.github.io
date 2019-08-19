@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Android设备通过数据线进行相互通信]]></title>
+    <url>%2F2019%2F08%2F19%2FAndroid%E8%AE%BE%E5%A4%87%E9%80%9A%E8%BF%87%E6%95%B0%E6%8D%AE%E7%BA%BF%E8%BF%9B%E8%A1%8C%E7%9B%B8%E4%BA%92%E9%80%9A%E4%BF%A1%2F</url>
+    <content type="text"><![CDATA[Android设备通过数据线进行相互通信具体步骤发现设备12UsbManager usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);Map&lt;String, UsbDevice&gt; usbList = usbManager.getDeviceList(); 官方注释： 12This class represents a USB device attached to the android device with the android device acting as the USB host. 这个类代表了android所连接的usb设备。 打开设备需要打开刚刚搜索到的usb设备。 一般来说，在没有定制的android设备上首次访问usb设备的时候，默认我们是没有访问权限的，因此我们首先要判断对当前要打开的usbDevice是否有访问权限： 123456789if (!usbManager.hasPermission(usbDevice)) &#123; usbPermissionReceiver = new UsbPermissionReceiver(); //申请权限 Intent intent = new Intent(ACTION_DEVICE_PERMISSION); PendingIntent mPermissionIntent = PendingIntent.getBroadcast(context, 0, intent, 0); IntentFilter permissionFilter = new IntentFilter(ACTION_DEVICE_PERMISSION); context.registerReceiver(usbPermissionReceiver, permissionFilter); usbManager.requestPermission(usbDevice, mPermissionIntent);&#125; 需要声明一个广播UsbPermissionReceiver，当接受到授权成功的广播后做一些其他处理。 1234567891011121314151617private class UsbPermissionReceiver extends BroadcastReceiver &#123; public void onReceive(Context context, Intent intent) &#123; String action = intent.getAction(); if (ACTION_DEVICE_PERMISSION.equals(action)) &#123; synchronized (this) &#123; UsbDevice device = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE); if (device.getDeviceName().equals(usbDevice.getDeviceName()) &#123; if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) &#123; //授权成功,在这里进行打开设备操作 &#125; else &#123; //授权失败 &#125; &#125; &#125; &#125; &#125;&#125; 接下来，要找到具有数据传输功能的接口UsbInterface，从它里面找到数据输入和输出端口UsbEndpoint，一般情况下，一个usbDevice有多个UsbInterface，我们需要的一般是第一个，所以： 1usbInterface=usbDevice.getInterface(0); 同样的，一个usbInterface有多个UsbEndpoint，有控制端口和数据端口等，因此我们需要根据类型和数据流向来找到需要的数据输入和输出两个端口： 12345678910for (int index = 0; index &lt; usbInterface.getEndpointCount(); index++) &#123; UsbEndpoint point = usbInterface.getEndpoint(index); if (point.getType() == UsbConstants.USB_ENDPOINT_XFER_BULK) &#123; if (point.getDirection() == UsbConstants.USB_DIR_IN) &#123; usbEndpointIn = point; &#125; else if (point.getDirection() == UsbConstants.USB_DIR_OUT) &#123; usbEndpointOut = point; &#125; &#125;&#125; 最后，才是真正的打开usb设备，我们需要和usb外设建立一个UsbDeviceConnection，官方注释： 1This class is used for sending and receiving data and control messages to a USB device. UsbDeviceConnection的获取： 1usbDeviceConnection = usbManager.openDevice(usbDevice); 数据传输 向usb外设发送数据 在第二步中，我们已经获取了数据的输出端口usbEndpointIn，我们向外设发送数据就是通过这个端口来实现的。 1int ret = usbDeviceConnection.bulkTransfer(usbEndpointOut, data, data.length, DEFAULT_TIMEOUT); bulkTransfer这个函数用于在给定的端口进行数据传输，第一个参数就是此次传输的端口，这里我们用的输出端口，第二个参数是要发送的数据，类型为字节数组，第三个参数代表要发送的数据长度，最后一个参数是超时，返回值代表发送成功的字节数，如果返回-1，那就是发送失败了。 接受usb外设发送来的数据 已经找到了数据输入端口usbEndpointIn，因为数据的输入是不定时的，因此我们可以另开一个线程，来专门接受数据。 1234567891011int inMax = inEndpoint.getMaxPacketSize(); ByteBuffer byteBuffer = ByteBuffer.allocate(inMax); UsbRequest usbRequest = new UsbRequest(); usbRequest.initialize(connection, inEndpoint); usbRequest.queue(byteBuffer, inMax); if(connection.requestWait() == usbRequest)&#123; byte[] retData = byteBuffer.array(); for(Byte byte1 : retData)&#123; System.err.println(byte1); &#125; &#125; 注：理论上设备之间的连接已经建立了，也可以首发数据了，但是，我们大部分情况下还需要对usb串口进行一些配置，比如波特率,停止位,数据控制等，不然两边配置不同，收到的数据会乱码，具体怎么配置，需要看串口芯片。 测试设备需求 Android版本&gt;3.2的设备 OTG转接线 项目地址， 请戳我]]></content>
+      <categories>
+        <category>Android</category>
+        <category>技术积累</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>通信</tag>
+        <tag>USB</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[UI检测]]></title>
     <url>%2F2019%2F08%2F15%2FUI%E6%A3%80%E6%B5%8B%2F</url>
     <content type="text"><![CDATA[工具推荐UI检测的工具，Hierarchy Viewer和Layout Inspector。 Hierarchy Viewer官方地址 Layout Inspector官方地址 虽然Hierarchy Viewer已经废弃了，但感觉还是有必要介绍一下的。 Hierarchy Viewer工具打开方式AS版本：3.3.2 打开方式： 本地安装SDK目录-&gt;sdk-&gt;tools-&gt;monitor.bat 老版的AS打开方式： 本地安装SDK目录-&gt;sdk-&gt;tools-&gt;hierarchyviewer.bat Android Studio : 工具栏-&gt;Tools-&gt;Android-&gt;Android Device Monitor 在命令行输入 hierarchyviewer 工具的使用设备连接（真机需要手机root权限）成功后左侧Windows小手机会看到设备信息 打开Hierarchy View点击Window-&gt;Open Perspective-&gt;Hierarchy View 若期间出现此问题 选择使用本地IP，并关闭，重新启动即可 此时，应该会看到如下图了： Tree View：显示视图层次结构的树视图。 可以使用鼠标拖动并放大树底部的缩放控件 Tree Overview：为应用程序的完整视图层次结构提供鸟瞰图。 移动灰色矩形以更改树视图中可见的视口。 Layout View：显示布局的线框视图。 当前所选视图的轮廓为红色，其父视图为浅红色。单击此处的视图也会在树视图中选择它，反之亦然。 hierarchy view 视图层次结构是布局的快照，因此不会自动更新。 要更新层次结构视图，点击右上角蓝色金字塔（Reload the view hierarchy）。 要想保存Tree View,点击右上角蓝色金字塔左边小文档,左边是PNG格式,右边是PS的PSD格式。 获取布局的绘制 选择一个节点，点击Profile Mode按钮,可以获取到布局绘制的时间，如图: 绿:表示该View的此项性能比该View Tree中超过50%的View都要快；例如,一个绿点的测量时间意味着这个视图的测量时间快于树中的视图对象的50%。 黄: 表示该View的此项性能比该View Tree中超过50%的View都要慢；例如,一个黄点布局意味着这种观点有较慢的布局时间超过50%的树视图对象。 红: 表示该View的此项性能是View Tree中最慢的；例如,一个红点的绘制时间意味着花费时间最多的这一观点在树上画所有的视图对象。 布局性能分析红色节点是代表应用性能慢的一个潜在问题，下面是几个例子，如何来分析和解释红点的出现原因？ 如果在叶节点或者ViewGroup中，只有极少的子节点，这可能反映出一个问题，应用可能在设备上运行并不慢，但是你需要指导为什么这个节点是红色的，可以借助Systrace或者Traceview工具，获取更多额外的信息； 如果一个视图组里面有许多的子节点，并且测量阶段呈现为红色，则需要观察下子节点的绘制情况； 如果视图层级结构中的根视图，Messure阶段为红色，Layout阶段为红色，Draw阶段为黄色，这个是比较常见的，因为这个节点是所有其它视图的父类； 如果视图结构中的一个叶子节点，有20个视图是红色的Draw阶段，这是有问题的，需要检查代码里面的onDraw方法，不应该在那里调用。 Layout Inspector工具打开方式 在连接的设备或模拟器上运行应用； 点击 Tools &gt; Android &gt; Layout Inspector； 在出现的 Choose Process 对话框中，选择想要检查的应用进程，然后点击 OK 工具的使用布局检查器会捕获快照，将它保存为 .li 文件并打开。如图所示，布局检查器将显示以下内容： View Tree：视图在布局中的层次结构。 Screenshot：带每个视图可视边界的设备屏幕截图。 Properties Table：选定视图的布局属性。 如果布局包括重叠视图，则默认情况下，只有前面的视图可以在屏幕截图中点击。 要让后面的视图可以在屏幕截图中点击，请执行以下操作： 在 View Tree 中右键点击前面的视图，然后取消选中 Show in preview。 此操作不会让视图内容消失；仅会让屏幕截图中的可点击边界消失，以便可以点击在它后面的视图。 如果设备上的布局发生变化，布局检查器不会更新。 必须再次点击 Tools &gt; Android &gt; Layout Inspector，创建一个新的快照。每一个快照都将保存到 project-name/captures/ 内一个单独的 .li 文件中。 结论Hierarchy Viewer虽然已经废弃了，但实际应用中还是不能放弃的，相比较而言，Layout Inspector看布局的层级较为轻松，但Hierarchy Viewer看布局的绘制时间更为轻松，两者相结合，对布局的检测优化更为轻松，所以自我感觉两者都不能放弃。]]></content>
@@ -9,9 +23,9 @@
         <category>性能优化</category>
       </categories>
       <tags>
+        <tag>Android</tag>
         <tag>UI</tag>
         <tag>性能</tag>
-        <tag>Android</tag>
         <tag>检测</tag>
       </tags>
   </entry>
@@ -24,9 +38,9 @@
         <category>性能优化</category>
       </categories>
       <tags>
+        <tag>Android</tag>
         <tag>UI</tag>
         <tag>性能</tag>
-        <tag>Android</tag>
         <tag>卡顿优化</tag>
       </tags>
   </entry>
