@@ -116,18 +116,18 @@
 
 
 
-<meta name="description" content="Android设备通过数据线进行相互通信具体步骤发现设备12UsbManager usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);Map&amp;lt;String, UsbDevice&amp;gt; usbList = usbManager.getDeviceList();  官方注释： 12This class">
+<meta name="description" content="具体步骤发现设备12UsbManager usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);Map&amp;lt;String, UsbDevice&amp;gt; usbList = usbManager.getDeviceList();  官方注释： 12This class represents a USB dev">
 <meta name="keywords" content="Android,通信,USB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android设备通过数据线进行相互通信">
 <meta property="og:url" content="http://per-dyw.xyz/2019/08/19/Android设备通过数据线进行相互通信/index.html">
 <meta property="og:site_name" content="Mr.戴">
-<meta property="og:description" content="Android设备通过数据线进行相互通信具体步骤发现设备12UsbManager usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);Map&amp;lt;String, UsbDevice&amp;gt; usbList = usbManager.getDeviceList();  官方注释： 12This class">
+<meta property="og:description" content="具体步骤发现设备12UsbManager usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);Map&amp;lt;String, UsbDevice&amp;gt; usbList = usbManager.getDeviceList();  官方注释： 12This class represents a USB dev">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-19T14:30:11.351Z">
+<meta property="og:updated_time" content="2019-08-19T14:48:45.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android设备通过数据线进行相互通信">
-<meta name="twitter:description" content="Android设备通过数据线进行相互通信具体步骤发现设备12UsbManager usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);Map&amp;lt;String, UsbDevice&amp;gt; usbList = usbManager.getDeviceList();  官方注释： 12This class">
+<meta name="twitter:description" content="具体步骤发现设备12UsbManager usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);Map&amp;lt;String, UsbDevice&amp;gt; usbList = usbManager.getDeviceList();  官方注释： 12This class represents a USB dev">
 
 
 
@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  882
+                  869
                 </span>
               
 
@@ -483,13 +483,13 @@
       
 
       
-        <h2 id="Android设备通过数据线进行相互通信"><a href="#Android设备通过数据线进行相互通信" class="headerlink" title="Android设备通过数据线进行相互通信"></a>Android设备通过数据线进行相互通信</h2><h4 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h4><h6 id="发现设备"><a href="#发现设备" class="headerlink" title="发现设备"></a>发现设备</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UsbManager usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);</span><br><span class="line">Map&lt;String, UsbDevice&gt; usbList = usbManager.getDeviceList();</span><br></pre></td></tr></table></figure>
+        <h1 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h1><h2 id="发现设备"><a href="#发现设备" class="headerlink" title="发现设备"></a>发现设备</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UsbManager usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);</span><br><span class="line">Map&lt;String, UsbDevice&gt; usbList = usbManager.getDeviceList();</span><br></pre></td></tr></table></figure>
 
 <p>官方注释：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This class represents a USB device attached to the android device with the android device</span><br><span class="line"> acting as the USB host.</span><br></pre></td></tr></table></figure>
 
 <p>这个类代表了android所连接的usb设备。</p>
-<h6 id="打开设备"><a href="#打开设备" class="headerlink" title="打开设备"></a>打开设备</h6><p>需要打开刚刚搜索到的usb设备。</p>
+<h2 id="打开设备"><a href="#打开设备" class="headerlink" title="打开设备"></a>打开设备</h2><p>需要打开刚刚搜索到的usb设备。</p>
 <p>一般来说，在没有定制的android设备上首次访问usb设备的时候，默认我们是没有访问权限的，因此我们首先要判断对当前要打开的usbDevice是否有访问权限：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if (!usbManager.hasPermission(usbDevice)) &#123;</span><br><span class="line">    usbPermissionReceiver = new UsbPermissionReceiver();</span><br><span class="line">   //申请权限</span><br><span class="line">   Intent intent = new Intent(ACTION_DEVICE_PERMISSION);</span><br><span class="line">   PendingIntent mPermissionIntent = PendingIntent.getBroadcast(context, 0, intent, 0);</span><br><span class="line">   IntentFilter permissionFilter = new IntentFilter(ACTION_DEVICE_PERMISSION);</span><br><span class="line">   context.registerReceiver(usbPermissionReceiver, permissionFilter);</span><br><span class="line">   usbManager.requestPermission(usbDevice, mPermissionIntent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -508,7 +508,7 @@
 <p>UsbDeviceConnection的获取：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usbDeviceConnection = usbManager.openDevice(usbDevice);</span><br></pre></td></tr></table></figure>
 
-<h6 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h6><ul>
+<h2 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h2><ul>
 <li>向usb外设发送数据</li>
 </ul>
 <p>在第二步中，我们已经获取了数据的输出端口usbEndpointIn，我们向外设发送数据就是通过这个端口来实现的。</p>
@@ -524,7 +524,7 @@
 <blockquote>
 <p>注：理论上设备之间的连接已经建立了，也可以首发数据了，但是，我们大部分情况下还需要对usb串口进行一些配置，比如波特率,停止位,数据控制等，不然两边配置不同，收到的数据会乱码，具体怎么配置，需要看串口芯片。</p>
 </blockquote>
-<h4 id="测试设备需求"><a href="#测试设备需求" class="headerlink" title="测试设备需求"></a>测试设备需求</h4><ul>
+<h1 id="测试设备需求"><a href="#测试设备需求" class="headerlink" title="测试设备需求"></a>测试设备需求</h1><ul>
 <li>Android版本&gt;3.2的设备</li>
 <li>OTG转接线</li>
 </ul>
@@ -806,7 +806,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android设备通过数据线进行相互通信"><span class="nav-number">1.</span> <span class="nav-text">Android设备通过数据线进行相互通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#具体步骤"><span class="nav-number">1.0.1.</span> <span class="nav-text">具体步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#发现设备"><span class="nav-number">1.0.1.0.1.</span> <span class="nav-text">发现设备</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#打开设备"><span class="nav-number">1.0.1.0.2.</span> <span class="nav-text">打开设备</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据传输"><span class="nav-number">1.0.1.0.3.</span> <span class="nav-text">数据传输</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试设备需求"><span class="nav-number">1.0.2.</span> <span class="nav-text">测试设备需求</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#具体步骤"><span class="nav-number">1.</span> <span class="nav-text">具体步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#发现设备"><span class="nav-number">1.1.</span> <span class="nav-text">发现设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开设备"><span class="nav-number">1.2.</span> <span class="nav-text">打开设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据传输"><span class="nav-number">1.3.</span> <span class="nav-text">数据传输</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试设备需求"><span class="nav-number">2.</span> <span class="nav-text">测试设备需求</span></a></li></ol></div>
             
 
           </div>
@@ -904,13 +904,14 @@
   
 
 
+
+
+
+
+
+
   
-
-
-
-
-
-
+  
 
 
 
@@ -948,7 +949,12 @@
 
   
   
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
   
 
 
