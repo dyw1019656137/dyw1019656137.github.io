@@ -105,7 +105,7 @@
 
 
 
-  <meta name="keywords" content="Android,UI,性能,检测,">
+  <meta name="keywords" content="Android,自动化,测试,">
 
 
 
@@ -116,27 +116,31 @@
 
 
 
-<meta name="description" content="工具推荐UI检测的工具，Hierarchy Viewer和Layout Inspector。 Hierarchy Viewer官方地址 Layout Inspector官方地址 虽然Hierarchy Viewer已经废弃了，但感觉还是有必要介绍一下的。 Hierarchy Viewer工具打开方式AS版本：3.3.2 打开方式：  本地安装SDK目录-&amp;gt;sdk-&amp;gt;tools-&amp;gt;">
-<meta name="keywords" content="Android,UI,性能,检测">
+<meta name="description" content="相关链接官网：http://appium.io/ 使用Java编写API文档：http://appium.github.io/java-client/ 学习文档：https://www.cnblogs.com/fnng/p/4540731.html 技术展示安装(仅Windows)若电脑上未安装node.js，请先安装node.js 下载安装包，下载地址为：https://nodejs.org/e">
+<meta name="keywords" content="Android,自动化,测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UI检测">
-<meta property="og:url" content="http://per-dyw.xyz/2019/08/15/UI检测/index.html">
+<meta property="og:title" content="Appium自动化测试">
+<meta property="og:url" content="http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/index.html">
 <meta property="og:site_name" content="Mr.戴">
-<meta property="og:description" content="工具推荐UI检测的工具，Hierarchy Viewer和Layout Inspector。 Hierarchy Viewer官方地址 Layout Inspector官方地址 虽然Hierarchy Viewer已经废弃了，但感觉还是有必要介绍一下的。 Hierarchy Viewer工具打开方式AS版本：3.3.2 打开方式：  本地安装SDK目录-&amp;gt;sdk-&amp;gt;tools-&amp;gt;">
+<meta property="og:description" content="相关链接官网：http://appium.io/ 使用Java编写API文档：http://appium.github.io/java-client/ 学习文档：https://www.cnblogs.com/fnng/p/4540731.html 技术展示安装(仅Windows)若电脑上未安装node.js，请先安装node.js 下载安装包，下载地址为：https://nodejs.org/e">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-1.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-2.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-3.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-4.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-5.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-6.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-7.png">
-<meta property="og:updated_time" content="2019-08-22T11:20:10.889Z">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(1).png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(2).png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(3).png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(4).png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(5).png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(6).png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(7).png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(8).png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(9).png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(10).png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(11).png">
+<meta property="og:updated_time" content="2019-08-22T11:37:04.606Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UI检测">
-<meta name="twitter:description" content="工具推荐UI检测的工具，Hierarchy Viewer和Layout Inspector。 Hierarchy Viewer官方地址 Layout Inspector官方地址 虽然Hierarchy Viewer已经废弃了，但感觉还是有必要介绍一下的。 Hierarchy Viewer工具打开方式AS版本：3.3.2 打开方式：  本地安装SDK目录-&amp;gt;sdk-&amp;gt;tools-&amp;gt;">
-<meta name="twitter:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard.png">
+<meta name="twitter:title" content="Appium自动化测试">
+<meta name="twitter:description" content="相关链接官网：http://appium.io/ 使用Java编写API文档：http://appium.github.io/java-client/ 学习文档：https://www.cnblogs.com/fnng/p/4540731.html 技术展示安装(仅Windows)若电脑上未安装node.js，请先安装node.js 下载安装包，下载地址为：https://nodejs.org/e">
+<meta name="twitter:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard.png">
 
 
 
@@ -166,7 +170,7 @@
 
 
 
-  <link rel="canonical" href="http://per-dyw.xyz/2019/08/15/UI检测/">
+  <link rel="canonical" href="http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/">
 
 
 
@@ -182,7 +186,7 @@
   </script>
 
 
-  <title>UI检测 | Mr.戴</title>
+  <title>Appium自动化测试 | Mr.戴</title>
   
 
 
@@ -361,7 +365,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://per-dyw.xyz/2019/08/15/UI检测/">
+    <link itemprop="mainEntityOfPage" href="http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.戴">
@@ -378,7 +382,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">UI检测</h1>
+          <h1 class="post-title" itemprop="name headline">Appium自动化测试</h1>
         
 
         <div class="post-meta">
@@ -390,8 +394,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-15T17:20:27+08:00">
-                2019-08-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T19:25:58+08:00">
+                2019-08-22
               </time>
             
 
@@ -424,8 +428,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/性能优化/" itemprop="url" rel="index">
-                    <span itemprop="name">性能优化</span>
+                  <a href="/categories/Android/测试/" itemprop="url" rel="index">
+                    <span itemprop="name">测试</span>
                   </a>
                 </span>
 
@@ -455,7 +459,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.3k
+                  1.5k
                 </span>
               
 
@@ -471,7 +475,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  6
                 </span>
               
             </div>
@@ -492,68 +496,103 @@
       
 
       
-        <h2 id="工具推荐"><a href="#工具推荐" class="headerlink" title="工具推荐"></a>工具推荐</h2><p>UI检测的工具，Hierarchy Viewer和Layout Inspector。</p>
-<p><a href="https://developer.android.com/studio/profile/hierarchy-viewer" target="_blank" rel="noopener">Hierarchy Viewer官方地址</a></p>
-<p><a href="https://developer.android.com/studio/debug/layout-inspector" target="_blank" rel="noopener">Layout Inspector官方地址</a></p>
-<p>虽然Hierarchy Viewer已经废弃了，但感觉还是有必要介绍一下的。</p>
-<h3 id="Hierarchy-Viewer"><a href="#Hierarchy-Viewer" class="headerlink" title="Hierarchy Viewer"></a>Hierarchy Viewer</h3><h4 id="工具打开方式"><a href="#工具打开方式" class="headerlink" title="工具打开方式"></a>工具打开方式</h4><p>AS版本：3.3.2 打开方式：</p>
+        <h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p>官网：<a href="http://appium.io/" target="_blank" rel="noopener">http://appium.io/</a></p>
+<p>使用Java编写API文档：<a href="http://appium.github.io/java-client/" target="_blank" rel="noopener">http://appium.github.io/java-client/</a></p>
+<p>学习文档：<a href="https://www.cnblogs.com/fnng/p/4540731.html" target="_blank" rel="noopener">https://www.cnblogs.com/fnng/p/4540731.html</a></p>
+<h2 id="技术展示"><a href="#技术展示" class="headerlink" title="技术展示"></a>技术展示</h2><h4 id="安装-仅Windows"><a href="#安装-仅Windows" class="headerlink" title="安装(仅Windows)"></a>安装(仅Windows)</h4><h5 id="若电脑上未安装node-js，请先安装node-js"><a href="#若电脑上未安装node-js，请先安装node-js" class="headerlink" title="若电脑上未安装node.js，请先安装node.js"></a>若电脑上未安装node.js，请先安装node.js</h5><ul>
+<li>下载安装包，下载地址为：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></li>
+<li>选择对应的版本，下载后，打开安装，一直下一步即可（可修改安装目录）</li>
+<li>安装完成后，检测下path环境变量是否配置了Node.js，打开Windows命令提示符，输入命令”path”，输出如下结果：<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard.png" alt="image"></li>
+</ul>
+<h5 id="Android的SDK安装"><a href="#Android的SDK安装" class="headerlink" title="Android的SDK安装"></a>Android的SDK安装</h5><p>相信Android开发人员都已安装好Android的SDK了，但Android的环境变量你设置了么？我本机的目录为：E:\Android\Sdk。<br><br>下面设置环境变量：“我的电脑” 右键菜单 —&gt; 属性 —&gt; 高级 —&gt; 环境变量 —&gt; 系统变量 —&gt; 新建：</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>变量值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ANDROID_HOME</td>
+<td>E:\Android\Sdk</td>
+</tr>
+</tbody></table>
+<p>找到 path 变量名—&gt; “编辑” 添加：</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>变量值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PATH</td>
+<td>;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\tools;</td>
+</tr>
+</tbody></table>
+<h5 id="安装-Appium-Server"><a href="#安装-Appium-Server" class="headerlink" title="安装 Appium Server"></a>安装 Appium Server</h5><p>可以在Appium官方网站上下载操作系统相应的Appium版本，下载地址：<a href="https://bitbucket.org/appium/appium.app/downloads/，" target="_blank" rel="noopener">https://bitbucket.org/appium/appium.app/downloads/，</a><br>若无法下载，也可使用提供的百度网盘下载地址：<br><br>链接: <a href="https://pan.baidu.com/s/1UdbSk02TzUS8BQKzOQFYfw" target="_blank" rel="noopener">https://pan.baidu.com/s/1UdbSk02TzUS8BQKzOQFYfw</a> 提取码: zus2 <br><br>下载的 AppiumForWindows.zip 进行解压，点击 appium-installer.exe 进行安装。</p>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(1).png" alt="image"></p>
+<p>根据提示，一步一步进行安装，这里不再啰嗦。最终在会桌面上生成 Appium图标 , 双击启动，appium server 界面如下：</p>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(2).png" alt="image"></p>
+<p>最后，打开Windows命令提示符，输入“appium-doctor”命令，如果出现以下提示，说明你Appium所需要的各项环境都已准备完成。</p>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(3).png" alt="image"></p>
+<blockquote>
+<p>注：如果提示：“appium-doctor”不是内部或外部命令，找到Appium的安装目录，例如：<br><br>E:\Appium\node_modules\.bin<br><br>添加到环境变量path下面（参考Java环境的设置）</p>
+</blockquote>
+<h5 id="Appium-desktop"><a href="#Appium-desktop" class="headerlink" title="Appium-desktop"></a>Appium-desktop</h5><h6 id="Appium-desktop是什么"><a href="#Appium-desktop是什么" class="headerlink" title="Appium-desktop是什么"></a>Appium-desktop是什么</h6><p>Appium-Server有一两年没有更新了。Windows版在 2015 年底止步于的 AppiumForWindows_1_4_16_1.zip。</p>
+<p>于是，新的工具 Appium-desktop 来了！ 它来继续 Appium-Server的使命，当然， Appium-Server当前仍然是可用的。</p>
+<blockquote>
+<p>注：Appium-Server最高支持模拟器Android版本为6.0，推荐使用 Appium-desktop。</p>
+</blockquote>
+<h6 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h6><p>下载地址：<a href="https://github.com/appium/appium-desktop/releases" target="_blank" rel="noopener">https://github.com/appium/appium-desktop/releases</a><br>根据自己的平台选择相关的包进行下载。本文以 Windows 为例，选择 Appium-windows-1.12.1.exe 文件进行下载，下载完成后，双击 exe 文件，等待安装完成即可。</p>
+<h6 id="启动运行"><a href="#启动运行" class="headerlink" title="启动运行"></a>启动运行</h6><p>双击打开桌面上紫色的 appium 图标</p>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(4).png" alt="image"></p>
+<p>点击 “启动服务器 V 1.12.1” 按钮启动服务</p>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(5).png" alt="image"></p>
+<p>现在可以启动移动设备（真机或模拟器），编写Appium自动化测试脚本，可以通过 Appium-desktop 来运行测试。</p>
+<h5 id="连接真机测试"><a href="#连接真机测试" class="headerlink" title="连接真机测试"></a>连接真机测试</h5><p>主要讲解如何连接真机进行测试。</p>
 <ul>
-<li>本地安装SDK目录-&gt;sdk-&gt;tools-&gt;monitor.bat</li>
+<li>手机通过USB连接电脑，选择传输文件(MTP)<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(6).png" alt="image"></li>
+<li>打开开发者选项，允许USB调试，允许USB安装<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(7).png" alt="image"></li>
+<li>打开Windows命令提示符，输入”adb devices”，可弹出电脑是否连接真机，获取到真机的devices<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(8).png" alt="image"></li>
 </ul>
-<p>老版的AS打开方式：</p>
+<blockquote>
+<p>注：如果提示：“adb”不是内部或外部命令，找到adb的安装目录，例如：<br><br>E:\Android\Sdk\platform-tools<br><br>添加到环境变量path下面（参考Java环境的设置）</p>
+</blockquote>
+<h4 id="java-client安装与测试"><a href="#java-client安装与测试" class="headerlink" title="java-client安装与测试"></a>java-client安装与测试</h4><p>此次主要讲解的是使用 Java 语言编写 appium 自动化测试脚本。</p>
+<h5 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h5><ul>
+<li>安装 Java 环境</li>
+<li>安装 IntelliJ IDEA 或 Eclipse (下面讲解的是Eclipse)</li>
+<li>安装 Maven</li>
+</ul>
+<h5 id="Maven-安装-Java-client"><a href="#Maven-安装-Java-client" class="headerlink" title="Maven 安装 Java-client"></a>Maven 安装 Java-client</h5><ul>
+<li>启动Eclipse，创建Maven项目<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(9).png" alt="image"></li>
+<li>导入 appium 的 Java-client<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(10).png" alt="image"></li>
+<li>输入项目名称，id即可下一步</li>
+<li>最后，pom.xml中的信息应如下：<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(11).png" alt="image"></li>
+</ul>
+<blockquote>
+<p>注：截止至4月26日为止，最新版本为7.0.0，最新版本号，可在github <a href="https://github.com/appium/java-client" target="_blank" rel="noopener">Java-client</a>开源项目上查看。</p>
+</blockquote>
+<h5 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h5><p>编写第一个Appium测试程序</p>
+<h6 id="启动APP"><a href="#启动APP" class="headerlink" title="启动APP"></a>启动APP</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package com.test;</span><br><span class="line"></span><br><span class="line">import java.net.MalformedURLException;</span><br><span class="line">import java.net.URL;</span><br><span class="line">import org.openqa.selenium.remote.DesiredCapabilities;</span><br><span class="line">import io.appium.java_client.android.AndroidDriver;</span><br><span class="line"></span><br><span class="line">public class TestLanuch &#123;</span><br><span class="line"></span><br><span class="line">	private static String path = &quot;E:\\Epoint\\epoint\\component\\FramePlugins\\workplatform\\release\\workplatform-release.apk&quot;;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws MalformedURLException, InterruptedException &#123;</span><br><span class="line">		DesiredCapabilities capabilities = new DesiredCapabilities();</span><br><span class="line">		capabilities.setCapability(&quot;deviceName&quot;, &quot;8ea41751&quot;);</span><br><span class="line">		capabilities.setCapability(&quot;automationName&quot;, &quot;uiautomator2&quot;);</span><br><span class="line">		capabilities.setCapability(&quot;platformName&quot;, &quot;Android&quot;);</span><br><span class="line">		capabilities.setCapability(&quot;platformVersion&quot;, &quot;8.0.0&quot;);</span><br><span class="line">		capabilities.setCapability(&quot;autoGrantPermissions&quot;, true);</span><br><span class="line">		capabilities.setCapability(&quot;app&quot;, path);</span><br><span class="line"></span><br><span class="line">		AndroidDriver driver = new AndroidDriver(new URL(&quot;http://127.0.0.1:4723/wd/hub&quot;), capabilities);</span><br><span class="line"></span><br><span class="line">		driver.quit();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>本地安装SDK目录-&gt;sdk-&gt;tools-&gt;hierarchyviewer.bat</li>
-<li>Android Studio : 工具栏-&gt;Tools-&gt;Android-&gt;Android Device Monitor</li>
-<li>在命令行输入 hierarchyviewer</li>
+<li>deviceName：启动哪种设备，是真机还是模拟器，若是真机，填写”adb devices”获取的设备号</li>
+<li>automationName：使用哪种自动化引擎</li>
+<li>platformName：使用哪种移动平台</li>
+<li>platformVersion：指定平台的系统版本。例如指的Android平台，版本为8.0.0</li>
+<li>autoGrantPermissions：是否自动允许权限</li>
+<li>app：打包后，apk在本地的路径</li>
+<li>appPackage：应用的包名</li>
+<li>appActivity：应用启动页</li>
 </ul>
-<h4 id="工具的使用"><a href="#工具的使用" class="headerlink" title="工具的使用"></a>工具的使用</h4><h6 id="设备连接（真机需要手机root权限）"><a href="#设备连接（真机需要手机root权限）" class="headerlink" title="设备连接（真机需要手机root权限）"></a>设备连接（真机需要手机root权限）</h6><p>成功后左侧Windows小手机会看到设备信息</p>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard.png" alt="image"></p>
-<h6 id="打开Hierarchy-View"><a href="#打开Hierarchy-View" class="headerlink" title="打开Hierarchy View"></a>打开Hierarchy View</h6><p>点击Window-&gt;Open Perspective-&gt;Hierarchy View</p>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-1.png" alt="image"></p>
-<p>若期间出现此问题</p>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-2.png" alt="image"></p>
-<p>选择使用本地IP，并关闭，重新启动即可</p>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-3.png" alt="image"></p>
-<p>此时，应该会看到如下图了：</p>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-4.png" alt="image"></p>
-<ul>
-<li>Tree View：显示视图层次结构的树视图。 可以使用鼠标拖动并放大树底部的缩放控件</li>
-<li>Tree Overview：为应用程序的完整视图层次结构提供鸟瞰图。 移动灰色矩形以更改树视图中可见的视口。</li>
-<li>Layout View：显示布局的线框视图。 当前所选视图的轮廓为红色，其父视图为浅红色。单击此处的视图也会在树视图中选择它，反之亦然。</li>
-<li>hierarchy view 视图层次结构是布局的快照，因此不会自动更新。 要更新层次结构视图，点击右上角蓝色金字塔（Reload the view hierarchy）。</li>
-<li>要想保存Tree View,点击右上角蓝色金字塔左边小文档,左边是PNG格式,右边是PS的PSD格式。</li>
-</ul>
-<h6 id="获取布局的绘制"><a href="#获取布局的绘制" class="headerlink" title="获取布局的绘制"></a>获取布局的绘制</h6><ul>
-<li>选择一个节点，点击Profile Mode按钮,可以获取到布局绘制的时间，如图:</li>
-</ul>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-5.png" alt="image"></p>
-<ul>
-<li>绿:表示该View的此项性能比该View Tree中超过50%的View都要快；例如,一个绿点的测量时间意味着这个视图的测量时间快于树中的视图对象的50%。</li>
-<li>黄: 表示该View的此项性能比该View Tree中超过50%的View都要慢；例如,一个黄点布局意味着这种观点有较慢的布局时间超过50%的树视图对象。</li>
-<li>红: 表示该View的此项性能是View Tree中最慢的；例如,一个红点的绘制时间意味着花费时间最多的这一观点在树上画所有的视图对象。</li>
-</ul>
-<h6 id="布局性能分析"><a href="#布局性能分析" class="headerlink" title="布局性能分析"></a>布局性能分析</h6><p>红色节点是代表应用性能慢的一个潜在问题，下面是几个例子，如何来分析和解释红点的出现原因？</p>
-<ul>
-<li>如果在叶节点或者ViewGroup中，只有极少的子节点，这可能反映出一个问题，应用可能在设备上运行并不慢，但是你需要指导为什么这个节点是红色的，可以借助Systrace或者Traceview工具，获取更多额外的信息；</li>
-<li>如果一个视图组里面有许多的子节点，并且测量阶段呈现为红色，则需要观察下子节点的绘制情况；</li>
-<li>如果视图层级结构中的根视图，Messure阶段为红色，Layout阶段为红色，Draw阶段为黄色，这个是比较常见的，因为这个节点是所有其它视图的父类；</li>
-<li>如果视图结构中的一个叶子节点，有20个视图是红色的Draw阶段，这是有问题的，需要检查代码里面的onDraw方法，不应该在那里调用。</li>
-</ul>
-<h3 id="Layout-Inspector"><a href="#Layout-Inspector" class="headerlink" title="Layout Inspector"></a>Layout Inspector</h3><h4 id="工具打开方式-1"><a href="#工具打开方式-1" class="headerlink" title="工具打开方式"></a>工具打开方式</h4><ul>
-<li>在连接的设备或模拟器上运行应用；</li>
-<li>点击 Tools &gt; Android &gt; Layout Inspector；</li>
-<li>在出现的 Choose Process 对话框中，选择想要检查的应用进程，然后点击 OK<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-6.png" alt="image"></li>
-</ul>
-<h4 id="工具的使用-1"><a href="#工具的使用-1" class="headerlink" title="工具的使用"></a>工具的使用</h4><p>布局检查器会捕获快照，将它保存为 .li 文件并打开。如图所示，布局检查器将显示以下内容：</p>
-<ul>
-<li>View Tree：视图在布局中的层次结构。</li>
-<li>Screenshot：带每个视图可视边界的设备屏幕截图。</li>
-<li>Properties Table：选定视图的布局属性。<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/UI%E6%A3%80%E6%B5%8B/clipboard-7.png" alt="image"></li>
-</ul>
-<p>如果布局包括重叠视图，则默认情况下，只有前面的视图可以在屏幕截图中点击。 要让后面的视图可以在屏幕截图中点击，请执行以下操作： </p>
-<p>在 View Tree 中右键点击前面的视图，然后取消选中 Show in preview。 此操作不会让视图内容消失；仅会让屏幕截图中的可点击边界消失，以便可以点击在它后面的视图。</p>
-<p>如果设备上的布局发生变化，布局检查器不会更新。 必须再次点击 Tools &gt; Android &gt; Layout Inspector，创建一个新的快照。每一个快照都将保存到 project-name/captures/ 内一个单独的 .li 文件中。</p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>Hierarchy Viewer虽然已经废弃了，但实际应用中还是不能放弃的，相比较而言，Layout Inspector看布局的层级较为轻松，但Hierarchy Viewer看布局的绘制时间更为轻松，两者相结合，对布局的检测优化更为轻松，所以自我感觉两者都不能放弃。</p>
+<blockquote>
+<p>注：若手机上本无此APP，使用参数app，不使用appPackage和appActivity，若手机上有此APP，使用appPackage和appActivity，不使用参数app。</p>
+</blockquote>
+<h6 id="登录APP"><a href="#登录APP" class="headerlink" title="登录APP"></a>登录APP</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public static void testLogin(long time) &#123;</span><br><span class="line">	if (timer == null) &#123;</span><br><span class="line">		timer = new Timer();</span><br><span class="line">	&#125;</span><br><span class="line">	timer.schedule(new TimerTask() &#123;</span><br><span class="line">		@Override</span><br><span class="line">		public void run() &#123;</span><br><span class="line">			if (driver.getPageSource().contains(&quot;com.epoint.workplatform:id/iv_cancel&quot;)) &#123;</span><br><span class="line">				System.out.println(&quot;APP需要更新&quot;);</span><br><span class="line">				System.out.println(&quot;取消更新&quot;);</span><br><span class="line">				driver.findElement(By.id(&quot;com.epoint.workplatform:id/iv_cancel&quot;)).click();</span><br><span class="line">				if (timer != null) &#123;</span><br><span class="line">					timer.cancel();</span><br><span class="line">					timer = null;</span><br><span class="line">				&#125;</span><br><span class="line">				testLogin(2000);</span><br><span class="line">			&#125; else if (driver.currentActivity().contains(&quot;MainActivity&quot;)) &#123;</span><br><span class="line">				System.out.println(&quot;用户已登录过&quot;);</span><br><span class="line">				System.out.println(driver.getPageSource());</span><br><span class="line">			&#125; else if (driver.currentActivity().contains(&quot;launcher.Launcher&quot;)) &#123;</span><br><span class="line">				System.out.println(&quot;返回桌面&quot;);</span><br><span class="line">			&#125; else if (driver.currentActivity().contains(&quot;GrantPermissionsActivity&quot;)) &#123;</span><br><span class="line">				System.out.println(&quot;初次登录&quot;);</span><br><span class="line">				System.out.println(&quot;授予权限&quot;);</span><br><span class="line">				driver.findElement(By.id(&quot;android:id/button1&quot;)).click();</span><br><span class="line">				if (timer != null) &#123;</span><br><span class="line">					timer.cancel();</span><br><span class="line">					timer = null;</span><br><span class="line">				&#125;</span><br><span class="line">				testLogin(5000);</span><br><span class="line">			&#125; else if (driver.currentActivity().contains(&quot;LoginActivity&quot;)) &#123;</span><br><span class="line">				driver.findElement(By.id(&quot;com.epoint.workplatform:id/et_loginid&quot;)).sendKeys(&quot;dywei&quot;);</span><br><span class="line">				driver.findElement(By.id(&quot;com.epoint.workplatform:id/et_pwd&quot;)).sendKeys(&quot;11111&quot;);</span><br><span class="line">				driver.findElement(By.id(&quot;com.epoint.workplatform:id/btn_login&quot;)).click();</span><br><span class="line">				System.out.println(&quot;登录成功&quot;);</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				System.out.println(&quot;启动页时间太长&quot;);</span><br><span class="line">				System.out.println(driver.getPageSource());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;, time);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h2><p>测试脚本的编写并不局限于Java，支持多种语言，且可以实现一套测试脚本的编写完成Android端和iOS端的自动化测试，有兴趣的可以研究研究。</p>
 
       
     </div>
@@ -580,12 +619,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2019/08/15/UI检测/">UI检测</a></p>
+  <p><span>本文标题:</span><a href="/2019/08/22/appium自动化测试方案调研/">Appium自动化测试</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Mr.戴 的个人博客">Mr.戴</a></p>
-  <p><span>发布时间:</span>2019年08月15日</p>
+  <p><span>发布时间:</span>2019年08月22日</p>
   <p><span>最后更新:</span>2019年08月22日</p>
-  <p><span>原始链接:</span><a href="/2019/08/15/UI检测/" title="UI检测">http://per-dyw.xyz/2019/08/15/UI检测/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://per-dyw.xyz/2019/08/15/UI检测/" aria-label="复制成功！"></i></span>
+  <p><span>原始链接:</span><a href="/2019/08/22/appium自动化测试方案调研/" title="Appium自动化测试">http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/" aria-label="复制成功！"></i></span>
   </p>
   <p>转载请保留原文链接及作者。</p>  
 </div>
@@ -647,11 +686,9 @@
           
             <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
           
-            <a href="/tags/UI/" rel="tag"><i class="fa fa-tag"></i> UI</a>
+            <a href="/tags/自动化/" rel="tag"><i class="fa fa-tag"></i> 自动化</a>
           
-            <a href="/tags/性能/" rel="tag"><i class="fa fa-tag"></i> 性能</a>
-          
-            <a href="/tags/检测/" rel="tag"><i class="fa fa-tag"></i> 检测</a>
+            <a href="/tags/测试/" rel="tag"><i class="fa fa-tag"></i> 测试</a>
           
         </div>
       
@@ -664,8 +701,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/15/UI卡顿优化/" rel="next" title="UI卡顿优化">
-                <i class="fa fa-chevron-left"></i> UI卡顿优化
+              <a href="/2019/08/19/Android设备通过数据线进行相互通信/" rel="next" title="Android设备通过数据线进行相互通信">
+                <i class="fa fa-chevron-left"></i> Android设备通过数据线进行相互通信
               </a>
             
           </div>
@@ -673,10 +710,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/19/Android设备通过数据线进行相互通信/" rel="prev" title="Android设备通过数据线进行相互通信">
-                Android设备通过数据线进行相互通信 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -843,7 +876,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工具推荐"><span class="nav-number">1.</span> <span class="nav-text">工具推荐</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hierarchy-Viewer"><span class="nav-number">1.1.</span> <span class="nav-text">Hierarchy Viewer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工具打开方式"><span class="nav-number">1.1.1.</span> <span class="nav-text">工具打开方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工具的使用"><span class="nav-number">1.1.2.</span> <span class="nav-text">工具的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#设备连接（真机需要手机root权限）"><span class="nav-number">1.1.2.0.1.</span> <span class="nav-text">设备连接（真机需要手机root权限）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#打开Hierarchy-View"><span class="nav-number">1.1.2.0.2.</span> <span class="nav-text">打开Hierarchy View</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#获取布局的绘制"><span class="nav-number">1.1.2.0.3.</span> <span class="nav-text">获取布局的绘制</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#布局性能分析"><span class="nav-number">1.1.2.0.4.</span> <span class="nav-text">布局性能分析</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layout-Inspector"><span class="nav-number">1.2.</span> <span class="nav-text">Layout Inspector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工具打开方式-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">工具打开方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工具的使用-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">工具的使用</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">2.</span> <span class="nav-text">结论</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#相关链接"><span class="nav-number">1.</span> <span class="nav-text">相关链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术展示"><span class="nav-number">2.</span> <span class="nav-text">技术展示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-仅Windows"><span class="nav-number">2.0.1.</span> <span class="nav-text">安装(仅Windows)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#若电脑上未安装node-js，请先安装node-js"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">若电脑上未安装node.js，请先安装node.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Android的SDK安装"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">Android的SDK安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装-Appium-Server"><span class="nav-number">2.0.1.3.</span> <span class="nav-text">安装 Appium Server</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Appium-desktop"><span class="nav-number">2.0.1.4.</span> <span class="nav-text">Appium-desktop</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Appium-desktop是什么"><span class="nav-number">2.0.1.4.1.</span> <span class="nav-text">Appium-desktop是什么</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#下载与安装"><span class="nav-number">2.0.1.4.2.</span> <span class="nav-text">下载与安装</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#启动运行"><span class="nav-number">2.0.1.4.3.</span> <span class="nav-text">启动运行</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#连接真机测试"><span class="nav-number">2.0.1.5.</span> <span class="nav-text">连接真机测试</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-client安装与测试"><span class="nav-number">2.0.2.</span> <span class="nav-text">java-client安装与测试</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前提条件"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">前提条件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Maven-安装-Java-client"><span class="nav-number">2.0.2.2.</span> <span class="nav-text">Maven 安装 Java-client</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开始测试"><span class="nav-number">2.0.2.3.</span> <span class="nav-text">开始测试</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#启动APP"><span class="nav-number">2.0.2.3.1.</span> <span class="nav-text">启动APP</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#登录APP"><span class="nav-number">2.0.2.3.2.</span> <span class="nav-text">登录APP</span></a></li></ol></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#技术总结"><span class="nav-number">3.</span> <span class="nav-text">技术总结</span></a></li></div>
             
 
           </div>
