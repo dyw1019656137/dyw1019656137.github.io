@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误，请联系 Mr.戴 获取密码！');
+                if (history.length === 1) {
+                    location.replace("http://per-dyw.xyz/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-d.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-d.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-d.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,进程,保活,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言很多项目都希望我们的 APP 可以一直在用户的后台运行，也就是所谓的 Android 进程保活。本文档主要讲解目前测试下来有效的 Android 保活方案。  注：随着 Android 的版本越来越高，APP 在后台的存活时间也就越来越短，目前所做的是让 APP 在后台存活时间尽量延长。  前期准备 安装 Android studio，并配好相应的环境； 准备一首没有声音的mp3音频，请自行百">
+<meta name="keywords" content="Android,进程,保活">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android进程保活">
+<meta property="og:url" content="http://per-dyw.xyz/2019/08/28/Android-进程保活/index.html">
+<meta property="og:site_name" content="Mr.戴">
+<meta property="og:description" content="前言很多项目都希望我们的 APP 可以一直在用户的后台运行，也就是所谓的 Android 进程保活。本文档主要讲解目前测试下来有效的 Android 保活方案。  注：随着 Android 的版本越来越高，APP 在后台的存活时间也就越来越短，目前所做的是让 APP 在后台存活时间尽量延长。  前期准备 安装 Android studio，并配好相应的环境； 准备一首没有声音的mp3音频，请自行百">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android%E8%BF%9B%E7%A8%8B%E4%BF%9D%E6%B4%BB/1.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android%E8%BF%9B%E7%A8%8B%E4%BF%9D%E6%B4%BB/2.png">
+<meta property="og:updated_time" content="2019-08-28T11:52:11.110Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android进程保活">
+<meta name="twitter:description" content="前言很多项目都希望我们的 APP 可以一直在用户的后台运行，也就是所谓的 Android 进程保活。本文档主要讲解目前测试下来有效的 Android 保活方案。  注：随着 Android 的版本越来越高，APP 在后台的存活时间也就越来越短，目前所做的是让 APP 在后台存活时间尽量延长。  前期准备 安装 Android studio，并配好相应的环境； 准备一首没有声音的mp3音频，请自行百">
+<meta name="twitter:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android%E8%BF%9B%E7%A8%8B%E4%BF%9D%E6%B4%BB/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://per-dyw.xyz/2019/08/28/Android-进程保活/">
+
+
+
+
+
+  <title>Android进程保活 | Mr.戴</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.戴</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            联系我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br>
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://per-dyw.xyz/2019/08/28/Android-进程保活/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.戴">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.戴">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android进程保活</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-28T19:36:58+08:00">
+                2019-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/技术积累/" itemprop="url" rel="index">
+                    <span itemprop="name">技术积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/28/Android-进程保活/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/28/Android-进程保活/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很多项目都希望我们的 APP 可以一直在用户的后台运行，也就是所谓的 Android 进程保活。本文档主要讲解目前测试下来有效的 Android 保活方案。</p>
+<blockquote>
+<p>注：随着 Android 的版本越来越高，APP 在后台的存活时间也就越来越短，目前所做的是让 APP 在后台存活时间尽量延长。</p>
+</blockquote>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><ul>
+<li>安装 Android studio，并配好相应的环境；</li>
+<li>准备一首没有声音的mp3音频，请自行百度下载；</li>
+<li>准备一台或多台安卓设备进行测试。</li>
+</ul>
+<h2 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h2><h3 id="四种大概方案"><a href="#四种大概方案" class="headerlink" title="四种大概方案"></a>四种大概方案</h3><h4 id="方案一：播放无声的音乐"><a href="#方案一：播放无声的音乐" class="headerlink" title="方案一：播放无声的音乐"></a>方案一：播放无声的音乐</h4><ol>
+<li>将之前准备的 mp3 音频放置到 res/raw 文件下，如下图：</li>
+</ol>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android%E8%BF%9B%E7%A8%8B%E4%BF%9D%E6%B4%BB/1.png" alt="image"></p>
+<ol start="2">
+<li>新建一个播放音乐的Service类，将播放模式改为无限循环播放：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">public class MusicService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    private String TAG = MusicService.class.getSimpleName();</span><br><span class="line"></span><br><span class="line">    private MediaPlayer mMediaPlayer;</span><br><span class="line"></span><br><span class="line">    public MusicService() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">        Log.d(TAG, &quot;onCreate: 启动服务&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">        mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.music);</span><br><span class="line">        mMediaPlayer.setLooping(true);</span><br><span class="line">        playMusic();</span><br><span class="line">        return START_STICKY;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void playMusic() &#123;</span><br><span class="line">        if (mMediaPlayer != null &amp;&amp; !mMediaPlayer.isPlaying()) &#123;</span><br><span class="line">            Log.d(TAG, &quot;playMusic: 启动后台播放音乐&quot;);</span><br><span class="line">            mMediaPlayer.start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void stopMusic() &#123;</span><br><span class="line">        if (mMediaPlayer != null) &#123;</span><br><span class="line">            Log.d(TAG, &quot;stopMusic: 关闭后台播放音乐&quot;);</span><br><span class="line">            mMediaPlayer.stop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">        stopMusic();</span><br><span class="line">        Log.d(TAG, &quot;onDestroy: 停止服务&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在需要保活的 service 中加上此方式或在 onCreate 方法中对 MusicService 进行启动：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startService(new Intent(this, MusicService.class));</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>在 Manifest 文件中进行注册</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;service</span><br><span class="line">    android:name=&quot;.service.MusicService&quot;</span><br><span class="line">    android:priority=&quot;1000&quot;</span><br><span class="line">    ndroid:persistent=&quot;true&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方案二：双service-常驻通知栏"><a href="#方案二：双service-常驻通知栏" class="headerlink" title="方案二：双service+常驻通知栏"></a>方案二：双service+常驻通知栏</h4><ol>
+<li>创建 CoreService ,负责定时检测主要的 service 是否存活，若不存活，则拉活该 service：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">public class CoreService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    private ScheduledThreadPoolExecutor mScheduled;</span><br><span class="line"></span><br><span class="line">    public CoreService() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">        if (mScheduled == null) &#123;</span><br><span class="line">            mScheduled = new ScheduledThreadPoolExecutor(1);</span><br><span class="line">            mScheduled.scheduleAtFixedRate(new Runnable() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void run() &#123;</span><br><span class="line">                    if (!isServiceRunning(getApplicationContext(),&quot;com.dyw.keepalive.service.MusicService&quot;))&#123;</span><br><span class="line">                        Log.d(TAG, &quot;run: 启动 GpsService&quot;);</span><br><span class="line">                        startService(new Intent(getApplicationContext(),MusicService.class));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, 0, 500, TimeUnit.MILLISECONDS);</span><br><span class="line">        &#125;</span><br><span class="line">        return START_STICKY;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static boolean isServiceRunning(Context context,String serviceName) &#123;</span><br><span class="line">        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);</span><br><span class="line">        List&lt;ActivityManager.RunningServiceInfo&gt; infos = am.getRunningServices(100);</span><br><span class="line">        for (ActivityManager.RunningServiceInfo info : infos) &#123;</span><br><span class="line">            String name = info.service.getClassName();</span><br><span class="line">            if (name.equals(serviceName)) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在主要的 service 中开启常驻通知栏，并将服务改成前台服务：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">public class MusicService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    private String TAG = MusicService.class.getSimpleName();</span><br><span class="line"></span><br><span class="line">    private NotificationManager notificationManager;</span><br><span class="line">    private String notificationId = &quot;serviceid&quot;;</span><br><span class="line">    private String notificationName = &quot;servicename&quot;;</span><br><span class="line"></span><br><span class="line">    public MusicService() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">        Log.d(TAG, &quot;onCreate: 启动服务&quot;);</span><br><span class="line"></span><br><span class="line">        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);</span><br><span class="line">        //创建NotificationChannel</span><br><span class="line">        if(Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O)&#123;</span><br><span class="line">            NotificationChannel channel = new NotificationChannel(notificationId, notificationName, NotificationManager.IMPORTANCE_HIGH);</span><br><span class="line">            notificationManager.createNotificationChannel(channel);</span><br><span class="line">        &#125;</span><br><span class="line">        startForeground(1,getNotification());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">        Log.d(TAG, &quot;onDestroy: 停止服务&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private Notification getNotification() &#123;</span><br><span class="line">        Notification.Builder builder = new Notification.Builder(this)</span><br><span class="line">                .setSmallIcon(R.mipmap.ic_launcher_round)</span><br><span class="line">                .setContentTitle(&quot;开启定位监听&quot;)</span><br><span class="line">                .setContentText(&quot;定位中&quot;);</span><br><span class="line">        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) &#123;</span><br><span class="line">            builder.setChannelId(notificationId);</span><br><span class="line">        &#125;</span><br><span class="line">        Notification notification = builder.build();</span><br><span class="line">        return notification;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>启动的时候，同时启动2个 service ：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">startService(new Intent(getApplicationContext(), CoreService.class));</span><br><span class="line">startService(new Intent(getApplicationContext(), MusicService.class));</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>在 Manifest 文件中进行注册</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;service</span><br><span class="line">    android:name=&quot;.service.MusicService&quot;</span><br><span class="line">    android:priority=&quot;1000&quot;</span><br><span class="line">    ndroid:persistent=&quot;true&quot; /&gt;</span><br><span class="line">&lt;service</span><br><span class="line">    android:name=&quot;.service.CoreService&quot;</span><br><span class="line">    android:persistent=&quot;true&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方案三：监听推送通知，拉活service-常驻通知栏"><a href="#方案三：监听推送通知，拉活service-常驻通知栏" class="headerlink" title="方案三：监听推送通知，拉活service+常驻通知栏"></a>方案三：监听推送通知，拉活service+常驻通知栏</h4><ol>
+<li><p>若项目集成了推送，服务端可定时循环发送透传消息(通知栏没有显示的通知消息)，应用接收到透传消息后，判断需要保活的 service 是否存活，若不存活，则拉活：</p>
+</li>
+<li><p>启动需保活的 service 的同时，开启常驻通知栏并将服务改成前台服务</p>
+</li>
+</ol>
+<p>该方案的具体使用方式与方案二相似，请参考方案二。</p>
+<h4 id="方案四：定时唤醒屏幕"><a href="#方案四：定时唤醒屏幕" class="headerlink" title="方案四：定时唤醒屏幕"></a>方案四：定时唤醒屏幕</h4><ol>
+<li>以上三种方案可延长市面上常见手机(华为，小米)的保活时间，一些特定的手机或定制的手机可采用定时唤醒屏幕的方式，以延长保活时间：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">public class MusicService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    private String TAG = MusicService.class.getSimpleName();</span><br><span class="line"></span><br><span class="line">    private ScheduledThreadPoolExecutor mScheduled;</span><br><span class="line"></span><br><span class="line">    public MusicService() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        super.onCreate();</span><br><span class="line">        Log.d(TAG, &quot;onCreate: 启动服务&quot;);</span><br><span class="line"></span><br><span class="line">        if (mScheduled == null) &#123;</span><br><span class="line">            mScheduled = new ScheduledThreadPoolExecutor(1);</span><br><span class="line">            mScheduled.scheduleAtFixedRate(new Runnable() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void run() &#123;</span><br><span class="line">                    wakeUpAndUnlock();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, 0, 2000, TimeUnit.MILLISECONDS);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int onStartCommand(Intent intent, int flags, int startId) &#123;</span><br><span class="line">        return START_STICKY;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">        Log.d(TAG, &quot;onDestroy: 停止服务&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 唤醒手机屏幕并解锁</span><br><span class="line">     */</span><br><span class="line">    public void wakeUpAndUnlock() &#123;</span><br><span class="line">        // 获取电源管理器对象</span><br><span class="line">        PowerManager pm = (PowerManager) getApplicationContext().getSystemService(Context.POWER_SERVICE);</span><br><span class="line">        boolean screenOn = pm.isScreenOn();</span><br><span class="line">        if (!screenOn) &#123;</span><br><span class="line">            // 获取PowerManager.WakeLock对象,后面的参数|表示同时传入两个值,最后的是LogCat里用的Tag</span><br><span class="line">            @SuppressLint(&quot;InvalidWakeLockTag&quot;)</span><br><span class="line">            PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.SCREEN_BRIGHT_WAKE_LOCK, &quot;bright&quot;);</span><br><span class="line">            // 点亮屏幕</span><br><span class="line">            wl.acquire(10000);</span><br><span class="line">            // 释放</span><br><span class="line">            wl.release();</span><br><span class="line">        &#125;</span><br><span class="line">        // 屏幕解锁</span><br><span class="line">        KeyguardManager keyguardManager = (KeyguardManager) getApplicationContext().getSystemService(KEYGUARD_SERVICE);</span><br><span class="line">        KeyguardManager.KeyguardLock keyguardLock = keyguardManager.newKeyguardLock(&quot;unLock&quot;);</span><br><span class="line">        // 屏幕锁定</span><br><span class="line">        keyguardLock.reenableKeyguard();</span><br><span class="line">        // 解锁</span><br><span class="line">        keyguardLock.disableKeyguard();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="一些小细节"><a href="#一些小细节" class="headerlink" title="一些小细节"></a>一些小细节</h3><h4 id="Application-中的设置"><a href="#Application-中的设置" class="headerlink" title="Application 中的设置"></a>Application 中的设置</h4><ul>
+<li>persistent：设置为 true，将应用设为系统级应用，可适当的延长保活时间。</li>
+<li>largeHeap：设置为 true，扩大设备给 APP 分配的运行内存，延长 APP 被设备清理的时间。</li>
+</ul>
+<h4 id="关键的-Service-的设置"><a href="#关键的-Service-的设置" class="headerlink" title="关键的 Service 的设置"></a>关键的 Service 的设置</h4><ul>
+<li>persistent：设置为 true，将应用设为系统级服务，可适当的延长保活时间。</li>
+<li>priority：设置为1000，提升 service 的优先级，最大为1000.</li>
+</ul>
+<h4 id="部分手机的设置"><a href="#部分手机的设置" class="headerlink" title="部分手机的设置"></a>部分手机的设置</h4><p>Android 8.0及以上的华为手机建议手动开启允许应用在后台运行的设置，具体开启步骤如下：</p>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android%E8%BF%9B%E7%A8%8B%E4%BF%9D%E6%B4%BB/2.png" alt="image"></p>
+<p>一些特制的手机，若前三种方案皆无效，方案四也无法唤醒屏幕，可在设置界面搜索屏幕关键字，查看是否有关于屏幕锁定的一些设置。</p>
+<h4 id="后台GPS获取位置信息"><a href="#后台GPS获取位置信息" class="headerlink" title="后台GPS获取位置信息"></a>后台GPS获取位置信息</h4><p>若项目有需求，需要在保活的 service 中频繁的获取 GPS 位置信息，Android8.0及以上需要开启常驻通知栏，位置信息才会频繁发生改变。</p>
+<h2 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h2><p>前段时间某项目提出了一个需求，要求上报用户的行动路线也就是要实现轨迹上报的功能，这主要有2个难点：<br><br>难点一：应用在后台的存活时间要长；<br><br>难点二：应用要频繁的获取GPS位置信息，并进行数据上报。</p>
+<p>采用的保活方案：播放无声的音乐+双service+常驻通知栏<br>目的：<br><br>1. 播放无声的音乐+双service 主要是延长应用在后台存活时间<br><br>2. 常驻通知栏 主要是确保应用在后台可以频繁的获取位置信息</p>
+<p>一番操作下来，自测华为 Android 9.0 的设备可以满足需求，可是好景不长，现场反馈一台华为 Android 8.0 的设备和一台定制 Android 9.0 的手机，存活时间极短。由于没有对应的设备，只能到现场去查看。</p>
+<p>现场测试结果：<br><br>1. 华为 Android 8.0的手机未按要求开启允许应用在后台运行的设置，打开之后，问题解决；<br><br>2. 定制的Android 9.0手机，由于是定制手机，市面上没有相关的资料可以查询，联系了手机厂商询问是否留下了白名单入口，无结果，下载了QQ音乐，测试QQ音乐能否存活，存活失败，无奈之下只能测试使用定时唤醒屏幕了，并且此设备需要设置每隔2秒唤醒一次屏幕，多次测试后，最终达到保活的目的，耗电量也能接受，于是针对这种定制手机采用了屏幕定时唤醒的方案解决问题。</p>
+<h2 id="疑问解答"><a href="#疑问解答" class="headerlink" title="疑问解答"></a>疑问解答</h2><p><strong>Q：用了这四种方案是不是能永久存活呢？</strong></p>
+<p>随着 Android 系统版本的越来越高，没有肯定能保活 Android 进程的方案，我们所能做的，只是尽量延长 Android 进程的存活时间。</p>
+<p><strong>Q：进程保活的关键是什么呢？</strong></p>
+<p>Android 进程保活的关键主要是以下两点:</p>
+<ol>
+<li>提升进程的优先级，延缓被杀时间；</li>
+<li>发送心跳包，延缓被杀时间。</li>
+</ol>
+<p><strong>Q：为什么QQ，微信可以一直存活呢？</strong></p>
+<p>因为用户量大，跟手机厂商合作，进入了手机厂商的白名单。</p>
+<p><strong>Q：Android 开发人员该如何选择呢？</strong></p>
+<p>优先使用方案二，若项目集成了推送，方案二和方案三结合使用，若部分手机无效，再加入方案一，最后选择是否集成方案四。</p>
+<p><strong>Q：四种方案的优劣和相应的测试结果呢？</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">方案名</th>
+<th align="center">优点</th>
+<th align="center">劣处</th>
+<th align="center">Android版本</th>
+<th align="center">保活时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">播放无声的音乐</td>
+<td align="center">1. 相对稳定<br> 2. 保活时间长</td>
+<td align="center">能耗增加，部分华为手机会弹出应用耗电量过大的情况</td>
+<td align="center">Android 8.0及以下</td>
+<td align="center">24小时及以上</td>
+</tr>
+<tr>
+<td align="center">双service+常驻通知栏</td>
+<td align="center">耗电极低</td>
+<td align="center">不稳定，大部分情况可保活24小时以上，个别情况只能保活2小时内</td>
+<td align="center">Android 9.0</td>
+<td align="center">24小时及以上</td>
+</tr>
+<tr>
+<td align="center">监听推送通知，拉活service+常驻通知栏</td>
+<td align="center">1. 相对稳定<br>2. 耗电低</td>
+<td align="center">1. 应用需集成消息推送<br>2. 若发送推送太频繁有被封号的风险</td>
+<td align="center">Android 9.0</td>
+<td align="center">12小时以内</td>
+</tr>
+<tr>
+<td align="center">定时唤醒屏幕</td>
+<td align="center">1. 相对稳定<br> 2. 保活时间长</td>
+<td align="center">1. 耗电极大<br>2. 需根据不同的手机配置相应的唤醒屏幕时间</td>
+<td align="center">Android 9.0及以下</td>
+<td align="center">24小时及以上</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/08/28/Android-进程保活/">Android进程保活</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Mr.戴 的个人博客">Mr.戴</a></p>
+  <p><span>发布时间:</span>2019年08月28日</p>
+  <p><span>最后更新:</span>2019年08月28日</p>
+  <p><span>原始链接:</span><a href="/2019/08/28/Android-进程保活/" title="Android进程保活">http://per-dyw.xyz/2019/08/28/Android-进程保活/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://per-dyw.xyz/2019/08/28/Android-进程保活/" aria-label="复制成功！"></i></span>
+  </p>
+  <p>转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+      
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mr.戴 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Mr.戴 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+          
+            <a href="/tags/进程/" rel="tag"><i class="fa fa-tag"></i> 进程</a>
+          
+            <a href="/tags/保活/" rel="tag"><i class="fa fa-tag"></i> 保活</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/27/fragment-webview-横竖屏切换/" rel="next" title="fragment+webview+横竖屏切换问题排查">
+                <i class="fa fa-chevron-left"></i> fragment+webview+横竖屏切换问题排查
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Mr.戴">
+            
+              <p class="site-author-name" itemprop="name">Mr.戴</p>
+              <p class="site-description motion-element" itemprop="description">做个俗人，贪财好色！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/dyw1019656137" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1019656137@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qq_28190653" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/23e4591f5b6a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-books"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前期准备"><span class="nav-number">2.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发流程"><span class="nav-number">3.</span> <span class="nav-text">开发流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#四种大概方案"><span class="nav-number">3.1.</span> <span class="nav-text">四种大概方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方案一：播放无声的音乐"><span class="nav-number">3.1.1.</span> <span class="nav-text">方案一：播放无声的音乐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案二：双service-常驻通知栏"><span class="nav-number">3.1.2.</span> <span class="nav-text">方案二：双service+常驻通知栏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案三：监听推送通知，拉活service-常驻通知栏"><span class="nav-number">3.1.3.</span> <span class="nav-text">方案三：监听推送通知，拉活service+常驻通知栏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案四：定时唤醒屏幕"><span class="nav-number">3.1.4.</span> <span class="nav-text">方案四：定时唤醒屏幕</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些小细节"><span class="nav-number">3.2.</span> <span class="nav-text">一些小细节</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Application-中的设置"><span class="nav-number">3.2.1.</span> <span class="nav-text">Application 中的设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关键的-Service-的设置"><span class="nav-number">3.2.2.</span> <span class="nav-text">关键的 Service 的设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部分手机的设置"><span class="nav-number">3.2.3.</span> <span class="nav-text">部分手机的设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后台GPS获取位置信息"><span class="nav-number">3.2.4.</span> <span class="nav-text">后台GPS获取位置信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目实战"><span class="nav-number">4.</span> <span class="nav-text">项目实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#疑问解答"><span class="nav-number">5.</span> <span class="nav-text">疑问解答</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.戴</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共8k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'i5ENFeQJUhA5ncdFhTluspsF-gzGzoHsz',
+        appKey: 'RjkOYCbLsekpRBvtBfJqKpRw',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
