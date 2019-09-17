@@ -105,7 +105,7 @@
 
 
 
-  <meta name="keywords" content="Android,自动化,测试,">
+  <meta name="keywords" content="Android,热修复,Robust,美团,">
 
 
 
@@ -116,31 +116,28 @@
 
 
 
-<meta name="description" content="相关链接官网：http://appium.io/ 使用Java编写API文档：http://appium.github.io/java-client/ 学习文档：https://www.cnblogs.com/fnng/p/4540731.html 技术展示安装(仅Windows)若电脑上未安装node.js，请先安装node.js 下载安装包，下载地址为：https://nodejs.org/e">
-<meta name="keywords" content="Android,自动化,测试">
+<meta name="description" content="什么是热修复热修复（也称热补丁、热修复补丁，英语：hotfix）是一种包含信息的独立的累积更新包，通常表现为一个或多个文件。这被用来解决软件产品的问题（例如一个程序错误）。通常情况下，热修复是为解决特定用户的具体问题而制作。 正常开发流程 热修复开发流程 热修复优势 修复什么 热修复框架的对比按公司团队划分：    类别 成果    阿里系 AndFix、Dexposed、阿里百川HotFix(未">
+<meta name="keywords" content="Android,热修复,Robust,美团">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Appium自动化测试">
-<meta property="og:url" content="http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/index.html">
+<meta property="og:title" content="Android热修复-Robust">
+<meta property="og:url" content="http://per-dyw.xyz/2019/09/17/Android热修复-Robust/index.html">
 <meta property="og:site_name" content="Mr.戴">
-<meta property="og:description" content="相关链接官网：http://appium.io/ 使用Java编写API文档：http://appium.github.io/java-client/ 学习文档：https://www.cnblogs.com/fnng/p/4540731.html 技术展示安装(仅Windows)若电脑上未安装node.js，请先安装node.js 下载安装包，下载地址为：https://nodejs.org/e">
+<meta property="og:description" content="什么是热修复热修复（也称热补丁、热修复补丁，英语：hotfix）是一种包含信息的独立的累积更新包，通常表现为一个或多个文件。这被用来解决软件产品的问题（例如一个程序错误）。通常情况下，热修复是为解决特定用户的具体问题而制作。 正常开发流程 热修复开发流程 热修复优势 修复什么 热修复框架的对比按公司团队划分：    类别 成果    阿里系 AndFix、Dexposed、阿里百川HotFix(未">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(1).png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(2).png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(3).png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(4).png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(5).png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(6).png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(7).png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(8).png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(9).png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(10).png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(11).png">
-<meta property="og:updated_time" content="2019-08-22T11:37:04.606Z">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/1.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/2.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/3.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/4.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/5.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/6.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/7.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/8.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/9.png">
+<meta property="og:updated_time" content="2019-09-17T10:38:04.211Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Appium自动化测试">
-<meta name="twitter:description" content="相关链接官网：http://appium.io/ 使用Java编写API文档：http://appium.github.io/java-client/ 学习文档：https://www.cnblogs.com/fnng/p/4540731.html 技术展示安装(仅Windows)若电脑上未安装node.js，请先安装node.js 下载安装包，下载地址为：https://nodejs.org/e">
-<meta name="twitter:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard.png">
+<meta name="twitter:title" content="Android热修复-Robust">
+<meta name="twitter:description" content="什么是热修复热修复（也称热补丁、热修复补丁，英语：hotfix）是一种包含信息的独立的累积更新包，通常表现为一个或多个文件。这被用来解决软件产品的问题（例如一个程序错误）。通常情况下，热修复是为解决特定用户的具体问题而制作。 正常开发流程 热修复开发流程 热修复优势 修复什么 热修复框架的对比按公司团队划分：    类别 成果    阿里系 AndFix、Dexposed、阿里百川HotFix(未">
+<meta name="twitter:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/1.png">
 
 
 
@@ -170,13 +167,13 @@
 
 
 
-  <link rel="canonical" href="http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/">
+  <link rel="canonical" href="http://per-dyw.xyz/2019/09/17/Android热修复-Robust/">
 
 
 
 
 
-  <title>Appium自动化测试 | Mr.戴</title>
+  <title>Android热修复-Robust | Mr.戴</title>
   
 
 
@@ -355,7 +352,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/">
+    <link itemprop="mainEntityOfPage" href="http://per-dyw.xyz/2019/09/17/Android热修复-Robust/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.戴">
@@ -372,7 +369,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Appium自动化测试</h1>
+          <h1 class="post-title" itemprop="name headline">Android热修复-Robust</h1>
         
 
         <div class="post-meta">
@@ -384,8 +381,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T19:25:58+08:00">
-                2019-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-17T18:35:29+08:00">
+                2019-09-17
               </time>
             
 
@@ -418,8 +415,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
+                  <a href="/categories/Android/技术积累/" itemprop="url" rel="index">
+                    <span itemprop="name">技术积累</span>
                   </a>
                 </span>
 
@@ -436,8 +433,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/22/appium自动化测试方案调研/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/22/appium自动化测试方案调研/" itemprop="commentCount"></span>
+                <a href="/2019/09/17/Android热修复-Robust/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/17/Android热修复-Robust/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -459,7 +456,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.5k
+                  1.4k
                 </span>
               
 
@@ -475,7 +472,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  5
                 </span>
               
             </div>
@@ -496,103 +493,218 @@
       
 
       
-        <h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p>官网：<a href="http://appium.io/" target="_blank" rel="noopener">http://appium.io/</a></p>
-<p>使用Java编写API文档：<a href="http://appium.github.io/java-client/" target="_blank" rel="noopener">http://appium.github.io/java-client/</a></p>
-<p>学习文档：<a href="https://www.cnblogs.com/fnng/p/4540731.html" target="_blank" rel="noopener">https://www.cnblogs.com/fnng/p/4540731.html</a></p>
-<h2 id="技术展示"><a href="#技术展示" class="headerlink" title="技术展示"></a>技术展示</h2><h4 id="安装-仅Windows"><a href="#安装-仅Windows" class="headerlink" title="安装(仅Windows)"></a>安装(仅Windows)</h4><h5 id="若电脑上未安装node-js，请先安装node-js"><a href="#若电脑上未安装node-js，请先安装node-js" class="headerlink" title="若电脑上未安装node.js，请先安装node.js"></a>若电脑上未安装node.js，请先安装node.js</h5><ul>
-<li>下载安装包，下载地址为：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></li>
-<li>选择对应的版本，下载后，打开安装，一直下一步即可（可修改安装目录）</li>
-<li>安装完成后，检测下path环境变量是否配置了Node.js，打开Windows命令提示符，输入命令”path”，输出如下结果：<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard.png" alt="image"></li>
-</ul>
-<h5 id="Android的SDK安装"><a href="#Android的SDK安装" class="headerlink" title="Android的SDK安装"></a>Android的SDK安装</h5><p>相信Android开发人员都已安装好Android的SDK了，但Android的环境变量你设置了么？我本机的目录为：E:\Android\Sdk。<br><br>下面设置环境变量：“我的电脑” 右键菜单 —&gt; 属性 —&gt; 高级 —&gt; 环境变量 —&gt; 系统变量 —&gt; 新建：</p>
+        <h1 id="什么是热修复"><a href="#什么是热修复" class="headerlink" title="什么是热修复"></a>什么是热修复</h1><p>热修复（也称热补丁、热修复补丁，英语：hotfix）是一种包含信息的独立的累积更新包，通常表现为一个或多个文件。这被用来解决软件产品的问题（例如一个程序错误）。通常情况下，热修复是为解决特定用户的具体问题而制作。</p>
+<h2 id="正常开发流程"><a href="#正常开发流程" class="headerlink" title="正常开发流程"></a>正常开发流程</h2><p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/1.png" alt="image"></p>
+<h2 id="热修复开发流程"><a href="#热修复开发流程" class="headerlink" title="热修复开发流程"></a>热修复开发流程</h2><p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/2.png" alt="image"></p>
+<h2 id="热修复优势"><a href="#热修复优势" class="headerlink" title="热修复优势"></a>热修复优势</h2><p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/3.png" alt="image"></p>
+<h2 id="修复什么"><a href="#修复什么" class="headerlink" title="修复什么"></a>修复什么</h2><p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/4.png" alt="image"></p>
+<h1 id="热修复框架的对比"><a href="#热修复框架的对比" class="headerlink" title="热修复框架的对比"></a>热修复框架的对比</h1><p>按公司团队划分：</p>
 <table>
 <thead>
 <tr>
-<th>变量名</th>
-<th>变量值</th>
+<th align="center">类别</th>
+<th align="center">成果</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>ANDROID_HOME</td>
-<td>E:\Android\Sdk</td>
+<td align="center">阿里系</td>
+<td align="center"><a href="https://github.com/alibaba/AndFix" target="_blank" rel="noopener">AndFix</a>、<a href="https://github.com/alibaba/dexposed" target="_blank" rel="noopener">Dexposed</a>、阿里百川HotFix(未开源)、Sophix(未开源)</td>
+</tr>
+<tr>
+<td align="center">腾讯系</td>
+<td align="center"><a href="https://github.com/Tencent/tinker/wiki" target="_blank" rel="noopener">微信的Tinker</a>、QQ空间的超级补丁(未开源)、手机QQ的QFix</td>
+</tr>
+<tr>
+<td align="center">知名公司</td>
+<td align="center"><a href="https://github.com/Meituan-Dianping/Robust" target="_blank" rel="noopener">美团的Robust</a>、<a href="https://github.com/eleme/Amigo" target="_blank" rel="noopener">饿了么的Amigo</a>、<a href="https://github.com/meili/Aceso" target="_blank" rel="noopener">美丽说蘑菇街的Aceso</a></td>
+</tr>
+<tr>
+<td align="center">其他</td>
+<td align="center"><a href="https://github.com/dodola/RocooFix" target="_blank" rel="noopener">百度金融的RocooFix</a>、<a href="https://github.com/jasonross/Nuwa" target="_blank" rel="noopener">大众点评的Nuwa</a>、<a href="https://github.com/dodola/AnoleFix" target="_blank" rel="noopener">AnoleFix</a></td>
 </tr>
 </tbody></table>
-<p>找到 path 变量名—&gt; “编辑” 添加：</p>
+<p>可见，热修复框架很多，但核心技术只有三类：代码修复、资源修复和动态链接库修复，其中每个核心技术又有很多不同的技术方案，每个技术方案又有不同的实现，另外这些热修复框架仍在不断的更新迭代中，由此可见，热修复框架的技术实现是繁多可变的。</p>
+<p>比较出名的修复框架的对比如下：</p>
 <table>
 <thead>
 <tr>
-<th>变量名</th>
-<th>变量值</th>
+<th align="center">特性</th>
+<th align="center">AndFix</th>
+<th align="center">Tinker</th>
+<th align="center">QQ空间</th>
+<th align="center">Robust</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>PATH</td>
-<td>;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\tools;</td>
+<td align="center">即时生效</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">否</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td align="center">方法替换</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td align="center">类替换</td>
+<td align="center">否</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">否</td>
+</tr>
+<tr>
+<td align="center">类结构修改</td>
+<td align="center">否</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">否</td>
+</tr>
+<tr>
+<td align="center">资源替换</td>
+<td align="center">否</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">否</td>
+</tr>
+<tr>
+<td align="center">so替换</td>
+<td align="center">否</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">否</td>
+</tr>
+<tr>
+<td align="center">支持gradle</td>
+<td align="center">否</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">否</td>
+</tr>
+<tr>
+<td align="center">支持ART</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td align="center">性能损耗</td>
+<td align="center">较小</td>
+<td align="center">较小</td>
+<td align="center">较小</td>
+<td align="center">较小</td>
+</tr>
+<tr>
+<td align="center">补丁包大小</td>
+<td align="center">一般</td>
+<td align="center">较小</td>
+<td align="center">较大</td>
+<td align="center">一般</td>
+</tr>
+<tr>
+<td align="center">复杂度</td>
+<td align="center">复杂</td>
+<td align="center">较低</td>
+<td align="center">较低</td>
+<td align="center">复杂</td>
+</tr>
+<tr>
+<td align="center">成功率</td>
+<td align="center">一般</td>
+<td align="center">较高</td>
+<td align="center">较高</td>
+<td align="center">最高</td>
+</tr>
+<tr>
+<td align="center">支持 Android 版本</td>
+<td align="center">2.3-7.0</td>
+<td align="center">2.x－8.x</td>
+<td align="center">2.x－7.x</td>
+<td align="center">2.3-9.x</td>
 </tr>
 </tbody></table>
-<h5 id="安装-Appium-Server"><a href="#安装-Appium-Server" class="headerlink" title="安装 Appium Server"></a>安装 Appium Server</h5><p>可以在Appium官方网站上下载操作系统相应的Appium版本，下载地址：<a href="https://bitbucket.org/appium/appium.app/downloads/，" target="_blank" rel="noopener">https://bitbucket.org/appium/appium.app/downloads/，</a><br>若无法下载，也可使用提供的百度网盘下载地址：<br><br>链接: <a href="https://pan.baidu.com/s/1UdbSk02TzUS8BQKzOQFYfw" target="_blank" rel="noopener">https://pan.baidu.com/s/1UdbSk02TzUS8BQKzOQFYfw</a> 提取码: zus2 <br><br>下载的 AppiumForWindows.zip 进行解压，点击 appium-installer.exe 进行安装。</p>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(1).png" alt="image"></p>
-<p>根据提示，一步一步进行安装，这里不再啰嗦。最终在会桌面上生成 Appium图标 , 双击启动，appium server 界面如下：</p>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(2).png" alt="image"></p>
-<p>最后，打开Windows命令提示符，输入“appium-doctor”命令，如果出现以下提示，说明你Appium所需要的各项环境都已准备完成。</p>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(3).png" alt="image"></p>
-<blockquote>
-<p>注：如果提示：“appium-doctor”不是内部或外部命令，找到Appium的安装目录，例如：<br><br>E:\Appium\node_modules\.bin<br><br>添加到环境变量path下面（参考Java环境的设置）</p>
-</blockquote>
-<h5 id="Appium-desktop"><a href="#Appium-desktop" class="headerlink" title="Appium-desktop"></a>Appium-desktop</h5><h6 id="Appium-desktop是什么"><a href="#Appium-desktop是什么" class="headerlink" title="Appium-desktop是什么"></a>Appium-desktop是什么</h6><p>Appium-Server有一两年没有更新了。Windows版在 2015 年底止步于的 AppiumForWindows_1_4_16_1.zip。</p>
-<p>于是，新的工具 Appium-desktop 来了！ 它来继续 Appium-Server的使命，当然， Appium-Server当前仍然是可用的。</p>
-<blockquote>
-<p>注：Appium-Server最高支持模拟器Android版本为6.0，推荐使用 Appium-desktop。</p>
-</blockquote>
-<h6 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h6><p>下载地址：<a href="https://github.com/appium/appium-desktop/releases" target="_blank" rel="noopener">https://github.com/appium/appium-desktop/releases</a><br>根据自己的平台选择相关的包进行下载。本文以 Windows 为例，选择 Appium-windows-1.12.1.exe 文件进行下载，下载完成后，双击 exe 文件，等待安装完成即可。</p>
-<h6 id="启动运行"><a href="#启动运行" class="headerlink" title="启动运行"></a>启动运行</h6><p>双击打开桌面上紫色的 appium 图标</p>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(4).png" alt="image"></p>
-<p>点击 “启动服务器 V 1.12.1” 按钮启动服务</p>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(5).png" alt="image"></p>
-<p>现在可以启动移动设备（真机或模拟器），编写Appium自动化测试脚本，可以通过 Appium-desktop 来运行测试。</p>
-<h5 id="连接真机测试"><a href="#连接真机测试" class="headerlink" title="连接真机测试"></a>连接真机测试</h5><p>主要讲解如何连接真机进行测试。</p>
-<ul>
-<li>手机通过USB连接电脑，选择传输文件(MTP)<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(6).png" alt="image"></li>
-<li>打开开发者选项，允许USB调试，允许USB安装<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(7).png" alt="image"></li>
-<li>打开Windows命令提示符，输入”adb devices”，可弹出电脑是否连接真机，获取到真机的devices<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(8).png" alt="image"></li>
+<p>从上表中，我们可以发现每个热修复框架各有优缺点，其中美团的Robust支持的 Android 版本可达到9.x，且支持方法级别的修复，包括静态方法，也支持增加方法和类，所以此次着重讲解美团的Robust的部分原理和使用。</p>
+<h1 id="美团Robust-–-Instant-Run-热插拔原理"><a href="#美团Robust-–-Instant-Run-热插拔原理" class="headerlink" title="美团Robust – Instant Run 热插拔原理"></a>美团Robust – Instant Run 热插拔原理</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
+<li>Robust插件对每个产品代码的每个函数都在编译打包阶段自动的插入了一段代码，插入过程对业务开发是完全透明</li>
+<li>编译打包阶段自动为每个class都增加了一个类型为ChangeQuickRedirect的静态成员，而在每个方法前都插入了使用changeQuickRedirect相关的逻辑，当 changeQuickRedirect不为null时，可能会执行到accessDispatch从而替换掉之前老的逻辑，达到fix的目的。</li>
 </ul>
-<blockquote>
-<p>注：如果提示：“adb”不是内部或外部命令，找到adb的安装目录，例如：<br><br>E:\Android\Sdk\platform-tools<br><br>添加到环境变量path下面（参考Java环境的设置）</p>
-</blockquote>
-<h4 id="java-client安装与测试"><a href="#java-client安装与测试" class="headerlink" title="java-client安装与测试"></a>java-client安装与测试</h4><p>此次主要讲解的是使用 Java 语言编写 appium 自动化测试脚本。</p>
-<h5 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h5><ul>
-<li>安装 Java 环境</li>
-<li>安装 IntelliJ IDEA 或 Eclipse (下面讲解的是Eclipse)</li>
-<li>安装 Maven</li>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/5.png" alt="image"></p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>支持Android2.3-9.x版本</li>
+<li>高兼容性、高稳定性，修复成功率高达99.9%</li>
+<li>补丁实时生效，不需要重新启动</li>
+<li>支持方法级别的修复，包括静态方法</li>
+<li>支持增加方法和类</li>
+<li>支持ProGuard的混淆、内联、优化等操作</li>
 </ul>
-<h5 id="Maven-安装-Java-client"><a href="#Maven-安装-Java-client" class="headerlink" title="Maven 安装 Java-client"></a>Maven 安装 Java-client</h5><ul>
-<li>启动Eclipse，创建Maven项目<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(9).png" alt="image"></li>
-<li>导入 appium 的 Java-client<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(10).png" alt="image"></li>
-<li>输入项目名称，id即可下一步</li>
-<li>最后，pom.xml中的信息应如下：<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(11).png" alt="image"></li>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
+<li>代码是侵入式的，会在原有的类中加入相关代码</li>
+<li>会增大apk的体积，平均一个函数会比原来增加17.47个字节，10万个函数会增加1.67M</li>
+<li>会增加少量方法数</li>
 </ul>
-<blockquote>
-<p>注：截止至4月26日为止，最新版本为7.0.0，最新版本号，可在github <a href="https://github.com/appium/java-client" target="_blank" rel="noopener">Java-client</a>开源项目上查看。</p>
-</blockquote>
-<h5 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h5><p>编写第一个Appium测试程序</p>
-<h6 id="启动APP"><a href="#启动APP" class="headerlink" title="启动APP"></a>启动APP</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package com.test;</span><br><span class="line"></span><br><span class="line">import java.net.MalformedURLException;</span><br><span class="line">import java.net.URL;</span><br><span class="line">import org.openqa.selenium.remote.DesiredCapabilities;</span><br><span class="line">import io.appium.java_client.android.AndroidDriver;</span><br><span class="line"></span><br><span class="line">public class TestLanuch &#123;</span><br><span class="line"></span><br><span class="line">	private static String path = &quot;E:\\Epoint\\epoint\\component\\FramePlugins\\workplatform\\release\\workplatform-release.apk&quot;;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws MalformedURLException, InterruptedException &#123;</span><br><span class="line">		DesiredCapabilities capabilities = new DesiredCapabilities();</span><br><span class="line">		capabilities.setCapability(&quot;deviceName&quot;, &quot;8ea41751&quot;);</span><br><span class="line">		capabilities.setCapability(&quot;automationName&quot;, &quot;uiautomator2&quot;);</span><br><span class="line">		capabilities.setCapability(&quot;platformName&quot;, &quot;Android&quot;);</span><br><span class="line">		capabilities.setCapability(&quot;platformVersion&quot;, &quot;8.0.0&quot;);</span><br><span class="line">		capabilities.setCapability(&quot;autoGrantPermissions&quot;, true);</span><br><span class="line">		capabilities.setCapability(&quot;app&quot;, path);</span><br><span class="line"></span><br><span class="line">		AndroidDriver driver = new AndroidDriver(new URL(&quot;http://127.0.0.1:4723/wd/hub&quot;), capabilities);</span><br><span class="line"></span><br><span class="line">		driver.quit();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="新建项目并导入相应的包"><a href="#新建项目并导入相应的包" class="headerlink" title="新建项目并导入相应的包"></a>新建项目并导入相应的包</h2><ul>
+<li>在 App 的 build.gradle，加入如下依赖</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;com.android.application&apos;</span><br><span class="line">//制作补丁时将这个打开，auto-patch-plugin紧跟着com.android.application</span><br><span class="line">//apply plugin: &apos;auto-patch-plugin&apos;</span><br><span class="line">apply plugin: &apos;robust&apos;</span><br><span class="line">	</span><br><span class="line">compile &apos;com.meituan.robust:robust:0.4.90&apos;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>deviceName：启动哪种设备，是真机还是模拟器，若是真机，填写”adb devices”获取的设备号</li>
-<li>automationName：使用哪种自动化引擎</li>
-<li>platformName：使用哪种移动平台</li>
-<li>platformVersion：指定平台的系统版本。例如指的Android平台，版本为8.0.0</li>
-<li>autoGrantPermissions：是否自动允许权限</li>
-<li>app：打包后，apk在本地的路径</li>
-<li>appPackage：应用的包名</li>
-<li>appActivity：应用启动页</li>
+<li>在整个项目的build.gradle加入classpath</li>
 </ul>
-<blockquote>
-<p>注：若手机上本无此APP，使用参数app，不使用appPackage和appActivity，若手机上有此APP，使用appPackage和appActivity，不使用参数app。</p>
-</blockquote>
-<h6 id="登录APP"><a href="#登录APP" class="headerlink" title="登录APP"></a>登录APP</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public static void testLogin(long time) &#123;</span><br><span class="line">	if (timer == null) &#123;</span><br><span class="line">		timer = new Timer();</span><br><span class="line">	&#125;</span><br><span class="line">	timer.schedule(new TimerTask() &#123;</span><br><span class="line">		@Override</span><br><span class="line">		public void run() &#123;</span><br><span class="line">			if (driver.getPageSource().contains(&quot;com.epoint.workplatform:id/iv_cancel&quot;)) &#123;</span><br><span class="line">				System.out.println(&quot;APP需要更新&quot;);</span><br><span class="line">				System.out.println(&quot;取消更新&quot;);</span><br><span class="line">				driver.findElement(By.id(&quot;com.epoint.workplatform:id/iv_cancel&quot;)).click();</span><br><span class="line">				if (timer != null) &#123;</span><br><span class="line">					timer.cancel();</span><br><span class="line">					timer = null;</span><br><span class="line">				&#125;</span><br><span class="line">				testLogin(2000);</span><br><span class="line">			&#125; else if (driver.currentActivity().contains(&quot;MainActivity&quot;)) &#123;</span><br><span class="line">				System.out.println(&quot;用户已登录过&quot;);</span><br><span class="line">				System.out.println(driver.getPageSource());</span><br><span class="line">			&#125; else if (driver.currentActivity().contains(&quot;launcher.Launcher&quot;)) &#123;</span><br><span class="line">				System.out.println(&quot;返回桌面&quot;);</span><br><span class="line">			&#125; else if (driver.currentActivity().contains(&quot;GrantPermissionsActivity&quot;)) &#123;</span><br><span class="line">				System.out.println(&quot;初次登录&quot;);</span><br><span class="line">				System.out.println(&quot;授予权限&quot;);</span><br><span class="line">				driver.findElement(By.id(&quot;android:id/button1&quot;)).click();</span><br><span class="line">				if (timer != null) &#123;</span><br><span class="line">					timer.cancel();</span><br><span class="line">					timer = null;</span><br><span class="line">				&#125;</span><br><span class="line">				testLogin(5000);</span><br><span class="line">			&#125; else if (driver.currentActivity().contains(&quot;LoginActivity&quot;)) &#123;</span><br><span class="line">				driver.findElement(By.id(&quot;com.epoint.workplatform:id/et_loginid&quot;)).sendKeys(&quot;dywei&quot;);</span><br><span class="line">				driver.findElement(By.id(&quot;com.epoint.workplatform:id/et_pwd&quot;)).sendKeys(&quot;11111&quot;);</span><br><span class="line">				driver.findElement(By.id(&quot;com.epoint.workplatform:id/btn_login&quot;)).click();</span><br><span class="line">				System.out.println(&quot;登录成功&quot;);</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				System.out.println(&quot;启动页时间太长&quot;);</span><br><span class="line">				System.out.println(driver.getPageSource());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;, time);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">         classpath &apos;com.meituan.robust:gradle-plugin:0.4.90&apos;</span><br><span class="line">         classpath &apos;com.meituan.robust:auto-patch-plugin:0.4.90&apos;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h2><p>测试脚本的编写并不局限于Java，支持多种语言，且可以实现一套测试脚本的编写完成Android端和iOS端的自动化测试，有兴趣的可以研究研究。</p>
+<blockquote>
+<p>注：要开启资源压缩，开启混淆，后面需要 mapping.txt 文件。</p>
+</blockquote>
+<ul>
+<li>开启资源压缩，开启混淆</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            shrinkResources true</span><br><span class="line">            minifyEnabled true</span><br><span class="line">            proguardFiles getDefaultProguardFile(&apos;proguard-android-optimize.txt&apos;), &apos;proguard-rules.pro&apos;</span><br><span class="line">        &#125;</span><br><span class="line">        //为方便调试，debug也开启</span><br><span class="line">        debug &#123;</span><br><span class="line">            shrinkResources true</span><br><span class="line">            minifyEnabled true</span><br><span class="line">            proguardFiles getDefaultProguardFile(&apos;proguard-android-optimize.txt&apos;), &apos;proguard-rules.pro&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建相应文件夹及-robust-xml-文件"><a href="#创建相应文件夹及-robust-xml-文件" class="headerlink" title="创建相应文件夹及 robust.xml 文件"></a>创建相应文件夹及 robust.xml 文件</h2><p>最终文件大概图：</p>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/6.png" alt="image"></p>
+<ul>
+<li>robust 文件夹：存放 methodsMap.robust[build/outputs/robust/methodsMap.robust] 和 mapping.txt[build/outputs/mapping/mapping.txt] 文件；</li>
+<li>robust.xml 文件：一些配置信息，一般直接从官方网站上 copy 一份即可。</li>
+</ul>
+<h2 id="如何生成补丁"><a href="#如何生成补丁" class="headerlink" title="如何生成补丁"></a>如何生成补丁</h2><ul>
+<li>将打出的正式包的 methodsMap.robust 和 mapping.txt 文件存放到 robust 文件夹中，如下：</li>
+</ul>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/7.png" alt="image"></p>
+<ul>
+<li>将 App 的 build.gradle 中 auto-patch-plugin 注释打开，如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;com.android.application&apos;</span><br><span class="line">//制作补丁时将这个打开，auto-patch-plugin紧跟着com.android.application</span><br><span class="line">apply plugin: &apos;auto-patch-plugin&apos;</span><br><span class="line">//apply plugin: &apos;robust&apos;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改需要修改或增加的文件，添加相关注释(@Modify / @Add)；</li>
+<li>像正常打包一样打包，会出现如下提示：</li>
+</ul>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/8.png" alt="image"></p>
+<ul>
+<li>生成的补丁包在 app/build/outputs/robust/patch.jar 位置，如下：</li>
+</ul>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E7%83%AD%E4%BF%AE%E5%A4%8D_Robust/9.png" alt="image"></p>
+<blockquote>
+<p>注：生成正式包与补丁，都需要秘钥。</p>
+</blockquote>
+<h2 id="补丁包的引入"><a href="#补丁包的引入" class="headerlink" title="补丁包的引入"></a>补丁包的引入</h2><ul>
+<li>可手动复制进相应的目录；</li>
+<li>可通过 adb 导入相应的目录；</li>
+<li>可下载补丁包至指定的目录。</li>
+</ul>
+<p>目前笔者采用的是下载补丁包至指定目录，放置位置可自由设定，笔者设置的目录为：/storage/emulated/0/robust/patch/</p>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>需要开启资源压缩，开启混淆；</li>
+<li>打正式包或补丁，需要秘钥；</li>
+<li>打补丁需要之前打正式包的 methodsMap.robust 和 mapping.txt 文件；</li>
+<li>robust.xml 中需要在 hotfixPackage 中设置自己的包名；</li>
+<li>调试的时候，debug需要开启资源压缩和混淆。</li>
+</ul>
+<p><a href="https://github.com/dyw1019656137/TestHotFix" target="_blank" rel="noopener">项目地址请戳这里</a></p>
 
       
     </div>
@@ -619,12 +731,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2019/08/22/appium自动化测试方案调研/">Appium自动化测试</a></p>
+  <p><span>本文标题:</span><a href="/2019/09/17/Android热修复-Robust/">Android热修复-Robust</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Mr.戴 的个人博客">Mr.戴</a></p>
-  <p><span>发布时间:</span>2019年08月22日</p>
-  <p><span>最后更新:</span>2019年08月22日</p>
-  <p><span>原始链接:</span><a href="/2019/08/22/appium自动化测试方案调研/" title="Appium自动化测试">http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2019年09月17日</p>
+  <p><span>最后更新:</span>2019年09月17日</p>
+  <p><span>原始链接:</span><a href="/2019/09/17/Android热修复-Robust/" title="Android热修复-Robust">http://per-dyw.xyz/2019/09/17/Android热修复-Robust/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://per-dyw.xyz/2019/09/17/Android热修复-Robust/" aria-label="复制成功！"></i></span>
   </p>
   <p>转载请保留原文链接及作者。</p>  
 </div>
@@ -686,9 +798,11 @@
           
             <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
           
-            <a href="/tags/自动化/" rel="tag"><i class="fa fa-tag"></i> 自动化</a>
+            <a href="/tags/热修复/" rel="tag"><i class="fa fa-tag"></i> 热修复</a>
           
-            <a href="/tags/测试/" rel="tag"><i class="fa fa-tag"></i> 测试</a>
+            <a href="/tags/Robust/" rel="tag"><i class="fa fa-tag"></i> Robust</a>
+          
+            <a href="/tags/美团/" rel="tag"><i class="fa fa-tag"></i> 美团</a>
           
         </div>
       
@@ -701,8 +815,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/19/Android设备通过数据线进行相互通信/" rel="next" title="Android设备通过数据线进行相互通信">
-                <i class="fa fa-chevron-left"></i> Android设备通过数据线进行相互通信
+              <a href="/2019/08/28/Android-进程保活/" rel="next" title="Android进程保活">
+                <i class="fa fa-chevron-left"></i> Android进程保活
               </a>
             
           </div>
@@ -711,8 +825,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/27/fragment-webview-横竖屏切换/" rel="prev" title="fragment+webview+横竖屏切换问题排查">
-                fragment+webview+横竖屏切换问题排查 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/17/MacOS下安装Redis/" rel="prev" title="MacOS下安装Redis">
+                MacOS下安装Redis <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -878,7 +992,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#相关链接"><span class="nav-number">1.</span> <span class="nav-text">相关链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术展示"><span class="nav-number">2.</span> <span class="nav-text">技术展示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-仅Windows"><span class="nav-number">2.0.1.</span> <span class="nav-text">安装(仅Windows)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#若电脑上未安装node-js，请先安装node-js"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">若电脑上未安装node.js，请先安装node.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Android的SDK安装"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">Android的SDK安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装-Appium-Server"><span class="nav-number">2.0.1.3.</span> <span class="nav-text">安装 Appium Server</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Appium-desktop"><span class="nav-number">2.0.1.4.</span> <span class="nav-text">Appium-desktop</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Appium-desktop是什么"><span class="nav-number">2.0.1.4.1.</span> <span class="nav-text">Appium-desktop是什么</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#下载与安装"><span class="nav-number">2.0.1.4.2.</span> <span class="nav-text">下载与安装</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#启动运行"><span class="nav-number">2.0.1.4.3.</span> <span class="nav-text">启动运行</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#连接真机测试"><span class="nav-number">2.0.1.5.</span> <span class="nav-text">连接真机测试</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-client安装与测试"><span class="nav-number">2.0.2.</span> <span class="nav-text">java-client安装与测试</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前提条件"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">前提条件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Maven-安装-Java-client"><span class="nav-number">2.0.2.2.</span> <span class="nav-text">Maven 安装 Java-client</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开始测试"><span class="nav-number">2.0.2.3.</span> <span class="nav-text">开始测试</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#启动APP"><span class="nav-number">2.0.2.3.1.</span> <span class="nav-text">启动APP</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#登录APP"><span class="nav-number">2.0.2.3.2.</span> <span class="nav-text">登录APP</span></a></li></ol></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#技术总结"><span class="nav-number">3.</span> <span class="nav-text">技术总结</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是热修复"><span class="nav-number">1.</span> <span class="nav-text">什么是热修复</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正常开发流程"><span class="nav-number">1.1.</span> <span class="nav-text">正常开发流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热修复开发流程"><span class="nav-number">1.2.</span> <span class="nav-text">热修复开发流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热修复优势"><span class="nav-number">1.3.</span> <span class="nav-text">热修复优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修复什么"><span class="nav-number">1.4.</span> <span class="nav-text">修复什么</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#热修复框架的对比"><span class="nav-number">2.</span> <span class="nav-text">热修复框架的对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#美团Robust-–-Instant-Run-热插拔原理"><span class="nav-number">3.</span> <span class="nav-text">美团Robust – Instant Run 热插拔原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">3.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">3.3.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实战"><span class="nav-number">4.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#新建项目并导入相应的包"><span class="nav-number">4.1.</span> <span class="nav-text">新建项目并导入相应的包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建相应文件夹及-robust-xml-文件"><span class="nav-number">4.2.</span> <span class="nav-text">创建相应文件夹及 robust.xml 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何生成补丁"><span class="nav-number">4.3.</span> <span class="nav-text">如何生成补丁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补丁包的引入"><span class="nav-number">4.4.</span> <span class="nav-text">补丁包的引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意点"><span class="nav-number">4.5.</span> <span class="nav-text">注意点</span></a></li></ol></li></ol></div>
             
 
           </div>
