@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误，请联系 Mr.戴 获取密码！');
+                if (history.length === 1) {
+                    location.replace("http://per-dyw.xyz/"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-d.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-d.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-d.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,WiFi,NFC,蓝牙,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概述此文档涉及部分如下： WiFi  WIFI是否开启 搜索周边热点信息，并按照信号强弱排序 获取正在连接中wifi的信息  NFC demo  判断设备是否支持 NFC 或 设备的 NFC 是否打开 启用NFC感应/禁用NFC感应 接收到感应消息并对消息解码 向 NFC 中写入数据  蓝牙 demo  蓝牙是否开启或设备是否支持 查询本地蓝牙适配器已配对的蓝牙设备 扫描周围的其他蓝牙设备  Wi">
+<meta name="keywords" content="Android,WiFi,NFC,蓝牙">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WiFi、NFC和蓝牙相关调研测试">
+<meta property="og:url" content="http://per-dyw.xyz/2019/10/24/WiFi、NFC和Bluetooth相关调研/index.html">
+<meta property="og:site_name" content="Mr.戴">
+<meta property="og:description" content="概述此文档涉及部分如下： WiFi  WIFI是否开启 搜索周边热点信息，并按照信号强弱排序 获取正在连接中wifi的信息  NFC demo  判断设备是否支持 NFC 或 设备的 NFC 是否打开 启用NFC感应/禁用NFC感应 接收到感应消息并对消息解码 向 NFC 中写入数据  蓝牙 demo  蓝牙是否开启或设备是否支持 查询本地蓝牙适配器已配对的蓝牙设备 扫描周围的其他蓝牙设备  Wi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-24T08:33:10.077Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WiFi、NFC和蓝牙相关调研测试">
+<meta name="twitter:description" content="概述此文档涉及部分如下： WiFi  WIFI是否开启 搜索周边热点信息，并按照信号强弱排序 获取正在连接中wifi的信息  NFC demo  判断设备是否支持 NFC 或 设备的 NFC 是否打开 启用NFC感应/禁用NFC感应 接收到感应消息并对消息解码 向 NFC 中写入数据  蓝牙 demo  蓝牙是否开启或设备是否支持 查询本地蓝牙适配器已配对的蓝牙设备 扫描周围的其他蓝牙设备  Wi">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://per-dyw.xyz/2019/10/24/WiFi、NFC和Bluetooth相关调研/">
+
+
+
+
+
+  <title>WiFi、NFC和蓝牙相关调研测试 | Mr.戴</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.戴</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            联系我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br>
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://per-dyw.xyz/2019/10/24/WiFi、NFC和Bluetooth相关调研/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.戴">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.戴">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">WiFi、NFC和蓝牙相关调研测试</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-24T16:28:39+08:00">
+                2019-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/技术积累/" itemprop="url" rel="index">
+                    <span itemprop="name">技术积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/24/WiFi、NFC和Bluetooth相关调研/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/24/WiFi、NFC和Bluetooth相关调研/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>此文档涉及部分如下：</p>
+<p><strong>WiFi</strong></p>
+<ul>
+<li>WIFI是否开启</li>
+<li>搜索周边热点信息，并按照信号强弱排序</li>
+<li>获取正在连接中wifi的信息</li>
+</ul>
+<p><strong>NFC demo</strong></p>
+<ul>
+<li>判断设备是否支持 NFC 或 设备的 NFC 是否打开</li>
+<li>启用NFC感应/禁用NFC感应</li>
+<li>接收到感应消息并对消息解码</li>
+<li>向 NFC 中写入数据</li>
+</ul>
+<p><strong>蓝牙 demo</strong></p>
+<ul>
+<li>蓝牙是否开启或设备是否支持</li>
+<li>查询本地蓝牙适配器已配对的蓝牙设备</li>
+<li>扫描周围的其他蓝牙设备</li>
+</ul>
+<h1 id="WiFi"><a href="#WiFi" class="headerlink" title="WiFi"></a>WiFi</h1><h2 id="能获取到哪些信息"><a href="#能获取到哪些信息" class="headerlink" title="能获取到哪些信息"></a>能获取到哪些信息</h2><h3 id="WifiManager"><a href="#WifiManager" class="headerlink" title="WifiManager"></a>WifiManager</h3><p>wifi连接统一管理类，获取WIFI网卡的状态(WIFI网卡的状态是由一系列的整形常量来表示的)</p>
+<table>
+<thead>
+<tr>
+<th align="center">状态</th>
+<th align="center">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">WIFI_STATE_DISABLING = 0</td>
+<td align="center">WIFI网卡正在关闭</td>
+</tr>
+<tr>
+<td align="center">WIFI_STATE_DISABLED = 1</td>
+<td align="center">WIFI网卡不可用</td>
+</tr>
+<tr>
+<td align="center">WIFI_STATE_ENABLING = 2</td>
+<td align="center">WIFI网卡正在打开</td>
+</tr>
+<tr>
+<td align="center">WIFI_STATE_ENABLED = 3</td>
+<td align="center">WIFI网卡可用</td>
+</tr>
+<tr>
+<td align="center">WIFI_STATE_UNKNOWN = 4</td>
+<td align="center">未知网卡状态</td>
+</tr>
+</tbody></table>
+<h3 id="WifiInfo"><a href="#WifiInfo" class="headerlink" title="WifiInfo"></a>WifiInfo</h3><table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="center">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">getSSID()</td>
+<td align="center">获得SSID（热点名称）</td>
+</tr>
+<tr>
+<td align="center">getBSSID()</td>
+<td align="center">获取BSSID</td>
+</tr>
+<tr>
+<td align="center">getDetailedStateOf()</td>
+<td align="center">获取客户端的连通性</td>
+</tr>
+<tr>
+<td align="center">getHiddenSSID()</td>
+<td align="center">获得SSID 是否被隐藏</td>
+</tr>
+<tr>
+<td align="center">getIpAddress()</td>
+<td align="center">获取IP 地址</td>
+</tr>
+<tr>
+<td align="center">getLinkSpeed()</td>
+<td align="center">获得连接的速度</td>
+</tr>
+<tr>
+<td align="center">getMacAddress()</td>
+<td align="center">获得Mac 地址</td>
+</tr>
+</tbody></table>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><h3 id="在AndroidManifest-xml添加权限设置"><a href="#在AndroidManifest-xml添加权限设置" class="headerlink" title="在AndroidManifest.xml添加权限设置"></a>在AndroidManifest.xml添加权限设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.CHANGE_NETWORK_STATE&quot; /&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.CHANGE_WIFI_STATE&quot; /&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_COARSE_LOCATION&quot; /&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><h4 id="WIFI是否开启"><a href="#WIFI是否开启" class="headerlink" title="WIFI是否开启"></a>WIFI是否开启</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private boolean isOpen() &#123;</span><br><span class="line">    mWifiManager = (WifiManager) mContext.getApplicationContext().getSystemService(Context.WIFI_SERVICE);</span><br><span class="line">    mConnectivityManager = (ConnectivityManager) this.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);</span><br><span class="line">    return mWifiManager != null &amp;&amp; mWifiManager.isWifiEnabled();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="搜索周边热点信息，并按照信号强弱排序"><a href="#搜索周边热点信息，并按照信号强弱排序" class="headerlink" title="搜索周边热点信息，并按照信号强弱排序"></a>搜索周边热点信息，并按照信号强弱排序</h4><h5 id="搜索周边热点信息"><a href="#搜索周边热点信息" class="headerlink" title="搜索周边热点信息"></a>搜索周边热点信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">private String ScanWifiInfo() &#123;</span><br><span class="line">    // 扫描热点,扫描时耗时操作，如果界面中需要展示进度条的话，建议将扫描操作放在子线程中操作</span><br><span class="line">    boolean isSuccess = mWifiManager.startScan();</span><br><span class="line">    // 得到扫描结果</span><br><span class="line">    List&lt;ScanResult&gt; mWifiList = mWifiManager.getScanResults();</span><br><span class="line">    // 得到配置好的网络连接,列表中可能出现重复的热点，并且可能是ssid为空的热点，根据需求情况 自行过滤</span><br><span class="line">    mWifiConfiguration = mWifiManager.getConfiguredNetworks();</span><br><span class="line"></span><br><span class="line">    mWifiList = sortByLevel(mWifiList);</span><br><span class="line"></span><br><span class="line">    StringBuilder stringBuilder = new StringBuilder();</span><br><span class="line">    for (int i = 0; i &lt; mWifiList.size(); i++) &#123;</span><br><span class="line">        stringBuilder.append(&quot;Index_&quot;).append(Integer.valueOf(i + 1).toString()).append(&quot;:&quot;);</span><br><span class="line">        // 将ScanResult信息转换成一个字符串包</span><br><span class="line">        // 其中把包括：BSSID、SSID、capabilities、frequency、level</span><br><span class="line">        stringBuilder.append((mWifiList.get(i)).toString()).append(&quot;信号强度：&quot;).append(mWifiList.get(i).level);</span><br><span class="line">        stringBuilder.append(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return stringBuilder.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="按照信号强弱排序"><a href="#按照信号强弱排序" class="headerlink" title="按照信号强弱排序"></a>按照信号强弱排序</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 将搜索到的wifi根据信号从强到弱进行排序</span><br><span class="line"> *</span><br><span class="line"> * @param list</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">private List&lt;ScanResult&gt; sortByLevel(List&lt;ScanResult&gt; list) &#123;</span><br><span class="line">    ScanResult temp = null;</span><br><span class="line">    for (int i = 0; i &lt; list.size(); i++) &#123;</span><br><span class="line">        for (int j = 0; j &lt; list.size(); j++) &#123;</span><br><span class="line">            //level属性即为强度</span><br><span class="line">            if (list.get(i).level &gt; list.get(j).level) &#123;</span><br><span class="line">                temp = list.get(i);</span><br><span class="line">                list.set(i, list.get(j));</span><br><span class="line">                list.set(j, temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取正在连接中wifi的信息"><a href="#获取正在连接中wifi的信息" class="headerlink" title="获取正在连接中wifi的信息"></a>获取正在连接中wifi的信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">private String getWifiInfo() &#123;</span><br><span class="line">    WifiInfo mWifiInfo = mWifiManager.getConnectionInfo();</span><br><span class="line"></span><br><span class="line">    NetworkInfo wifiInfo = mConnectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);</span><br><span class="line">    String wifiName = wifiInfo.getExtraInfo();</span><br><span class="line"></span><br><span class="line">    StringBuilder stringBuilder = new StringBuilder();</span><br><span class="line"></span><br><span class="line">    stringBuilder.append(&quot;BSSID：&quot;).append(mWifiInfo.getBSSID()).append(&quot;\n&quot;)</span><br><span class="line">            .append(&quot;SSID：&quot;).append(mWifiInfo.getSSID()).append(&quot;\n&quot;)</span><br><span class="line">            .append(&quot;IpAddress：&quot;).append(mWifiInfo.getIpAddress()).append(&quot;\n&quot;)</span><br><span class="line">            .append(&quot;MacAddress：&quot;).append(mWifiInfo.getMacAddress()).append(&quot;\n&quot;)</span><br><span class="line">            .append(&quot;LinkSpeed：&quot;).append(mWifiInfo.getLinkSpeed()).append(&quot;\n&quot;)</span><br><span class="line">            .append(&quot;HiddenSSID：&quot;).append(mWifiInfo.getHiddenSSID()).append(&quot;\n&quot;)</span><br><span class="line">            .append(&quot;wifiName：&quot;).append(wifiName).append(&quot;\n&quot;);</span><br><span class="line">    return String.valueOf(stringBuilder);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：API level 29已将大部分方法废弃，建议将 compileSdkVersion 和 targetSdkVersion 设置为 26(在 Android 9 的手机上不影响正常使用且不影响 APP 上架)。<br><br>例如：将 WiFiManager 的 startScan() 方法标为了废弃，前台应用 2 分钟内只能使用 4 次startScan()，后台应用 30 分钟内只能调用 1次 startScan()，否则会直接返回 false 并且不会触发扫描操作。</p>
+</blockquote>
+<h1 id="NFC"><a href="#NFC" class="headerlink" title="NFC"></a>NFC</h1><h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><p>NFC的全称是“Near Field Communication”，意思是近场通信、与邻近的区域通信。大众所熟知的NFC技术应用，主要是智能手机的刷卡支付功能。</p>
+<p>带有NFC功能的手机，在实际生活中主要有三项应用：读卡、写卡、分享内容（两部手机之间传输数据）。</p>
+<h2 id="如何使用-1"><a href="#如何使用-1" class="headerlink" title="如何使用"></a>如何使用</h2><h3 id="在AndroidManifest-xml添加权限设置-1"><a href="#在AndroidManifest-xml添加权限设置-1" class="headerlink" title="在AndroidManifest.xml添加权限设置"></a>在AndroidManifest.xml添加权限设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.NFC&quot; /&gt;</span><br><span class="line">&lt;uses-feature</span><br><span class="line">    android:name=&quot;android.hardware.nfc&quot;</span><br><span class="line">    android:required=&quot;true&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="对活动页面声明NFC过滤器"><a href="#对活动页面声明NFC过滤器" class="headerlink" title="对活动页面声明NFC过滤器"></a>对活动页面声明NFC过滤器</h3><p>目前Android支持NDEF_DISCOVERED、TAG_DISCOVERED、TECH_DISCOVERED这三种过滤器，最好把它们都加入到过滤器列表中，示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.NFCActivity&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name=&quot;android.nfc.action.NDEF_DISCOVERED&quot; /&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name=&quot;android.nfc.action.TAG_DISCOVERED&quot; /&gt;</span><br><span class="line">        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name=&quot;android.nfc.action.TECH_DISCOVERED&quot; /&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line"></span><br><span class="line">    &lt;meta-data</span><br><span class="line">        android:name=&quot;android.nfc.action.TECH_DISCOVERED&quot;</span><br><span class="line">        android:resource=&quot;@xml/nfc_tech_filter&quot; /&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中TECH_DISCOVERED类型另外指定了过滤器的来源是@xml/nfc_tech_filter，该文件的实际路径为xml/nfc_tech_filter.xml，文件内容如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;!-- 可以处理所有Android支持的NFC类型 --&gt;</span><br><span class="line">    &lt;tech-list&gt;</span><br><span class="line">        &lt;tech&gt;android.nfc.tech.NfcA&lt;/tech&gt;</span><br><span class="line">        &lt;tech&gt;android.nfc.tech.NfcB&lt;/tech&gt;</span><br><span class="line">        &lt;tech&gt;android.nfc.tech.NfcF&lt;/tech&gt;</span><br><span class="line">        &lt;tech&gt;android.nfc.tech.NfcV&lt;/tech&gt;</span><br><span class="line">        &lt;tech&gt;android.nfc.tech.IsoDep&lt;/tech&gt;</span><br><span class="line">        &lt;tech&gt;android.nfc.tech.Ndef&lt;/tech&gt;</span><br><span class="line">        &lt;tech&gt;android.nfc.tech.NdefFormatable&lt;/tech&gt;</span><br><span class="line">        &lt;tech&gt;android.nfc.tech.MifareClassic&lt;/tech&gt;</span><br><span class="line">        &lt;tech&gt;android.nfc.tech.MifareUltralight&lt;/tech&gt;</span><br><span class="line">    &lt;/tech-list&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>解释：NFC类型虽多，常见的NfcA、NfcB、IsoDep三个系出ISO14443标准（即RFID卡标准）<br><br>1.NfcA遵循ISO14443-3A标准，常用于门禁卡；<br><br>2.NfcB遵循ISO14443-3B标准，常用于二代身份证；<br><br>3.IsoDep遵循ISO14443-4标准，常用于公交卡；</p>
+</blockquote>
+<h3 id="判断设备是否支持-NFC-或-设备的-NFC-是否打开"><a href="#判断设备是否支持-NFC-或-设备的-NFC-是否打开" class="headerlink" title="判断设备是否支持 NFC 或 设备的 NFC 是否打开"></a>判断设备是否支持 NFC 或 设备的 NFC 是否打开</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private boolean isSupportNFC() &#123;</span><br><span class="line">    mNfcAdapter = NfcAdapter.getDefaultAdapter(mContext);</span><br><span class="line">    if (mNfcAdapter == null) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return mNfcAdapter.isEnabled();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>若 mNfcAdapter 为 null，则该设备不支持 NFC，若 mNfcAdapter.isEnabled() 为 false，则该设备未打开 NFC 设置。</p>
+<h3 id="初始化-NFC"><a href="#初始化-NFC" class="headerlink" title="初始化 NFC"></a>初始化 NFC</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">private void initNFC() &#123;</span><br><span class="line">    // 探测到NFC卡片后，必须以FLAG_ACTIVITY_SINGLE_TOP方式启动Activity，</span><br><span class="line">    // 或者在AndroidManifest.xml中设置launchMode属性为singleTop或者singleTask，</span><br><span class="line">    // 保证无论NFC标签靠近手机多少次，Activity实例都只有一个。</span><br><span class="line">    Intent intent = new Intent(this, NFCActivity.class)</span><br><span class="line">            .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);</span><br><span class="line">    // 声明一个NFC卡片探测事件的相应动作</span><br><span class="line">    mPendingIntent = PendingIntent.getActivity(this, 0,</span><br><span class="line">            intent, PendingIntent.FLAG_UPDATE_CURRENT);</span><br><span class="line">    try &#123;</span><br><span class="line">        // 定义一个过滤器（检测到NFC卡片）</span><br><span class="line">        mFilters = new IntentFilter[]&#123;new IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED, &quot;*/*&quot;)&#125;;</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        Log.d(TAG, &quot;initNFC: &quot; + e.getMessage());</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    // 读标签之前先确定标签类型</span><br><span class="line">    mTechLists = new String[][]&#123;new String[]&#123;NfcA.class.getName()&#125;, &#123;IsoDep.class.getName()&#125;&#125;;</span><br><span class="line">    Log.d(TAG, &quot;initNFC: &quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="启用NFC感应-禁用NFC感应"><a href="#启用NFC感应-禁用NFC感应" class="headerlink" title="启用NFC感应/禁用NFC感应"></a>启用NFC感应/禁用NFC感应</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onResume() &#123;</span><br><span class="line">    super.onResume();</span><br><span class="line">    if (isSupportNFC()) &#123;</span><br><span class="line">        mNfcAdapter.enableForegroundDispatch(this, mPendingIntent, mFilters, mTechLists);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected void onPause() &#123;</span><br><span class="line">    super.onPause();</span><br><span class="line">    if (isSupportNFC()) &#123;</span><br><span class="line">        mNfcAdapter.disableForegroundDispatch(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="接收到感应消息并对消息解码"><a href="#接收到感应消息并对消息解码" class="headerlink" title="接收到感应消息并对消息解码"></a>接收到感应消息并对消息解码</h3><p>通过前一步启用NFC感应之后，一旦App接收到感应消息，就会回调 Activity 的 onNewIntent 函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onNewIntent(Intent intent) &#123;</span><br><span class="line">    super.onNewIntent(intent);</span><br><span class="line">    String card_info = &quot;&quot;;</span><br><span class="line">    // 获取到本次启动的action</span><br><span class="line">    String action = intent.getAction();</span><br><span class="line">    if (action.equals(NfcAdapter.ACTION_NDEF_DISCOVERED) // NDEF类型</span><br><span class="line">            || action.equals(NfcAdapter.ACTION_TECH_DISCOVERED) // 其他类型</span><br><span class="line">            || action.equals(NfcAdapter.ACTION_TAG_DISCOVERED)) &#123; // 未知类型</span><br><span class="line">            // 从intent中读取NFC卡片内容</span><br><span class="line">        Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);</span><br><span class="line">        // 获取NFC卡片的序列号</span><br><span class="line">        byte[] ids = tag.getId();</span><br><span class="line">        card_info = String.format(&quot;卡片的序列号为: %s&quot;, getHex(ids));</span><br><span class="line">        setResult(card_info + &quot;\n&quot; + readNFCCard(tag));</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        Log.d(TAG, &quot;onNewIntent: 未识别&quot;);</span><br><span class="line">        setResult(&quot;未识别&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public String readNFCCard(Tag tag) &#123;</span><br><span class="line">    MifareClassic classic = MifareClassic.get(tag);</span><br><span class="line">    String info;</span><br><span class="line">    try &#123;</span><br><span class="line">        classic.connect(); // 连接卡片数据</span><br><span class="line">        int type = classic.getType(); //获取TAG的类型</span><br><span class="line">        String typeDesc;</span><br><span class="line">        if (type == MifareClassic.TYPE_CLASSIC) &#123;</span><br><span class="line">            typeDesc = &quot;传统类型&quot;;</span><br><span class="line">        &#125; else if (type == MifareClassic.TYPE_PLUS) &#123;</span><br><span class="line">            typeDesc = &quot;增强类型&quot;;</span><br><span class="line">        &#125; else if (type == MifareClassic.TYPE_PRO) &#123;</span><br><span class="line">            typeDesc = &quot;专业类型&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            typeDesc = &quot;未知类型&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        info = String.format(&quot;\t卡片类型：%s\n\t扇区数量：%d\n\t分块个数：%d\n\t存储空间：%d字节&quot;,</span><br><span class="line">                typeDesc, classic.getSectorCount(), classic.getBlockCount(), classic.getSize());</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        info = e.getMessage();</span><br><span class="line">    &#125; finally &#123; // 无论是否发生异常，都要释放资源</span><br><span class="line">        try &#123;</span><br><span class="line">            classic.close(); // 释放卡片数据</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            info = e.getMessage();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return info;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>解释：MifareClassic 类的方法说明：<br><br>get : 从Tag对象中获取卡片对象的信息。<br><br>connect : 连接卡片数据。<br><br>close : 释放卡片数据。<br><br>getType : 获取卡片的类型。TYPE_CLASSIC表示传统类型，TYPE_PLUS表示增强类型，TYPE_PRO表示专业类型。<br><br>getSectorCount : 获取卡片的扇区数量。<br><br>getBlockCount : 获取卡片的分块个数。<br><br>getSize : 获取卡片的存储空间大小，单位字节</p>
+</blockquote>
+<p>此时可以使用校园卡等部分卡，进行测试了。</p>
+<h3 id="向-NFC-中写入数据"><a href="#向-NFC-中写入数据" class="headerlink" title="向 NFC 中写入数据"></a>向 NFC 中写入数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">private String mNfcTagName = &quot;com.android.mms&quot;;</span><br><span class="line"></span><br><span class="line">public void writeNFCTag(Tag tag) &#123;</span><br><span class="line">    if (tag == null) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    final NdefMessage ndefMessage = new NdefMessage(new NdefRecord[]&#123;NdefRecord.createApplicationRecord(mNfcTagName)&#125;);</span><br><span class="line">    int size = ndefMessage.toByteArray().length;</span><br><span class="line">    try &#123;</span><br><span class="line">        Ndef ndef = Ndef.get(tag);</span><br><span class="line">        if (ndef != null) &#123;</span><br><span class="line">            ndef.connect();</span><br><span class="line">            if (!ndef.isWritable()) &#123;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            if (ndef.getMaxSize() &lt; size) &#123;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            ndef.writeNdefMessage(ndefMessage);</span><br><span class="line">            toast(&quot;写入数据成功&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            final NdefFormatable format = NdefFormatable.get(tag);</span><br><span class="line">            if (format != null) &#123;</span><br><span class="line">                format.connect();</span><br><span class="line">                format.format(ndefMessage);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                toast(&quot;写入数据失败&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        toast(&quot;Exception:&quot; + e.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：自测下来，目前市面上的大部分卡(校园卡，地铁卡等)无法写入数据。</p>
+</blockquote>
+<h1 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h1><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Android 应用可通过 Bluetooth API 执行以下操作：</p>
+<ul>
+<li>扫描其他蓝牙设备</li>
+<li>查询本地蓝牙适配器的配对蓝牙设备</li>
+<li>建立 RFCOMM 通道</li>
+<li>通过服务发现连接到其他设备</li>
+<li>与其他设备进行双向数据传输</li>
+<li>管理多个连接</li>
+</ul>
+<p>本文介绍蓝牙配置文件，还将介绍如何使用 Android Bluetooth API 来完成扫描其他设备、查询本地蓝牙适配器的配对蓝牙设备，以及通过服务发现连接到其他设备等。</p>
+<h2 id="如何使用-2"><a href="#如何使用-2" class="headerlink" title="如何使用"></a>如何使用</h2><h3 id="在AndroidManifest-xml添加权限设置-2"><a href="#在AndroidManifest-xml添加权限设置-2" class="headerlink" title="在AndroidManifest.xml添加权限设置"></a>在AndroidManifest.xml添加权限设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.BLUETOOTH&quot; /&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.BLUETOOTH_ADMIN&quot; /&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_COARSE_LOCATION&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="蓝牙是否开启或设备是否支持"><a href="#蓝牙是否开启或设备是否支持" class="headerlink" title="蓝牙是否开启或设备是否支持"></a>蓝牙是否开启或设备是否支持</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private boolean isSupportBluetooth() &#123;</span><br><span class="line">    mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line">    if (mBluetoothAdapter == null) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return mBluetoothAdapter.isEnabled();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>若 mBluetoothAdapter 为 null，则该设备不支持 蓝牙，若 mBluetoothAdapter.isEnabled() 为 false，则该设备未打开 NFC 设置。</p>
+<h3 id="查询本地蓝牙适配器已配对的蓝牙设备"><a href="#查询本地蓝牙适配器已配对的蓝牙设备" class="headerlink" title="查询本地蓝牙适配器已配对的蓝牙设备"></a>查询本地蓝牙适配器已配对的蓝牙设备</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 查询本地蓝牙适配器已配对的蓝牙设备</span><br><span class="line"> *</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">private String getPairedBtDevices() &#123;</span><br><span class="line">    StringBuilder stringBuilder = new StringBuilder();</span><br><span class="line">    Set&lt;BluetoothDevice&gt; pairedDevices = mBluetoothAdapter.getBondedDevices();</span><br><span class="line">    if (pairedDevices.size() &gt; 0) &#123;</span><br><span class="line">        for (BluetoothDevice device : pairedDevices) &#123;</span><br><span class="line">            // 把名字和地址取出来</span><br><span class="line">            stringBuilder.append(&quot;\t设备名：&quot;).append(device.getName()).append(&quot;\n\tAddress：&quot;).append(device.getAddress()).append(&quot;\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return stringBuilder.toString();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="扫描周围的其他蓝牙设备"><a href="#扫描周围的其他蓝牙设备" class="headerlink" title="扫描周围的其他蓝牙设备"></a>扫描周围的其他蓝牙设备</h3><p>启动扫描：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (mBluetoothAdapter.startDiscovery()) &#123;</span><br><span class="line">    setResult(&quot;启动蓝牙，扫描设备中...&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了得到扫描结果，需要在一个广播接收器中异步接收 Android 系统发送的扫描结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 广播接收发现蓝牙设备</span><br><span class="line">private final BroadcastReceiver mReceiver = new BroadcastReceiver() &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onReceive(Context context, Intent intent) &#123;</span><br><span class="line">        String action = intent.getAction();</span><br><span class="line">        if (BluetoothDevice.ACTION_FOUND.equals(action)) &#123;</span><br><span class="line">            BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);</span><br><span class="line">            // 把名字和地址取出来</span><br><span class="line">            mArrayAdapter.add(&quot;\t设备名：&quot; + device.getName() + &quot;\n\tAddress：&quot; + device.getAddress());</span><br><span class="line">            mArrayAdapter.notifyDataSetChanged();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/dyw1019656137/WiFi_NFC_Bluetooth_demo" target="_blank" rel="noopener">项目地址请戳我</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/10/24/WiFi、NFC和Bluetooth相关调研/">WiFi、NFC和蓝牙相关调研测试</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Mr.戴 的个人博客">Mr.戴</a></p>
+  <p><span>发布时间:</span>2019年10月24日</p>
+  <p><span>最后更新:</span>2019年10月24日</p>
+  <p><span>原始链接:</span><a href="/2019/10/24/WiFi、NFC和Bluetooth相关调研/" title="WiFi、NFC和蓝牙相关调研测试">http://per-dyw.xyz/2019/10/24/WiFi、NFC和Bluetooth相关调研/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://per-dyw.xyz/2019/10/24/WiFi、NFC和Bluetooth相关调研/" aria-label="复制成功！"></i></span>
+  </p>
+  <p>转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+      
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mr.戴 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Mr.戴 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+          
+            <a href="/tags/WiFi/" rel="tag"><i class="fa fa-tag"></i> WiFi</a>
+          
+            <a href="/tags/NFC/" rel="tag"><i class="fa fa-tag"></i> NFC</a>
+          
+            <a href="/tags/蓝牙/" rel="tag"><i class="fa fa-tag"></i> 蓝牙</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/26/Dialog-区域外可响应点击事件/" rel="next" title="Dialog 区域外可响应点击事件">
+                <i class="fa fa-chevron-left"></i> Dialog 区域外可响应点击事件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Mr.戴">
+            
+              <p class="site-author-name" itemprop="name">Mr.戴</p>
+              <p class="site-description motion-element" itemprop="description">做个俗人，贪财好色！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/dyw1019656137" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1019656137@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qq_28190653" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/23e4591f5b6a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-books"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WiFi"><span class="nav-number">2.</span> <span class="nav-text">WiFi</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#能获取到哪些信息"><span class="nav-number">2.1.</span> <span class="nav-text">能获取到哪些信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WifiManager"><span class="nav-number">2.1.1.</span> <span class="nav-text">WifiManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WifiInfo"><span class="nav-number">2.1.2.</span> <span class="nav-text">WifiInfo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用"><span class="nav-number">2.2.</span> <span class="nav-text">如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在AndroidManifest-xml添加权限设置"><span class="nav-number">2.2.1.</span> <span class="nav-text">在AndroidManifest.xml添加权限设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法"><span class="nav-number">2.2.2.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WIFI是否开启"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">WIFI是否开启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搜索周边热点信息，并按照信号强弱排序"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">搜索周边热点信息，并按照信号强弱排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#搜索周边热点信息"><span class="nav-number">2.2.2.2.1.</span> <span class="nav-text">搜索周边热点信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按照信号强弱排序"><span class="nav-number">2.2.2.2.2.</span> <span class="nav-text">按照信号强弱排序</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取正在连接中wifi的信息"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">获取正在连接中wifi的信息</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NFC"><span class="nav-number">3.</span> <span class="nav-text">NFC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础概念"><span class="nav-number">3.1.</span> <span class="nav-text">基础概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用-1"><span class="nav-number">3.2.</span> <span class="nav-text">如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在AndroidManifest-xml添加权限设置-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">在AndroidManifest.xml添加权限设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对活动页面声明NFC过滤器"><span class="nav-number">3.2.2.</span> <span class="nav-text">对活动页面声明NFC过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断设备是否支持-NFC-或-设备的-NFC-是否打开"><span class="nav-number">3.2.3.</span> <span class="nav-text">判断设备是否支持 NFC 或 设备的 NFC 是否打开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化-NFC"><span class="nav-number">3.2.4.</span> <span class="nav-text">初始化 NFC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启用NFC感应-禁用NFC感应"><span class="nav-number">3.2.5.</span> <span class="nav-text">启用NFC感应/禁用NFC感应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接收到感应消息并对消息解码"><span class="nav-number">3.2.6.</span> <span class="nav-text">接收到感应消息并对消息解码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向-NFC-中写入数据"><span class="nav-number">3.2.7.</span> <span class="nav-text">向 NFC 中写入数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蓝牙"><span class="nav-number">4.</span> <span class="nav-text">蓝牙</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">4.1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用-2"><span class="nav-number">4.2.</span> <span class="nav-text">如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在AndroidManifest-xml添加权限设置-2"><span class="nav-number">4.2.1.</span> <span class="nav-text">在AndroidManifest.xml添加权限设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#蓝牙是否开启或设备是否支持"><span class="nav-number">4.2.2.</span> <span class="nav-text">蓝牙是否开启或设备是否支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询本地蓝牙适配器已配对的蓝牙设备"><span class="nav-number">4.2.3.</span> <span class="nav-text">查询本地蓝牙适配器已配对的蓝牙设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扫描周围的其他蓝牙设备"><span class="nav-number">4.2.4.</span> <span class="nav-text">扫描周围的其他蓝牙设备</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.戴</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共14.1k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'i5ENFeQJUhA5ncdFhTluspsF-gzGzoHsz',
+        appKey: 'RjkOYCbLsekpRBvtBfJqKpRw',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
