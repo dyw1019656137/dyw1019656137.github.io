@@ -125,7 +125,8 @@
 <meta property="og:description" content="问题如下图，理想状态：点击左边的 Button1 左边的 fragment 展示页面一，点击 Button5，fragment 展示页面五，并弹出 dialog5，点击 Button6，dialog5 消失，并且 fragment 展示页面六，并弹出 dialog6。 实际状态：点击 Button5，fragment 展示页面五，并弹出 dialog5，然后第一次点击 Button6，dialog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Dialog%20%E5%8C%BA%E5%9F%9F%E5%A4%96%E5%8F%AF%E5%93%8D%E5%BA%94%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/image.png">
-<meta property="og:updated_time" content="2019-10-29T10:18:20.059Z">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/dyw/wechat_public_15.jpg">
+<meta property="og:updated_time" content="2019-11-01T05:47:33.628Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dialog 区域外可响应点击事件">
 <meta name="twitter:description" content="问题如下图，理想状态：点击左边的 Button1 左边的 fragment 展示页面一，点击 Button5，fragment 展示页面五，并弹出 dialog5，点击 Button6，dialog5 消失，并且 fragment 展示页面六，并弹出 dialog6。 实际状态：点击 Button5，fragment 展示页面五，并弹出 dialog5，然后第一次点击 Button6，dialog">
@@ -448,7 +449,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  297
+                  335
                 </span>
               
 
@@ -499,6 +500,9 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">getWindow().getDecorView().setOnTouchListener(new View.OnTouchListener() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public boolean onTouch(View v, MotionEvent event) &#123;</span><br><span class="line">        if (event.getAction() == MotionEvent.ACTION_OUTSIDE) &#123;</span><br><span class="line">            dismiss();</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>关注我的技术公众号，每个工作日都有优质技术文章推送。<br>微信扫一扫下方二维码即可关注：<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/dyw/wechat_public_15.jpg" alt="图片"></p>
+</blockquote>
 
       
     </div>
@@ -528,7 +532,7 @@
   <p><span>本文标题:</span><a href="/2019/09/26/Dialog-区域外可响应点击事件/">Dialog 区域外可响应点击事件</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Mr.戴 的个人博客">Mr.戴</a></p>
   <p><span>发布时间:</span>2019年09月26日</p>
-  <p><span>最后更新:</span>2019年10月29日</p>
+  <p><span>最后更新:</span>2019年11月01日</p>
   <p><span>原始链接:</span><a href="/2019/09/26/Dialog-区域外可响应点击事件/" title="Dialog 区域外可响应点击事件">http://per-dyw.xyz/2019/09/26/Dialog-区域外可响应点击事件/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://per-dyw.xyz/2019/09/26/Dialog-区域外可响应点击事件/" aria-label="复制成功！"></i></span>
   </p>
@@ -837,7 +841,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共14.1k字</span>
+  <span class="post-count">博客全站共14.5k字</span>
 </div>
 
         
