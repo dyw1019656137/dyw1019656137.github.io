@@ -105,7 +105,7 @@
 
 
 
-  <meta name="keywords" content="Android,dialog,点击事件,">
+  <meta name="keywords" content="Android,服务器,变废为宝,">
 
 
 
@@ -116,21 +116,26 @@
 
 
 
-<meta name="description" content="问题如下图，理想状态：点击左边的 Button1 左边的 fragment 展示页面一，点击 Button5，fragment 展示页面五，并弹出 dialog5，点击 Button6，dialog5 消失，并且 fragment 展示页面六，并弹出 dialog6。 实际状态：点击 Button5，fragment 展示页面五，并弹出 dialog5，然后第一次点击 Button6，dialog">
-<meta name="keywords" content="Android,dialog,点击事件">
+<meta name="description" content="前言如果你家有很多的闲置 Android 手机，你可以选择转二手卖了，也可以选择像小编一样，尝试着变”废”为宝–一分钱不花的变成一台 Linux 服务器~ 先说下实际测试结果：可安装 jdk和Tomcat，外网也可访问~ 如何实现的呢？ 请细看下文，相信肯定会对你有所帮助！ 具体流程设备需求 闲置安卓手机一部，我的是 vivo Y37A。 要获取root权限。如果总root失败可以刷下机(刷机砖头">
+<meta name="keywords" content="Android,服务器,变废为宝">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dialog 区域外可响应点击事件">
-<meta property="og:url" content="http://per-dyw.xyz/2019/09/26/Dialog-区域外可响应点击事件/index.html">
+<meta property="og:title" content="Android手机变服务器">
+<meta property="og:url" content="http://per-dyw.xyz/2019/11/26/变”废”为宝—Android手机变服务器/index.html">
 <meta property="og:site_name" content="Mr.戴">
-<meta property="og:description" content="问题如下图，理想状态：点击左边的 Button1 左边的 fragment 展示页面一，点击 Button5，fragment 展示页面五，并弹出 dialog5，点击 Button6，dialog5 消失，并且 fragment 展示页面六，并弹出 dialog6。 实际状态：点击 Button5，fragment 展示页面五，并弹出 dialog5，然后第一次点击 Button6，dialog">
+<meta property="og:description" content="前言如果你家有很多的闲置 Android 手机，你可以选择转二手卖了，也可以选择像小编一样，尝试着变”废”为宝–一分钱不花的变成一台 Linux 服务器~ 先说下实际测试结果：可安装 jdk和Tomcat，外网也可访问~ 如何实现的呢？ 请细看下文，相信肯定会对你有所帮助！ 具体流程设备需求 闲置安卓手机一部，我的是 vivo Y37A。 要获取root权限。如果总root失败可以刷下机(刷机砖头">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Dialog%20%E5%8C%BA%E5%9F%9F%E5%A4%96%E5%8F%AF%E5%93%8D%E5%BA%94%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/image.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/16.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/17.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/18.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/22.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/23.png">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/24.png">
 <meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/dyw/wechat_public_15.jpg">
-<meta property="og:updated_time" content="2019-11-08T02:53:42.662Z">
+<meta property="og:updated_time" content="2019-11-26T11:28:25.829Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dialog 区域外可响应点击事件">
-<meta name="twitter:description" content="问题如下图，理想状态：点击左边的 Button1 左边的 fragment 展示页面一，点击 Button5，fragment 展示页面五，并弹出 dialog5，点击 Button6，dialog5 消失，并且 fragment 展示页面六，并弹出 dialog6。 实际状态：点击 Button5，fragment 展示页面五，并弹出 dialog5，然后第一次点击 Button6，dialog">
-<meta name="twitter:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Dialog%20%E5%8C%BA%E5%9F%9F%E5%A4%96%E5%8F%AF%E5%93%8D%E5%BA%94%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/image.png">
+<meta name="twitter:title" content="Android手机变服务器">
+<meta name="twitter:description" content="前言如果你家有很多的闲置 Android 手机，你可以选择转二手卖了，也可以选择像小编一样，尝试着变”废”为宝–一分钱不花的变成一台 Linux 服务器~ 先说下实际测试结果：可安装 jdk和Tomcat，外网也可访问~ 如何实现的呢？ 请细看下文，相信肯定会对你有所帮助！ 具体流程设备需求 闲置安卓手机一部，我的是 vivo Y37A。 要获取root权限。如果总root失败可以刷下机(刷机砖头">
+<meta name="twitter:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/16.png">
 
 
 
@@ -160,13 +165,13 @@
 
 
 
-  <link rel="canonical" href="http://per-dyw.xyz/2019/09/26/Dialog-区域外可响应点击事件/">
+  <link rel="canonical" href="http://per-dyw.xyz/2019/11/26/变”废”为宝—Android手机变服务器/">
 
 
 
 
 
-  <title>Dialog 区域外可响应点击事件 | Mr.戴</title>
+  <title>Android手机变服务器 | Mr.戴</title>
   
 
 
@@ -345,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://per-dyw.xyz/2019/09/26/Dialog-区域外可响应点击事件/">
+    <link itemprop="mainEntityOfPage" href="http://per-dyw.xyz/2019/11/26/变”废”为宝—Android手机变服务器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.戴">
@@ -362,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Dialog 区域外可响应点击事件</h1>
+          <h1 class="post-title" itemprop="name headline">Android手机变服务器</h1>
         
 
         <div class="post-meta">
@@ -374,8 +379,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T16:43:06+08:00">
-                2019-09-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-26T18:48:50+08:00">
+                2019-11-26
               </time>
             
 
@@ -408,8 +413,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/问题排查/" itemprop="url" rel="index">
-                    <span itemprop="name">问题排查</span>
+                  <a href="/categories/Android/技术积累/" itemprop="url" rel="index">
+                    <span itemprop="name">技术积累</span>
                   </a>
                 </span>
 
@@ -426,8 +431,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/26/Dialog-区域外可响应点击事件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/26/Dialog-区域外可响应点击事件/" itemprop="commentCount"></span>
+                <a href="/2019/11/26/变”废”为宝—Android手机变服务器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/26/变”废”为宝—Android手机变服务器/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -449,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  335
+                  2k
                 </span>
               
 
@@ -465,7 +470,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -486,20 +491,77 @@
       
 
       
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>如下图，理想状态：点击左边的 Button1 左边的 fragment 展示页面一，点击 Button5，fragment 展示页面五，并弹出 dialog5，点击 Button6，dialog5 消失，并且 fragment 展示页面六，并弹出 dialog6。</p>
-<p>实际状态：点击 Button5，fragment 展示页面五，并弹出 dialog5，然后第一次点击 Button6，dialog5 消失，再一次点击 Button6，fragment 展示页面六，并弹出 dialog6。</p>
-<p>问题简化：Activity 未能接收Dialog区域外的点击事件。</p>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Dialog%20%E5%8C%BA%E5%9F%9F%E5%A4%96%E5%8F%AF%E5%93%8D%E5%BA%94%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/image.png" alt="image"></p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ul>
-<li>在Dialog的构造函数中添加以下两行代码，设置Window的标志位，就可以让Activity响应Dialog区域外的点击事件；</li>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如果你家有很多的闲置 Android 手机，你可以选择转二手卖了，也可以选择像小编一样，尝试着变”废”为宝–<strong>一分钱不花</strong>的变成一台 Linux 服务器~</p>
+<p>先说下实际测试结果：可安装 jdk和Tomcat，外网也可访问~</p>
+<p><strong>如何实现的呢？</strong></p>
+<p>请细看下文，相信肯定会对你有所帮助！</p>
+<h1 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h1><h2 id="设备需求"><a href="#设备需求" class="headerlink" title="设备需求"></a>设备需求</h2><ul>
+<li>闲置安卓手机一部，我的是 vivo Y37A。 要获取root权限。如果总root失败可以刷下机(刷机砖头，概不负责)。</li>
+<li>一台 Windows 电脑或一台装有 Windows 虚拟机的Mac。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现Dialog区域外部事件可以传给Activity</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//FLAG_NOT_TOUCH_MODAL作用：即使该window可获得焦点情况下，仍把该window之外的任何event发送到该window之后的其他window</span></span><br><span class="line">getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,</span><br><span class="line">        WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//FLAG_WATCH_OUTSIDE_TOUCH作用：如果点击事件发生在window之外，就会收到一个特殊的MotionEvent，为ACTION_OUTSIDE</span></span><br><span class="line">getWindow().setFlags(WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,</span><br><span class="line">        WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH);</span><br></pre></td></tr></table></figure>
+<h2 id="软件需求"><a href="#软件需求" class="headerlink" title="软件需求"></a>软件需求</h2><ul>
+<li>BusyBox，作用：为改造完的linux系统添加指令；</li>
+<li>Linux Deploy，作用：将Android改造linux的软件；</li>
+<li>ConnectBot，作用：linuxdeploy不带终端不能指令操作，需要ConnectBot链接。</li>
+</ul>
+<p>上述软件请关注小编公众号<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 操作流程</span><br><span class="line"></span><br><span class="line">### 手机获取 root 权限，将3个软件安装至手机，没有顺序要求：</span><br><span class="line"></span><br><span class="line">![1.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/1.jpg)</span><br><span class="line"></span><br><span class="line">### 打开BusyBox直接安装</span><br><span class="line"></span><br><span class="line">- 默认安装地址 /system/xbin（后期有用）。</span><br><span class="line"></span><br><span class="line">![2.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/2.jpg)</span><br><span class="line"></span><br><span class="line">若安装失败，将这3个全部选中，重新安装。</span><br><span class="line"></span><br><span class="line">![3.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/3.jpg)</span><br><span class="line"></span><br><span class="line">若依然安装失败，可更新 BusyBox，重新尝试。</span><br><span class="line"></span><br><span class="line">### 打开Linux Deploy，配置</span><br><span class="line"></span><br><span class="line">- Linux 版本；</span><br><span class="line"></span><br><span class="line">![4.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/4.jpg)</span><br><span class="line"></span><br><span class="line">- 用户名，密码；</span><br><span class="line"></span><br><span class="line">![5.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/5.jpg)</span><br><span class="line"></span><br><span class="line">- 允许 ssh 服务器启动；</span><br><span class="line"></span><br><span class="line">![6.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/6.jpg)</span><br><span class="line"></span><br><span class="line">- PATA 环境；</span><br><span class="line"></span><br><span class="line">![7.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/7.jpg)</span><br><span class="line"></span><br><span class="line">### 安装和启动</span><br><span class="line"></span><br><span class="line">- 等待下载完成出现 &lt;&lt;&lt;deploy 为安装成功；</span><br><span class="line"></span><br><span class="line">![8.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/8.jpg)</span><br><span class="line"></span><br><span class="line">- 启动；</span><br><span class="line"></span><br><span class="line">![9.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/9.jpg)</span><br><span class="line"></span><br><span class="line">- 若启动失败，一般问题就是倒数第二行的SSH启动失败，可能是手机内核版本与软件 Linux Deploy 版本不兼容，一般清除之前的配置，重新选择 Linux 版本即可。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; 到这一步，其实 Linux 已经启动完毕了，有人可能很好奇了，为什么没有看到熟悉的命令行界面呢？&lt;br&gt;请耐着性子，继续往下看~</span><br><span class="line"></span><br><span class="line">### 打开 ConnectBot 进行连接启动的 Linux</span><br><span class="line"></span><br><span class="line">- 打开右下角蓝色加号，进入配置界面；</span><br><span class="line"></span><br><span class="line">![10.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/10.jpg)</span><br><span class="line"></span><br><span class="line">- 输入密码 admin 连接成功。</span><br><span class="line"></span><br><span class="line">![11.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/11.jpg)</span><br><span class="line"></span><br><span class="line">![12.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/12.jpg)</span><br><span class="line"></span><br><span class="line">&gt; 总算看到熟悉的命令行界面了~ &lt;br&gt;有没有一丝丝的兴奋呢？ &lt;br&gt;想不想敲几行命令呢？ &lt;br&gt;想不想PC上连接移动服务器呢~~~ &lt;br&gt;请继续往下查看~~~</span><br><span class="line"></span><br><span class="line">### 手机改造完成</span><br><span class="line"></span><br><span class="line">同一局域网的电脑可进入 Linux 进行操作，Mac电脑操作如下：</span><br><span class="line"></span><br><span class="line">- 打开终端，然后输入sudo su - 回车进入根目录；</span><br><span class="line">- 输入：ssh -p 端口号 服务器用户名@ip （例如ssh -p 666 userroot@66.66.66.66</span><br><span class="line">）回车，到这会让你输入yes或者no来确认是否连接，输入yes回车</span><br><span class="line">- 输入在服务器上的用户密码回车；</span><br><span class="line">- 到此进入的是你在服务器上的账户的目录，即为连接成功</span><br></pre></td></tr></table></figure></p>
+<p>sudo su -<br>换成自己的 服务器端口 用户名 和 地址<br>ssh -p 666 <a href="mailto:root@176.66.66.66" target="_blank" rel="noopener">root@176.66.66.66</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![13.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/13.png)</span><br><span class="line"></span><br><span class="line">### jdk的配置安装</span><br><span class="line"></span><br><span class="line">- jdk 版本选择；</span><br><span class="line">    - 查看支持的 jdk 版本，先查看是32位还是64位，终端输入```getconf LONG_BIT```，返回具体位数；</span><br><span class="line">    - 下载相应的jdk；</span><br><span class="line">    </span><br><span class="line">![14.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/14.png)</span><br><span class="line"></span><br><span class="line">- 默认不支持 vim 编辑文件，需要指令安装；</span><br></pre></td></tr></table></figure>
 
+<p>sudo apt-get install vim</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 下载的 jdk 放置到指定目录；</span><br><span class="line">    - 为方便文件传输，我是在 Windows 虚拟机上使用的是```WinSCP```；</span><br><span class="line">    - 在 usr 目录下新建 java 文件夹；</span><br><span class="line">    - 将jdk的压缩包，置入 java 文件夹中；</span><br><span class="line">    - 使用```tar -zxvf```命令解压；</span><br><span class="line"></span><br><span class="line">![15.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/15.png)</span><br><span class="line"></span><br><span class="line">- 环境配置；</span><br><span class="line">    - 终端输入命令```sudo vim /etc/profile```；</span><br><span class="line">    - 在最后一行添加如下代码，注意使用自己的文件目录；</span><br><span class="line">    - 添加完成后，最好重启下服务器，让配置生效；</span><br></pre></td></tr></table></figure>
+
+<p>export JAVA_HOME=/usr/java/jdk1.8.0_144<br>export JRE_HOME=/usr/java/jdk1.8.0_144/jre<br>export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib<br>export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin<br>```</p>
 <ul>
-<li>再重写Dialog中的onTouch事件，点击Dialog区域外时，把Dialog隐藏掉即可。</li>
+<li>检验。<ul>
+<li>终端输入<code>java -version</code>查看当前 jdk 版本，如果能看到具体的版本号，恭喜你，成功啦~</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">getWindow().getDecorView().setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (event.getAction() == MotionEvent.ACTION_OUTSIDE) &#123;</span><br><span class="line">            dismiss();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
+</li>
+</ul>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/16.png" alt="16.jpg"></p>
+<h3 id="Tomcat的配置安装"><a href="#Tomcat的配置安装" class="headerlink" title="Tomcat的配置安装"></a>Tomcat的配置安装</h3><ul>
+<li>进 Tomcat 官网，下载与 jdk 版本相对应的版本(小编使用的 jdk 为8，所以 Tomcat 的版本也使用8)</li>
+<li>下载的 Tomcat 放置到指定目录；<ul>
+<li>在 usr 目录下新建 tomcat 文件夹；</li>
+<li>将 tomcat 的压缩包，置入 java 文件夹中；</li>
+<li>使用<code>tar -zxvf</code>命令解压；</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/17.png" alt="17.jpg"></p>
+<ul>
+<li>启动 Tomcat；<ul>
+<li>进入 Tomcat 的 bin 目录下；</li>
+<li>输入<code>./startup.sh</code>，看到 Tomcat started，即启动成功。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/18.png" alt="18.jpg"></p>
+<ul>
+<li>检验。<ul>
+<li>在浏览器输入<code>http://192.168.1.119:8080/</code>，看到熟悉的猫，恭喜你，Tomcat 也配置成功啦~     </li>
+</ul>
+</li>
+</ul>
+<h3 id="设置外网访问"><a href="#设置外网访问" class="headerlink" title="设置外网访问"></a>设置外网访问</h3><p><strong>上面都是在局域网内才能操作的，那如果我要外网访问，怎么办呢？</strong></p>
+<p>小编选择的是 nat123 实现端口映射。至于原因嘛，当然是<strong>免费</strong>啦<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 在 Linux 中安装 nat123</span><br><span class="line"></span><br><span class="line">- 查看操作系统版本；</span><br><span class="line">    - 使用```uname  -r```命令查看：</span><br><span class="line">    </span><br><span class="line">![19.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/19.png)</span><br><span class="line"></span><br><span class="line">&gt; 注：以下操作，均建立在系统版本在 2.8.x 以上的基础之上，若系统版本低于2.8，请自行进官网进行查看。</span><br><span class="line"></span><br><span class="line">- 安装启动(以下皆是debian/ubuntu系统使用的命令)；</span><br><span class="line">    - 本地环境更新命令```apt-get update```，如出现提示是否继续时，输入y回车；</span><br><span class="line">    - 运行环境安装命令```apt-get install mono-complete```，如出现提示是否继续时，输入y回车；</span><br><span class="line">    - 客户端安装，选择的是在线下载安装；</span><br><span class="line">        - 在 usr 目录下新建 nat123 文件夹;</span><br><span class="line">        - 下载安装包```wget  http://www.nat123.com/down/nat123linux.tar.gz```；</span><br><span class="line">        - 解压本地目录```tar -zxvf ```；</span><br><span class="line">    - 客户端启动；</span><br><span class="line">        - 进入 nat123 的安装目录；</span><br><span class="line">        - 运行客户端，并按提示依次输入自己的帐号和密码```mono nat123linux.sh```，若没有 nat123 的账号密码，需先去官网进行注册；</span><br><span class="line">- 登陆网站远程web管理，在用户中心模块，添加端口映射。 </span><br><span class="line"></span><br><span class="line">![20.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/20.png)</span><br><span class="line"></span><br><span class="line">- 检测。</span><br><span class="line">    - 可先用外网电脑，ping下刚刚填写的域名，是否能ping通，结果如下，即为通；</span><br><span class="line">![21.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/21.png)</span><br><span class="line">    - 因只有80端口免费，可尝试端口是否连通，```telnet dyw-android.nat123.cc 80```，若窗口黑底，不显示任何信息，说明域名的80端口是正常的开启状态。</span><br><span class="line"></span><br><span class="line">**至此，外网访问完成~~**</span><br><span class="line"></span><br><span class="line">### 设置外网访问服务器</span><br><span class="line"></span><br><span class="line">喜欢搞事情的小伙伴可能发现了，外网访问服务器，那该怎么搞呢，好像用ping通域名的ip，无法连接服务器啊。</span><br><span class="line"></span><br><span class="line">不用着急，客官请继续查阅</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>添加端口映射(全端口映射p2p)；</li>
+</ul>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/22.png" alt="22.jpg"></p>
+<ul>
+<li>PC上下载安装相应的客户端；</li>
+<li>打开 nat123p2p访问者；</li>
+<li>填写相关信息，获取外网访问服务器的IP；</li>
+</ul>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/23.png" alt="23.jpg"></p>
+<ul>
+<li>检测。<ul>
+<li>使用外网尝试访问服务器<code>ssh -p 22 admin@10.211.55.5</code>。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/24.png" alt="24.jpg"></p>
 <blockquote>
 <p>关注我的技术公众号，每个工作日都有优质技术文章推送。<br>微信扫一扫下方二维码即可关注：<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/dyw/wechat_public_15.jpg" alt="图片"></p>
 </blockquote>
@@ -529,12 +591,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2019/09/26/Dialog-区域外可响应点击事件/">Dialog 区域外可响应点击事件</a></p>
+  <p><span>本文标题:</span><a href="/2019/11/26/变”废”为宝—Android手机变服务器/">Android手机变服务器</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Mr.戴 的个人博客">Mr.戴</a></p>
-  <p><span>发布时间:</span>2019年09月26日</p>
-  <p><span>最后更新:</span>2019年11月08日</p>
-  <p><span>原始链接:</span><a href="/2019/09/26/Dialog-区域外可响应点击事件/" title="Dialog 区域外可响应点击事件">http://per-dyw.xyz/2019/09/26/Dialog-区域外可响应点击事件/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://per-dyw.xyz/2019/09/26/Dialog-区域外可响应点击事件/" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2019年11月26日</p>
+  <p><span>最后更新:</span>2019年11月26日</p>
+  <p><span>原始链接:</span><a href="/2019/11/26/变”废”为宝—Android手机变服务器/" title="Android手机变服务器">http://per-dyw.xyz/2019/11/26/变”废”为宝—Android手机变服务器/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://per-dyw.xyz/2019/11/26/变”废”为宝—Android手机变服务器/" aria-label="复制成功！"></i></span>
   </p>
   <p>转载请保留原文链接及作者。</p>  
 </div>
@@ -596,9 +658,9 @@
           
             <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
           
-            <a href="/tags/dialog/" rel="tag"><i class="fa fa-tag"></i> dialog</a>
+            <a href="/tags/服务器/" rel="tag"><i class="fa fa-tag"></i> 服务器</a>
           
-            <a href="/tags/点击事件/" rel="tag"><i class="fa fa-tag"></i> 点击事件</a>
+            <a href="/tags/变废为宝/" rel="tag"><i class="fa fa-tag"></i> 变废为宝</a>
           
         </div>
       
@@ -611,8 +673,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/20/Android-版本更新问题/" rel="next" title="Android版本更新">
-                <i class="fa fa-chevron-left"></i> Android版本更新
+              <a href="/2019/11/20/APP静默安装卸载/" rel="next" title="APP静默安装卸载">
+                <i class="fa fa-chevron-left"></i> APP静默安装卸载
               </a>
             
           </div>
@@ -620,10 +682,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/24/WiFi、NFC和Bluetooth相关调研/" rel="prev" title="WiFi、NFC和蓝牙相关调研测试">
-                WiFi、NFC和蓝牙相关调研测试 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -788,7 +846,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体流程"><span class="nav-number">2.</span> <span class="nav-text">具体流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设备需求"><span class="nav-number">2.1.</span> <span class="nav-text">设备需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件需求"><span class="nav-number">2.2.</span> <span class="nav-text">软件需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat的配置安装"><span class="nav-number">2.2.1.</span> <span class="nav-text">Tomcat的配置安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置外网访问"><span class="nav-number">2.2.2.</span> <span class="nav-text">设置外网访问</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
