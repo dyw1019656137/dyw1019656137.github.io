@@ -19,7 +19,7 @@
             if (prompt('请输入文章密码') !== '') {
                 alert('密码错误，请联系 Mr.戴 获取密码！');
                 if (history.length === 1) {
-                    location.replace("http://per-dyw.xyz/"); // 这里替换成你的首页
+                    location.replace("http://dywei.top/"); // 这里替换成你的首页
                 } else {
                     history.back();
                 }
@@ -120,22 +120,14 @@
 <meta name="keywords" content="Android,服务器,变废为宝">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android手机变服务器">
-<meta property="og:url" content="http://per-dyw.xyz/2019/11/26/变”废”为宝—Android手机变服务器/index.html">
+<meta property="og:url" content="http://dywei.top/2019/11/26/变”废”为宝—Android手机变服务器/index.html">
 <meta property="og:site_name" content="Mr.戴">
 <meta property="og:description" content="前言如果你家有很多的闲置 Android 手机，你可以选择转二手卖了，也可以选择像小编一样，尝试着变”废”为宝–一分钱不花的变成一台 Linux 服务器~ 先说下实际测试结果：可安装 jdk和Tomcat，外网也可访问~ 如何实现的呢？ 请细看下文，相信肯定会对你有所帮助！ 具体流程设备需求 闲置安卓手机一部，我的是 vivo Y37A。 要获取root权限。如果总root失败可以刷下机(刷机砖头">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/16.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/17.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/18.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/22.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/23.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/24.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/dyw/wechat_public_15.jpg">
-<meta property="og:updated_time" content="2019-11-26T11:28:25.829Z">
+<meta property="og:updated_time" content="2020-07-30T02:29:28.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android手机变服务器">
 <meta name="twitter:description" content="前言如果你家有很多的闲置 Android 手机，你可以选择转二手卖了，也可以选择像小编一样，尝试着变”废”为宝–一分钱不花的变成一台 Linux 服务器~ 先说下实际测试结果：可安装 jdk和Tomcat，外网也可访问~ 如何实现的呢？ 请细看下文，相信肯定会对你有所帮助！ 具体流程设备需求 闲置安卓手机一部，我的是 vivo Y37A。 要获取root权限。如果总root失败可以刷下机(刷机砖头">
-<meta name="twitter:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/16.png">
 
 
 
@@ -165,7 +157,7 @@
 
 
 
-  <link rel="canonical" href="http://per-dyw.xyz/2019/11/26/变”废”为宝—Android手机变服务器/">
+  <link rel="canonical" href="http://dywei.top/2019/11/26/变”废”为宝—Android手机变服务器/">
 
 
 
@@ -350,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://per-dyw.xyz/2019/11/26/变”废”为宝—Android手机变服务器/">
+    <link itemprop="mainEntityOfPage" href="http://dywei.top/2019/11/26/变”废”为宝—Android手机变服务器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.戴">
@@ -511,61 +503,52 @@
 <p>sudo apt-get install vim</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 下载的 jdk 放置到指定目录；</span><br><span class="line">    - 为方便文件传输，我是在 Windows 虚拟机上使用的是```WinSCP```；</span><br><span class="line">    - 在 usr 目录下新建 java 文件夹；</span><br><span class="line">    - 将jdk的压缩包，置入 java 文件夹中；</span><br><span class="line">    - 使用```tar -zxvf```命令解压；</span><br><span class="line"></span><br><span class="line">![15.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/15.png)</span><br><span class="line"></span><br><span class="line">- 环境配置；</span><br><span class="line">    - 终端输入命令```sudo vim /etc/profile```；</span><br><span class="line">    - 在最后一行添加如下代码，注意使用自己的文件目录；</span><br><span class="line">    - 添加完成后，最好重启下服务器，让配置生效；</span><br></pre></td></tr></table></figure>
 
-<p>export JAVA_HOME=/usr/java/jdk1.8.0_144<br>export JRE_HOME=/usr/java/jdk1.8.0_144/jre<br>export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib<br>export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin<br>```</p>
-<ul>
-<li>检验。<ul>
-<li>终端输入<code>java -version</code>查看当前 jdk 版本，如果能看到具体的版本号，恭喜你，成功啦~</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/16.png" alt="16.jpg"></p>
-<h3 id="Tomcat的配置安装"><a href="#Tomcat的配置安装" class="headerlink" title="Tomcat的配置安装"></a>Tomcat的配置安装</h3><ul>
-<li>进 Tomcat 官网，下载与 jdk 版本相对应的版本(小编使用的 jdk 为8，所以 Tomcat 的版本也使用8)</li>
-<li>下载的 Tomcat 放置到指定目录；<ul>
-<li>在 usr 目录下新建 tomcat 文件夹；</li>
-<li>将 tomcat 的压缩包，置入 java 文件夹中；</li>
-<li>使用<code>tar -zxvf</code>命令解压；</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/17.png" alt="17.jpg"></p>
-<ul>
-<li>启动 Tomcat；<ul>
-<li>进入 Tomcat 的 bin 目录下；</li>
-<li>输入<code>./startup.sh</code>，看到 Tomcat started，即启动成功。</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/18.png" alt="18.jpg"></p>
-<ul>
-<li>检验。<ul>
-<li>在浏览器输入<code>http://192.168.1.119:8080/</code>，看到熟悉的猫，恭喜你，Tomcat 也配置成功啦~     </li>
-</ul>
-</li>
-</ul>
-<h3 id="设置外网访问"><a href="#设置外网访问" class="headerlink" title="设置外网访问"></a>设置外网访问</h3><p><strong>上面都是在局域网内才能操作的，那如果我要外网访问，怎么办呢？</strong></p>
-<p>小编选择的是 nat123 实现端口映射。至于原因嘛，当然是<strong>免费</strong>啦<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 在 Linux 中安装 nat123</span><br><span class="line"></span><br><span class="line">- 查看操作系统版本；</span><br><span class="line">    - 使用```uname  -r```命令查看：</span><br><span class="line">    </span><br><span class="line">![19.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/19.png)</span><br><span class="line"></span><br><span class="line">&gt; 注：以下操作，均建立在系统版本在 2.8.x 以上的基础之上，若系统版本低于2.8，请自行进官网进行查看。</span><br><span class="line"></span><br><span class="line">- 安装启动(以下皆是debian/ubuntu系统使用的命令)；</span><br><span class="line">    - 本地环境更新命令```apt-get update```，如出现提示是否继续时，输入y回车；</span><br><span class="line">    - 运行环境安装命令```apt-get install mono-complete```，如出现提示是否继续时，输入y回车；</span><br><span class="line">    - 客户端安装，选择的是在线下载安装；</span><br><span class="line">        - 在 usr 目录下新建 nat123 文件夹;</span><br><span class="line">        - 下载安装包```wget  http://www.nat123.com/down/nat123linux.tar.gz```；</span><br><span class="line">        - 解压本地目录```tar -zxvf ```；</span><br><span class="line">    - 客户端启动；</span><br><span class="line">        - 进入 nat123 的安装目录；</span><br><span class="line">        - 运行客户端，并按提示依次输入自己的帐号和密码```mono nat123linux.sh```，若没有 nat123 的账号密码，需先去官网进行注册；</span><br><span class="line">- 登陆网站远程web管理，在用户中心模块，添加端口映射。 </span><br><span class="line"></span><br><span class="line">![20.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/20.png)</span><br><span class="line"></span><br><span class="line">- 检测。</span><br><span class="line">    - 可先用外网电脑，ping下刚刚填写的域名，是否能ping通，结果如下，即为通；</span><br><span class="line">![21.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/21.png)</span><br><span class="line">    - 因只有80端口免费，可尝试端口是否连通，```telnet dyw-android.nat123.cc 80```，若窗口黑底，不显示任何信息，说明域名的80端口是正常的开启状态。</span><br><span class="line"></span><br><span class="line">**至此，外网访问完成~~**</span><br><span class="line"></span><br><span class="line">### 设置外网访问服务器</span><br><span class="line"></span><br><span class="line">喜欢搞事情的小伙伴可能发现了，外网访问服务器，那该怎么搞呢，好像用ping通域名的ip，无法连接服务器啊。</span><br><span class="line"></span><br><span class="line">不用着急，客官请继续查阅</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>添加端口映射(全端口映射p2p)；</li>
-</ul>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/22.png" alt="22.jpg"></p>
-<ul>
-<li>PC上下载安装相应的客户端；</li>
-<li>打开 nat123p2p访问者；</li>
-<li>填写相关信息，获取外网访问服务器的IP；</li>
-</ul>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/23.png" alt="23.jpg"></p>
-<ul>
-<li>检测。<ul>
-<li>使用外网尝试访问服务器<code>ssh -p 22 admin@10.211.55.5</code>。</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/24.png" alt="24.jpg"></p>
-<blockquote>
-<p>关注我的技术公众号，每个工作日都有优质技术文章推送。<br>微信扫一扫下方二维码即可关注：<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/dyw/wechat_public_15.jpg" alt="图片"></p>
-</blockquote>
+<p>export JAVA_HOME=/usr/java/jdk1.8.0_144<br>export JRE_HOME=/usr/java/jdk1.8.0_144/jre<br>export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib<br>export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</p>
+<pre><code>
+- 检验。
+    - 终端输入```java -version```查看当前 jdk 版本，如果能看到具体的版本号，恭喜你，成功啦~
 
+![16.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/16.png)
+
+### Tomcat的配置安装
+
+- 进 Tomcat 官网，下载与 jdk 版本相对应的版本(小编使用的 jdk 为8，所以 Tomcat 的版本也使用8)
+- 下载的 Tomcat 放置到指定目录；
+    - 在 usr 目录下新建 tomcat 文件夹；
+    - 将 tomcat 的压缩包，置入 java 文件夹中；
+    - 使用```tar -zxvf```命令解压；
+
+![17.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/17.png)
+
+- 启动 Tomcat；
+    - 进入 Tomcat 的 bin 目录下；
+    - 输入```./startup.sh```，看到 Tomcat started，即启动成功。
+
+![18.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/18.png)
+
+- 检验。
+    - 在浏览器输入```http://192.168.1.119:8080/```，看到熟悉的猫，恭喜你，Tomcat 也配置成功啦~     
+
+### 设置外网访问
+
+**上面都是在局域网内才能操作的，那如果我要外网访问，怎么办呢？**
+
+小编选择的是 nat123 实现端口映射。至于原因嘛，当然是**免费**啦<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 在 Linux 中安装 nat123</span><br><span class="line"></span><br><span class="line">- 查看操作系统版本；</span><br><span class="line">    - 使用```uname  -r```命令查看：</span><br><span class="line">    </span><br><span class="line">![19.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/19.png)</span><br><span class="line"></span><br><span class="line">&gt; 注：以下操作，均建立在系统版本在 2.8.x 以上的基础之上，若系统版本低于2.8，请自行进官网进行查看。</span><br><span class="line"></span><br><span class="line">- 安装启动(以下皆是debian/ubuntu系统使用的命令)；</span><br><span class="line">    - 本地环境更新命令```apt-get update```，如出现提示是否继续时，输入y回车；</span><br><span class="line">    - 运行环境安装命令```apt-get install mono-complete```，如出现提示是否继续时，输入y回车；</span><br><span class="line">    - 客户端安装，选择的是在线下载安装；</span><br><span class="line">        - 在 usr 目录下新建 nat123 文件夹;</span><br><span class="line">        - 下载安装包```wget  http://www.nat123.com/down/nat123linux.tar.gz```；</span><br><span class="line">        - 解压本地目录```tar -zxvf ```；</span><br><span class="line">    - 客户端启动；</span><br><span class="line">        - 进入 nat123 的安装目录；</span><br><span class="line">        - 运行客户端，并按提示依次输入自己的帐号和密码```mono nat123linux.sh```，若没有 nat123 的账号密码，需先去官网进行注册；</span><br><span class="line">- 登陆网站远程web管理，在用户中心模块，添加端口映射。 </span><br><span class="line"></span><br><span class="line">![20.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/20.png)</span><br><span class="line"></span><br><span class="line">- 检测。</span><br><span class="line">    - 可先用外网电脑，ping下刚刚填写的域名，是否能ping通，结果如下，即为通；</span><br><span class="line">![21.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/21.png)</span><br><span class="line">    - 因只有80端口免费，可尝试端口是否连通，```telnet dyw-android.nat123.cc 80```，若窗口黑底，不显示任何信息，说明域名的80端口是正常的开启状态。</span><br><span class="line"></span><br><span class="line">**至此，外网访问完成~~**</span><br><span class="line"></span><br><span class="line">### 设置外网访问服务器</span><br><span class="line"></span><br><span class="line">喜欢搞事情的小伙伴可能发现了，外网访问服务器，那该怎么搞呢，好像用ping通域名的ip，无法连接服务器啊。</span><br><span class="line"></span><br><span class="line">不用着急，客官请继续查阅</span><br></pre></td></tr></table></figure>
+
+- 添加端口映射(全端口映射p2p)；
+
+![22.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/22.png)
+
+- PC上下载安装相应的客户端；
+- 打开 nat123p2p访问者；
+- 填写相关信息，获取外网访问服务器的IP；
+
+![23.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/23.png)
+
+- 检测。
+    - 使用外网尝试访问服务器```ssh -p 22 admin@10.211.55.5```。
+
+![24.jpg](https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android_to_Linux/24.png)</code></pre>
       
     </div>
     
@@ -594,9 +577,9 @@
   <p><span>本文标题:</span><a href="/2019/11/26/变”废”为宝—Android手机变服务器/">Android手机变服务器</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Mr.戴 的个人博客">Mr.戴</a></p>
   <p><span>发布时间:</span>2019年11月26日</p>
-  <p><span>最后更新:</span>2019年11月26日</p>
-  <p><span>原始链接:</span><a href="/2019/11/26/变”废”为宝—Android手机变服务器/" title="Android手机变服务器">http://per-dyw.xyz/2019/11/26/变”废”为宝—Android手机变服务器/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://per-dyw.xyz/2019/11/26/变”废”为宝—Android手机变服务器/" aria-label="复制成功！"></i></span>
+  <p><span>最后更新:</span>2020年07月30日</p>
+  <p><span>原始链接:</span><a href="/2019/11/26/变”废”为宝—Android手机变服务器/" title="Android手机变服务器">http://dywei.top/2019/11/26/变”废”为宝—Android手机变服务器/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://dywei.top/2019/11/26/变”废”为宝—Android手机变服务器/" aria-label="复制成功！"></i></span>
   </p>
   <p>转载请保留原文链接及作者。</p>  
 </div>
@@ -846,7 +829,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体流程"><span class="nav-number">2.</span> <span class="nav-text">具体流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设备需求"><span class="nav-number">2.1.</span> <span class="nav-text">设备需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件需求"><span class="nav-number">2.2.</span> <span class="nav-text">软件需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat的配置安装"><span class="nav-number">2.2.1.</span> <span class="nav-text">Tomcat的配置安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置外网访问"><span class="nav-number">2.2.2.</span> <span class="nav-text">设置外网访问</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体流程"><span class="nav-number">2.</span> <span class="nav-text">具体流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设备需求"><span class="nav-number">2.1.</span> <span class="nav-text">设备需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件需求"><span class="nav-number">2.2.</span> <span class="nav-text">软件需求</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -867,7 +850,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -899,7 +882,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共17.3k字</span>
+  <span class="post-count">博客全站共16.8k字</span>
 </div>
 
         

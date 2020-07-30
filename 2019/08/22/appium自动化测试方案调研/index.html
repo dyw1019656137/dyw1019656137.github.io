@@ -19,7 +19,7 @@
             if (prompt('请输入文章密码') !== '') {
                 alert('密码错误，请联系 Mr.戴 获取密码！');
                 if (history.length === 1) {
-                    location.replace("http://per-dyw.xyz/"); // 这里替换成你的首页
+                    location.replace("http://dywei.top/"); // 这里替换成你的首页
                 } else {
                     history.back();
                 }
@@ -120,7 +120,7 @@
 <meta name="keywords" content="Android,自动化,测试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Appium自动化测试">
-<meta property="og:url" content="http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/index.html">
+<meta property="og:url" content="http://dywei.top/2019/08/22/appium自动化测试方案调研/index.html">
 <meta property="og:site_name" content="Mr.戴">
 <meta property="og:description" content="相关链接官网：http://appium.io/ 使用Java编写API文档：http://appium.github.io/java-client/ 学习文档：https://www.cnblogs.com/fnng/p/4540731.html 技术展示安装(仅Windows)若电脑上未安装node.js，请先安装node.js 下载安装包，下载地址为：https://nodejs.org/e">
 <meta property="og:locale" content="zh-Hans">
@@ -136,8 +136,7 @@
 <meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(9).png">
 <meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(10).png">
 <meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Appium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/clipboard%20(11).png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/dyw/wechat_public_15.jpg">
-<meta property="og:updated_time" content="2019-11-01T05:47:19.185Z">
+<meta property="og:updated_time" content="2020-07-30T02:30:27.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Appium自动化测试">
 <meta name="twitter:description" content="相关链接官网：http://appium.io/ 使用Java编写API文档：http://appium.github.io/java-client/ 学习文档：https://www.cnblogs.com/fnng/p/4540731.html 技术展示安装(仅Windows)若电脑上未安装node.js，请先安装node.js 下载安装包，下载地址为：https://nodejs.org/e">
@@ -171,7 +170,7 @@
 
 
 
-  <link rel="canonical" href="http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/">
+  <link rel="canonical" href="http://dywei.top/2019/08/22/appium自动化测试方案调研/">
 
 
 
@@ -356,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/">
+    <link itemprop="mainEntityOfPage" href="http://dywei.top/2019/08/22/appium自动化测试方案调研/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.戴">
@@ -460,7 +459,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.6k
+                  1.5k
                 </span>
               
 
@@ -594,9 +593,6 @@
 <h6 id="登录APP"><a href="#登录APP" class="headerlink" title="登录APP"></a>登录APP</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public static void testLogin(long time) &#123;</span><br><span class="line">	if (timer == null) &#123;</span><br><span class="line">		timer = new Timer();</span><br><span class="line">	&#125;</span><br><span class="line">	timer.schedule(new TimerTask() &#123;</span><br><span class="line">		@Override</span><br><span class="line">		public void run() &#123;</span><br><span class="line">			if (driver.getPageSource().contains(&quot;com.epoint.workplatform:id/iv_cancel&quot;)) &#123;</span><br><span class="line">				System.out.println(&quot;APP需要更新&quot;);</span><br><span class="line">				System.out.println(&quot;取消更新&quot;);</span><br><span class="line">				driver.findElement(By.id(&quot;com.epoint.workplatform:id/iv_cancel&quot;)).click();</span><br><span class="line">				if (timer != null) &#123;</span><br><span class="line">					timer.cancel();</span><br><span class="line">					timer = null;</span><br><span class="line">				&#125;</span><br><span class="line">				testLogin(2000);</span><br><span class="line">			&#125; else if (driver.currentActivity().contains(&quot;MainActivity&quot;)) &#123;</span><br><span class="line">				System.out.println(&quot;用户已登录过&quot;);</span><br><span class="line">				System.out.println(driver.getPageSource());</span><br><span class="line">			&#125; else if (driver.currentActivity().contains(&quot;launcher.Launcher&quot;)) &#123;</span><br><span class="line">				System.out.println(&quot;返回桌面&quot;);</span><br><span class="line">			&#125; else if (driver.currentActivity().contains(&quot;GrantPermissionsActivity&quot;)) &#123;</span><br><span class="line">				System.out.println(&quot;初次登录&quot;);</span><br><span class="line">				System.out.println(&quot;授予权限&quot;);</span><br><span class="line">				driver.findElement(By.id(&quot;android:id/button1&quot;)).click();</span><br><span class="line">				if (timer != null) &#123;</span><br><span class="line">					timer.cancel();</span><br><span class="line">					timer = null;</span><br><span class="line">				&#125;</span><br><span class="line">				testLogin(5000);</span><br><span class="line">			&#125; else if (driver.currentActivity().contains(&quot;LoginActivity&quot;)) &#123;</span><br><span class="line">				driver.findElement(By.id(&quot;com.epoint.workplatform:id/et_loginid&quot;)).sendKeys(&quot;dywei&quot;);</span><br><span class="line">				driver.findElement(By.id(&quot;com.epoint.workplatform:id/et_pwd&quot;)).sendKeys(&quot;11111&quot;);</span><br><span class="line">				driver.findElement(By.id(&quot;com.epoint.workplatform:id/btn_login&quot;)).click();</span><br><span class="line">				System.out.println(&quot;登录成功&quot;);</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				System.out.println(&quot;启动页时间太长&quot;);</span><br><span class="line">				System.out.println(driver.getPageSource());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;, time);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h2><p>测试脚本的编写并不局限于Java，支持多种语言，且可以实现一套测试脚本的编写完成Android端和iOS端的自动化测试，有兴趣的可以研究研究。</p>
-<blockquote>
-<p>关注我的技术公众号，每个工作日都有优质技术文章推送。<br>微信扫一扫下方二维码即可关注：<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/dyw/wechat_public_15.jpg" alt="图片"></p>
-</blockquote>
 
       
     </div>
@@ -626,9 +622,9 @@
   <p><span>本文标题:</span><a href="/2019/08/22/appium自动化测试方案调研/">Appium自动化测试</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Mr.戴 的个人博客">Mr.戴</a></p>
   <p><span>发布时间:</span>2019年08月22日</p>
-  <p><span>最后更新:</span>2019年11月01日</p>
-  <p><span>原始链接:</span><a href="/2019/08/22/appium自动化测试方案调研/" title="Appium自动化测试">http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://per-dyw.xyz/2019/08/22/appium自动化测试方案调研/" aria-label="复制成功！"></i></span>
+  <p><span>最后更新:</span>2020年07月30日</p>
+  <p><span>原始链接:</span><a href="/2019/08/22/appium自动化测试方案调研/" title="Appium自动化测试">http://dywei.top/2019/08/22/appium自动化测试方案调研/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://dywei.top/2019/08/22/appium自动化测试方案调研/" aria-label="复制成功！"></i></span>
   </p>
   <p>转载请保留原文链接及作者。</p>  
 </div>
@@ -903,7 +899,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -935,7 +931,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共17.3k字</span>
+  <span class="post-count">博客全站共16.8k字</span>
 </div>
 
         

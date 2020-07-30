@@ -19,7 +19,7 @@
             if (prompt('请输入文章密码') !== '') {
                 alert('密码错误，请联系 Mr.戴 获取密码！');
                 if (history.length === 1) {
-                    location.replace("http://per-dyw.xyz/"); // 这里替换成你的首页
+                    location.replace("http://dywei.top/"); // 这里替换成你的首页
                 } else {
                     history.back();
                 }
@@ -120,14 +120,13 @@
 <meta name="keywords" content="Android,文件获取,版本更新">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android版本更新">
-<meta property="og:url" content="http://per-dyw.xyz/2019/09/20/Android-版本更新问题/index.html">
+<meta property="og:url" content="http://dywei.top/2019/09/20/Android-版本更新问题/index.html">
 <meta property="og:site_name" content="Mr.戴">
 <meta property="og:description" content="问题1234567private void installApk(Context context, File file) &amp;#123;   Intent install = new Intent();   install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);   install.setAction(Intent.ACTION_VIEW);   insta">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0/1.png">
 <meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0/2.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/dyw/wechat_public_15.jpg">
-<meta property="og:updated_time" content="2019-11-08T01:32:36.560Z">
+<meta property="og:updated_time" content="2020-07-30T02:29:41.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android版本更新">
 <meta name="twitter:description" content="问题1234567private void installApk(Context context, File file) &amp;#123;   Intent install = new Intent();   install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);   install.setAction(Intent.ACTION_VIEW);   insta">
@@ -161,7 +160,7 @@
 
 
 
-  <link rel="canonical" href="http://per-dyw.xyz/2019/09/20/Android-版本更新问题/">
+  <link rel="canonical" href="http://dywei.top/2019/09/20/Android-版本更新问题/">
 
 
 
@@ -346,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://per-dyw.xyz/2019/09/20/Android-版本更新问题/">
+    <link itemprop="mainEntityOfPage" href="http://dywei.top/2019/09/20/Android-版本更新问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.戴">
@@ -450,7 +449,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  730
+                  692
                 </span>
               
 
@@ -528,9 +527,6 @@
 
 <h5 id="完整代码如下"><a href="#完整代码如下" class="headerlink" title="完整代码如下"></a>完整代码如下</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">installApk</span><span class="params">(Activity activity,File file)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_INSTALL_PACKAGE);</span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &lt; Build.VERSION_CODES.N) &#123;</span><br><span class="line">            intent.setDataAndType(Uri.fromFile(file), <span class="string">"application/vnd.android.package-archive"</span>);</span><br><span class="line">            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 声明需要的临时的权限</span></span><br><span class="line">            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);</span><br><span class="line">            <span class="comment">// 第二个参数，容易导错包，清单文件和module要保持一致</span></span><br><span class="line">            Uri contentUri = FileProvider.getUriForFile(activity, activity.getPackageName() + <span class="string">".core.fileprovider"</span>, file);</span><br><span class="line">            </span><br><span class="line">            intent.setDataAndType(contentUri, <span class="string">"application/vnd.android.package-archive"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        activity.startActivity(intent);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>关注我的技术公众号，每个工作日都有优质技术文章推送。<br>微信扫一扫下方二维码即可关注：<br><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/dyw/wechat_public_15.jpg" alt="图片"></p>
-</blockquote>
 
       
     </div>
@@ -560,9 +556,9 @@
   <p><span>本文标题:</span><a href="/2019/09/20/Android-版本更新问题/">Android版本更新</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Mr.戴 的个人博客">Mr.戴</a></p>
   <p><span>发布时间:</span>2019年09月20日</p>
-  <p><span>最后更新:</span>2019年11月08日</p>
-  <p><span>原始链接:</span><a href="/2019/09/20/Android-版本更新问题/" title="Android版本更新">http://per-dyw.xyz/2019/09/20/Android-版本更新问题/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://per-dyw.xyz/2019/09/20/Android-版本更新问题/" aria-label="复制成功！"></i></span>
+  <p><span>最后更新:</span>2020年07月30日</p>
+  <p><span>原始链接:</span><a href="/2019/09/20/Android-版本更新问题/" title="Android版本更新">http://dywei.top/2019/09/20/Android-版本更新问题/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://dywei.top/2019/09/20/Android-版本更新问题/" aria-label="复制成功！"></i></span>
   </p>
   <p>转载请保留原文链接及作者。</p>  
 </div>
@@ -837,7 +833,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -869,7 +865,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共17.3k字</span>
+  <span class="post-count">博客全站共16.8k字</span>
 </div>
 
         
