@@ -105,7 +105,7 @@
 
 
 
-  <meta name="keywords" content="Android,横竖屏,fragment,">
+  <meta name="keywords" content="鸿蒙,智慧屏,Android 适配,">
 
 
 
@@ -116,18 +116,18 @@
 
 
 
-<meta name="description" content="问题首现若只想知道如何解决问题，请直接到问题解决。 因文件预览需要横屏显示，并且文件预览采用的是webview加载html的方式，并且webview又封装了一层fragment，所以横竖屏切换的主要问题变成了 fragment+wenview 实现横竖屏切换。 一开始按照网上的大部分说法实现，每次横竖屏切换的时候，不重新启动activity的生命周期，只需要监测 onConfigurationCh">
-<meta name="keywords" content="Android,横竖屏,fragment">
+<meta name="description" content="背景应公司项目要求，要求我方 APP 适配华为智慧屏。第一眼看到需求，脑海里自然的浮现出 2 种解决方案：  看看华为智慧屏是否有「平行视界」功能，如果有，询问平行视界是否满足需求； 是否只要 App 横屏展示，就能满足需求？  理想是丰满的，现实是骨感的！ 拿到华为智慧屏之后，发现它居然是鸿蒙系统，顿时心里一凉，据说鸿蒙和 Android 并不适配！ 网上一顿搜索，并没有发现多少有用的相关信息，">
+<meta name="keywords" content="鸿蒙,智慧屏,Android 适配">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fragment+webview+横竖屏切换问题排查">
-<meta property="og:url" content="https://dywei.top/2019/08/27/fragment-webview-横竖屏切换/index.html">
+<meta property="og:title" content="华为智慧屏适配">
+<meta property="og:url" content="https://dywei.top/2019/09/20/华为智慧屏适配/index.html">
 <meta property="og:site_name" content="Mr.戴">
-<meta property="og:description" content="问题首现若只想知道如何解决问题，请直接到问题解决。 因文件预览需要横屏显示，并且文件预览采用的是webview加载html的方式，并且webview又封装了一层fragment，所以横竖屏切换的主要问题变成了 fragment+wenview 实现横竖屏切换。 一开始按照网上的大部分说法实现，每次横竖屏切换的时候，不重新启动activity的生命周期，只需要监测 onConfigurationCh">
+<meta property="og:description" content="背景应公司项目要求，要求我方 APP 适配华为智慧屏。第一眼看到需求，脑海里自然的浮现出 2 种解决方案：  看看华为智慧屏是否有「平行视界」功能，如果有，询问平行视界是否满足需求； 是否只要 App 横屏展示，就能满足需求？  理想是丰满的，现实是骨感的！ 拿到华为智慧屏之后，发现它居然是鸿蒙系统，顿时心里一凉，据说鸿蒙和 Android 并不适配！ 网上一顿搜索，并没有发现多少有用的相关信息，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-30T02:30:42.171Z">
+<meta property="og:updated_time" content="2020-08-11T06:50:13.981Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fragment+webview+横竖屏切换问题排查">
-<meta name="twitter:description" content="问题首现若只想知道如何解决问题，请直接到问题解决。 因文件预览需要横屏显示，并且文件预览采用的是webview加载html的方式，并且webview又封装了一层fragment，所以横竖屏切换的主要问题变成了 fragment+wenview 实现横竖屏切换。 一开始按照网上的大部分说法实现，每次横竖屏切换的时候，不重新启动activity的生命周期，只需要监测 onConfigurationCh">
+<meta name="twitter:title" content="华为智慧屏适配">
+<meta name="twitter:description" content="背景应公司项目要求，要求我方 APP 适配华为智慧屏。第一眼看到需求，脑海里自然的浮现出 2 种解决方案：  看看华为智慧屏是否有「平行视界」功能，如果有，询问平行视界是否满足需求； 是否只要 App 横屏展示，就能满足需求？  理想是丰满的，现实是骨感的！ 拿到华为智慧屏之后，发现它居然是鸿蒙系统，顿时心里一凉，据说鸿蒙和 Android 并不适配！ 网上一顿搜索，并没有发现多少有用的相关信息，">
 
 
 
@@ -157,13 +157,13 @@
 
 
 
-  <link rel="canonical" href="https://dywei.top/2019/08/27/fragment-webview-横竖屏切换/">
+  <link rel="canonical" href="https://dywei.top/2019/09/20/华为智慧屏适配/">
 
 
 
 
 
-  <title>fragment+webview+横竖屏切换问题排查 | Mr.戴</title>
+  <title>华为智慧屏适配 | Mr.戴</title>
   
 
 
@@ -342,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dywei.top/2019/08/27/fragment-webview-横竖屏切换/">
+    <link itemprop="mainEntityOfPage" href="https://dywei.top/2019/09/20/华为智慧屏适配/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.戴">
@@ -359,7 +359,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">fragment+webview+横竖屏切换问题排查</h1>
+          <h1 class="post-title" itemprop="name headline">华为智慧屏适配</h1>
         
 
         <div class="post-meta">
@@ -371,8 +371,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-27T19:16:36+08:00">
-                2019-08-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-20T16:26:14+08:00">
+                2019-09-20
               </time>
             
 
@@ -394,8 +394,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/鸿蒙/" itemprop="url" rel="index">
+                    <span itemprop="name">鸿蒙</span>
                   </a>
                 </span>
 
@@ -405,8 +405,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/问题排查/" itemprop="url" rel="index">
-                    <span itemprop="name">问题排查</span>
+                  <a href="/categories/鸿蒙/Android-适配/" itemprop="url" rel="index">
+                    <span itemprop="name">Android 适配</span>
                   </a>
                 </span>
 
@@ -423,8 +423,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/27/fragment-webview-横竖屏切换/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/27/fragment-webview-横竖屏切换/" itemprop="commentCount"></span>
+                <a href="/2019/09/20/华为智慧屏适配/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/20/华为智慧屏适配/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  503
+                  401
                 </span>
               
 
@@ -483,19 +483,26 @@
       
 
       
-        <h1 id="问题首现"><a href="#问题首现" class="headerlink" title="问题首现"></a>问题首现</h1><p>若只想知道如何解决问题，请直接到<a href="#solve">问题解决</a>。</p>
-<p>因文件预览需要横屏显示，并且文件预览采用的是webview加载html的方式，并且webview又封装了一层fragment，所以横竖屏切换的主要问题变成了 fragment+wenview 实现横竖屏切换。</p>
-<p>一开始按照网上的大部分说法实现，每次横竖屏切换的时候，不重新启动activity的生命周期，只需要监测 onConfigurationChanged 方法即可。多次测试发现，activity的生命周期没有重新走，但每次都要多次实例化fragment，导致了多次快速横竖屏之后，界面卡顿严重的问题。</p>
-<p>此次主要是如何解决fragment为何会多次实例化的问题。</p>
-<h1 id="问题排查测试"><a href="#问题排查测试" class="headerlink" title="问题排查测试"></a>问题排查测试</h1><p>多次百度搜索测试无果，同事提醒，可能跟侧滑关闭的背景有关，于是尝试了将侧滑关闭功能关闭，无效，在侧滑关闭加上白色背景，依然无效，设置全局白色背景，有效了！！！</p>
-<p>这才意识到可能跟background有关，查看了下代码，发现在style里面全局设置了背景为透明，不可能把全局的背景都改成白色，太影响性能了哇。</p>
-<p>于是，新写了个style，加了个白色背景，最初采用的方式是，在加载预览界面的activity中，采用Java的方式添加style，测试下来，居然无效，瞬间懵逼了，难道单个添加无效么？不信邪了，这次直接在manifest-activity中添加了style，成功了！！！</p>
-<h1 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a><span id="solve">问题解决</span></h1><p>适用场景：</p>
-<p>FragmentA 中 加载 WebView，ActivityA 中加载多个 FragmentA，ActivityA 打开 ActivityB，ActivityB 中加载 FragmentA，且 ActivityA 不进行横竖屏切换，ActivityB 支持横竖屏切换。</p>
-<p>bug现象：</p>
-<p>ActivityB 横竖屏切换的时候，页面加载卡顿，且多次实例化 FragmentA。</p>
-<p>解决方案：</p>
-<p>在 manifest 中找到 ActivityB，并添加 theme，style 中设置 背景色为白色。</p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>应公司项目要求，要求我方 APP 适配华为智慧屏。<br>第一眼看到需求，脑海里自然的浮现出 2 种解决方案：</p>
+<ol>
+<li>看看华为智慧屏是否有「平行视界」功能，如果有，询问平行视界是否满足需求；</li>
+<li>是否只要 App 横屏展示，就能满足需求？</li>
+</ol>
+<p>理想是丰满的，现实是骨感的！</p>
+<p>拿到华为智慧屏之后，发现它居然是<strong>鸿蒙系统</strong>，顿时心里一凉，据说鸿蒙和 Android 并不适配！</p>
+<p>网上一顿搜索，并没有发现多少有用的相关信息，最有用的信息或许是方舟编译器的<a href="https://www.openarkcompiler.cn/home" target="_blank" rel="noopener">官方文档</a>了，但实际上并没有用到。</p>
+<p>既然没搜到有用资料，不如直接动手尝试，将华为智慧屏当场平板使用。开干！</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="强制横屏"><a href="#强制横屏" class="headerlink" title="强制横屏"></a>强制横屏</h3><h4 id="AndroidManifest-xml"><a href="#AndroidManifest-xml" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;manifest&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;application&gt;</span><br><span class="line">        ...</span><br><span class="line">        &lt;activity</span><br><span class="line">            android:name=<span class="string">".view.test.TestInitActivity"</span></span><br><span class="line">            android:screenOrientation=<span class="string">"landscape"</span></span><br><span class="line">            android:theme=<span class="string">"@style/InitActivityTheme"</span>&gt;</span><br><span class="line">            &lt;intent-filter&gt;</span><br><span class="line">                &lt;action android:name=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span><br><span class="line"></span><br><span class="line">                &lt;category android:name=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span><br><span class="line">            &lt;/intent-filter&gt;</span><br><span class="line">        &lt;/activity&gt;</span><br><span class="line">        &lt;activity</span><br><span class="line">            android:name=<span class="string">".view.test.TestLoginActivity"</span></span><br><span class="line">            android:launchMode=<span class="string">"singleTask"</span></span><br><span class="line">            android:screenOrientation=<span class="string">"landscape"</span></span><br><span class="line">            android:windowSoftInputMode=<span class="string">"stateVisible"</span> /&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/application&gt;</span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置为横屏</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">if</span> (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) &#123;</span><br><span class="line">        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">super</span>.onResume();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="打包、安装、运行"><a href="#打包、安装、运行" class="headerlink" title="打包、安装、运行"></a>打包、安装、运行</h4><p>结果：效果良好但期间也发现了一些问题。</p>
+<ul>
+<li>系统的输入法键盘，偶尔弹不出来</li>
+<li>遥控板上的长触移动事件，暂时无法拦截</li>
+<li>无法获取智慧屏系统相关信息（原Android方法已无法获取）</li>
+</ul>
+<p>未完待续。。。</p>
 
       
     </div>
@@ -522,12 +529,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2019/08/27/fragment-webview-横竖屏切换/">fragment+webview+横竖屏切换问题排查</a></p>
+  <p><span>本文标题:</span><a href="/2019/09/20/华为智慧屏适配/">华为智慧屏适配</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Mr.戴 的个人博客">Mr.戴</a></p>
-  <p><span>发布时间:</span>2019年08月27日</p>
-  <p><span>最后更新:</span>2020年07月30日</p>
-  <p><span>原始链接:</span><a href="/2019/08/27/fragment-webview-横竖屏切换/" title="fragment+webview+横竖屏切换问题排查">https://dywei.top/2019/08/27/fragment-webview-横竖屏切换/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://dywei.top/2019/08/27/fragment-webview-横竖屏切换/" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2019年09月20日</p>
+  <p><span>最后更新:</span>2020年08月11日</p>
+  <p><span>原始链接:</span><a href="/2019/09/20/华为智慧屏适配/" title="华为智慧屏适配">https://dywei.top/2019/09/20/华为智慧屏适配/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://dywei.top/2019/09/20/华为智慧屏适配/" aria-label="复制成功！"></i></span>
   </p>
   <p>转载请保留原文链接及作者。</p>  
 </div>
@@ -587,11 +594,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+            <a href="/tags/鸿蒙/" rel="tag"><i class="fa fa-tag"></i> 鸿蒙</a>
           
-            <a href="/tags/横竖屏/" rel="tag"><i class="fa fa-tag"></i> 横竖屏</a>
+            <a href="/tags/智慧屏/" rel="tag"><i class="fa fa-tag"></i> 智慧屏</a>
           
-            <a href="/tags/fragment/" rel="tag"><i class="fa fa-tag"></i> fragment</a>
+            <a href="/tags/Android-适配/" rel="tag"><i class="fa fa-tag"></i> Android 适配</a>
           
         </div>
       
@@ -604,8 +611,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/22/appium自动化测试方案调研/" rel="next" title="Appium自动化测试">
-                <i class="fa fa-chevron-left"></i> Appium自动化测试
+              <a href="/2019/09/17/MacOS下安装Redis/" rel="next" title="MacOS下安装Redis">
+                <i class="fa fa-chevron-left"></i> MacOS下安装Redis
               </a>
             
           </div>
@@ -614,8 +621,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/28/Android-进程保活/" rel="prev" title="Android进程保活">
-                Android进程保活 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/20/Android-版本更新问题/" rel="prev" title="Android版本更新">
+                Android版本更新 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -781,7 +788,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题首现"><span class="nav-number">1.</span> <span class="nav-text">问题首现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题排查测试"><span class="nav-number">2.</span> <span class="nav-text">问题排查测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题解决"><span class="nav-number">3.</span> <span class="nav-text">问题解决</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">1.1.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#强制横屏"><span class="nav-number">1.1.1.</span> <span class="nav-text">强制横屏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AndroidManifest-xml"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">AndroidManifest.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Activity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打包、安装、运行"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">打包、安装、运行</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

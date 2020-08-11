@@ -73,6 +73,20 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[华为智慧屏适配]]></title>
+    <url>%2F2019%2F09%2F20%2F%E5%8D%8E%E4%B8%BA%E6%99%BA%E6%85%A7%E5%B1%8F%E9%80%82%E9%85%8D%2F</url>
+    <content type="text"><![CDATA[背景应公司项目要求，要求我方 APP 适配华为智慧屏。第一眼看到需求，脑海里自然的浮现出 2 种解决方案： 看看华为智慧屏是否有「平行视界」功能，如果有，询问平行视界是否满足需求； 是否只要 App 横屏展示，就能满足需求？ 理想是丰满的，现实是骨感的！ 拿到华为智慧屏之后，发现它居然是鸿蒙系统，顿时心里一凉，据说鸿蒙和 Android 并不适配！ 网上一顿搜索，并没有发现多少有用的相关信息，最有用的信息或许是方舟编译器的官方文档了，但实际上并没有用到。 既然没搜到有用资料，不如直接动手尝试，将华为智慧屏当场平板使用。开干！ 解决方案强制横屏AndroidManifest.xml12345678910111213141516171819202122&lt;manifest&gt; ... &lt;application&gt; ... &lt;activity android:name=".view.test.TestInitActivity" android:screenOrientation="landscape" android:theme="@style/InitActivityTheme"&gt; &lt;intent-filter&gt; &lt;action android:name="android.intent.action.MAIN" /&gt; &lt;category android:name="android.intent.category.LAUNCHER" /&gt; &lt;/intent-filter&gt; &lt;/activity&gt; &lt;activity android:name=".view.test.TestLoginActivity" android:launchMode="singleTask" android:screenOrientation="landscape" android:windowSoftInputMode="stateVisible" /&gt; ... &lt;/application&gt;&lt;/manifest&gt; Activity12345678910@Overrideprotected void onResume() &#123; /** * 设置为横屏 */ if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) &#123; setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); &#125; super.onResume();&#125; 打包、安装、运行结果：效果良好但期间也发现了一些问题。 系统的输入法键盘，偶尔弹不出来 遥控板上的长触移动事件，暂时无法拦截 无法获取智慧屏系统相关信息（原Android方法已无法获取） 未完待续。。。]]></content>
+      <categories>
+        <category>鸿蒙</category>
+        <category>Android 适配</category>
+      </categories>
+      <tags>
+        <tag>鸿蒙</tag>
+        <tag>智慧屏</tag>
+        <tag>Android 适配</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[MacOS下安装Redis]]></title>
     <url>%2F2019%2F09%2F17%2FMacOS%E4%B8%8B%E5%AE%89%E8%A3%85Redis%2F</url>
     <content type="text"><![CDATA[下载Redis官网下载：https://redis.io/ 选择最新的版本，我现在下的是：http://download.redis.io/releases/redis-5.0.5.tar.gz 安装安装就几条命令，对于自己的版本做修改吧。 1234567891011121314# 解压tar -zxvf redis-5.0.5.tar.gz# 拷贝的local目录下sudo cp -rf redis-5.0.5 /usr/local/# 进入相应目录下cd /usr/local/redis-*# 编译sudo make test# 安装sudo make install# 建立相应目录sudo mkdir bin etc db# 拷贝启动文件sudo cp src/mkreleasehdr.sh src/redis-benchmark src/redis-check-rdb src/redis-cli src/redis-server bin/ 如果在编译时报错了，清理了再编译一下：sudo make distclean &amp;&amp; sudo make &amp;&amp; sudo make test 3.配置配置看注释吧。（没有硬性需求可以不做修改） 1234567891011121314151617181920212223242526272829303132333435363738394041424344# 拷贝配置文件（在redis目录下）sudo cp redis.conf etc/sudo vi etc/redis.conf####内容参照如下：(选择性修改就好了，不用全都照着改)#修改为守护模式（后台启动）daemonize yes#设置进程锁文件pidfile /usr/local/redis-5.0.5/redis.pid#端口port 6379#客户端超时时间timeout 300#日志级别loglevel debug#日志文件位置logfile /usr/local/redis-5.0.5/log-redis.log#设置数据库的数量，默认数据库为0，可以使用SELECT &lt;dbid&gt;命令在连接上指定数据库iddatabases 16##指定在多长时间内，有多少次更新操作，就将数据同步到数据文件，可以多个条件配合#save &lt;seconds&gt; &lt;changes&gt;#Redis默认配置文件中提供了三个条件：save 900 1save 300 10save 60 10000#指定存储至本地数据库时是否压缩数据，默认为yes，Redis采用LZF压缩，如果为了节省CPU时间，#可以关闭该#选项，但会导致数据库文件变的巨大rdbcompression yes#指定本地数据库文件名dbfilename dump.rdb#指定本地数据库路径dir /usr/local/redis-5.0.5/db/#指定是否在每次更新操作后进行日志记录，Redis在默认情况下是异步的把数据写入磁盘，如果不开启，可能#会在断电时导致一段时间内的数据丢失。因为 redis本身同步数据文件是按上面save条件来同步的，所以有#的数据会在一段时间内只存在于内存中appendonly no#指定更新日志条件，共有3个可选值：#no：表示等操作系统进行数据缓存同步到磁盘（快）#always：表示每次更新操作后手动调用fsync()将数据写到磁盘（慢，安全）#everysec：表示每秒同步一次（折衷，默认值）appendfsync everysec# 设置连接密码requirepass 123456 4.服务启动1sudo /usr/local/redis-5.0.5/src/redis-server /usr/local/redis-5.0.5/etc/redis.conf 如果觉得命令太长了，建议使用别名（alias）结束redis服务：（当然可以直接结束进程）在客户端执行 SHUTDOWN 或 SHUTDOWN NOSAVE 可关闭 redis 服务 5.客户端redis自带客户端工具，可以直接使用 123456# 进入相应目录cd /usr/local/redis-5.0.5/src/# 启动客户端连接sudo ./redis-cli # 如果有密码sudo ./redis-cli auth 123456 客户端基本命令： 命令 用途 keys * 查看所有的 key exists key 查看此 key 是否存在 get key 获取 key 的值 set key value 设置 key 的值 flushall 清空所有 这里推荐一个图形界面的redis工具Redis桌面管理工具Mac版：http://www.pc6.com/mac/486661.html]]></content>
