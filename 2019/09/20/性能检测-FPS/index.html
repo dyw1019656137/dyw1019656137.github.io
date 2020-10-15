@@ -126,7 +126,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E6%80%A7%E8%83%BD/fps_1.jpg">
 <meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E6%80%A7%E8%83%BD/fps_2.jpg">
-<meta property="og:updated_time" content="2020-10-15T09:55:06.045Z">
+<meta property="og:updated_time" content="2020-10-15T10:01:06.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="性能检测-FPS">
 <meta name="twitter:description" content="简介要进行 FPS 检测，自然要先理解 FPS 的概念。 FPS 即 Frames per second。（此处省略 1000 字，请自行百度） 在上方的概念中，60 帧每秒以及 16.67 毫秒这两个关键数据代表什么含义呢？又是怎么得来的呢？请阅读UI卡顿优化这篇文档中的「神奇的16ms」一节。 好了，假装 FPS 的基本概念我们都已理解了，下面我们看看如何用代码实现 FPS 检测吧！ 实现方案">
@@ -508,7 +508,7 @@
 <li>你不知道，怎么知道有它的存在的？查看大佬的源码(<a href="https://github.com/didi/DoraemonKit)获悉。" target="_blank" rel="noopener">https://github.com/didi/DoraemonKit)获悉。</a></li>
 </ul>
 <p>仔细查看了一波源码，发现使用真简单，正好适合我这懒人！</p>
-<p>有兴趣看源码的可查看<a href="原理">原理</a>一节，若无想法可直接拉至文末，查看<a href="代码实现">代码实现</a>。</p>
+<p>有兴趣看源码的可查看<a href="#原理">原理</a>一节，若无想法可直接拉至文末，查看<a href="#代码实现">代码实现</a>。</p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Choreographer 主要作用是协调动画，输入和绘制的时间，它从显示子系统接收定时脉冲（例如垂直同步），然后安排渲染下一个 frame 的一部分工作。</p>
 <p>FrameCallback 是和 Choreographer 交互，在下一个 frame 被渲染时触发的接口类。我们主要从自定义 FrameCallback 作为切入口，尝试窥探一下 Choreographer 的实现原理！</p>
 <p>源码查看地址：<a href="https://www.androidos.net.cn/android/8.0.0_r4/xref" target="_blank" rel="noopener">https://www.androidos.net.cn/android/8.0.0_r4/xref</a></p>
@@ -666,8 +666,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/17/MacOS下安装Redis/" rel="next" title="MacOS下安装Redis">
-                <i class="fa fa-chevron-left"></i> MacOS下安装Redis
+              <a href="/2019/09/20/性能检测-CPU/" rel="next" title="性能检测-CPU">
+                <i class="fa fa-chevron-left"></i> 性能检测-CPU
               </a>
             
           </div>
@@ -676,8 +676,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/20/性能检测-CPU/" rel="prev" title="性能检测-CPU">
-                性能检测-CPU <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/26/Dialog-区域外可响应点击事件/" rel="prev" title="Dialog 区域外可响应点击事件">
+                Dialog 区域外可响应点击事件 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
