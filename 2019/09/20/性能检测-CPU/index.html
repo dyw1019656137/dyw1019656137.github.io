@@ -127,7 +127,7 @@
 <meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E6%80%A7%E8%83%BD/CPU.jpg">
 <meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E6%80%A7%E8%83%BD/cpu_34931_stat.jpg">
 <meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E6%80%A7%E8%83%BD/cpu_top.jpg">
-<meta property="og:updated_time" content="2020-10-14T09:57:49.788Z">
+<meta property="og:updated_time" content="2020-10-14T10:01:24.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="性能检测-CPU">
 <meta name="twitter:description" content="简介要想给用户好的体验，性能优化是必不可少的，但是要进行性能优化要先进行性能检测，只有查出了问题，才能“对症下药”。 本篇主要讲解如何通过代码对 CPU 进行性能检测，讲解简单用法及部分原理。 原理（Android 8.0 以下）获取整机CPU使用情况要查看机器的CPU使用情况，可通过查看/proc/stat 文件，该文件包含了所有自系统启动以来累计的CPU活动信息。 查看方式：  在 adb s">
@@ -515,15 +515,15 @@
 <li>guest_nice (0)：运行在访客模式下，nice值为负的进程所占用的CPU时间。</li>
 </ul>
 <h2 id="计算总的cpu时间"><a href="#计算总的cpu时间" class="headerlink" title="计算总的cpu时间"></a>计算总的cpu时间</h2><ul>
-<li>采样两个足够短的时间间隔的 Cpu 快照，分别为 t1,t2，其中 t1、t2 均包含(user、nice、system、idle、iowait、irq、softirq、stealstolen、 guest)9个元素;</li>
-<li>计算总的cpu时间<ul>
+<li>采样两个足够短的时间间隔的 cpu 快照，分别为 t1,t2，其中 t1、t2 均包含(user、nice、system、idle、iowait、irq、softirq、stealstolen、 guest)9个元素;</li>
+<li>计算总的 cpu 时间<ul>
 <li>把第一次的所有 cpu 使用情况求和，得到 total_t1;</li>
 <li>把第二次的所有 cpu 使用情况求和，得到 total_t2;</li>
 <li>这个时间间隔内的所有时间片，即 totalCpuTime = total_t2 - total_t1 ;</li>
 </ul>
 </li>
-<li>计算空闲时间idle<ul>
-<li>idle对应第四列的数据，用第二次的idle - 第一次的idle即可</li>
+<li>计算空闲时间 idle<ul>
+<li>idle 对应第四列的数据，用第二次的 idle - 第一次的 idle 即可</li>
 <li>idle = idle_t2 – idle_t1</li>
 </ul>
 </li>
@@ -669,8 +669,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/17/MacOS下安装Redis/" rel="next" title="MacOS下安装Redis">
-                <i class="fa fa-chevron-left"></i> MacOS下安装Redis
+              <a href="/2019/09/20/性能检测-FPS/" rel="next" title="性能检测-FPS">
+                <i class="fa fa-chevron-left"></i> 性能检测-FPS
               </a>
             
           </div>
@@ -679,8 +679,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/20/华为智慧屏适配/" rel="prev" title="华为智慧屏适配">
-                华为智慧屏适配 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/20/Android-版本更新问题/" rel="prev" title="Android版本更新">
+                Android版本更新 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -763,7 +763,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -785,7 +785,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -899,7 +899,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共19k字</span>
+  <span class="post-count">博客全站共21.5k字</span>
 </div>
 
         
