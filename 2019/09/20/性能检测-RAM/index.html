@@ -105,7 +105,7 @@
 
 
 
-  <meta name="keywords" content="Android,文件获取,版本更新,">
+  <meta name="keywords" content="Android,性能,RAM,">
 
 
 
@@ -116,21 +116,21 @@
 
 
 
-<meta name="description" content="问题1234567private void installApk(Context context, File file) &amp;#123;   Intent install = new Intent();   install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);   install.setAction(Intent.ACTION_VIEW);   insta">
-<meta name="keywords" content="Android,文件获取,版本更新">
+<meta name="description" content="简介CPU、FPS 都已介绍过了，自然避免不了要介绍一波内存。 内存分为两大类：RAM 和 ROM。  RAM：RAM 为运行内存，比如，手机助手的悬浮窗，经常提示的运行内存超过 80% 之类的，指的都是运行内存。 ROM：ROM 为存储数据的内存，比如，系统设置界面显示的“总空间128G，剩余32.2G”，指的是 ROM。  本篇所说的性能检测-内存，主要说的就是 RAM。 实现原理在你对某件事">
+<meta name="keywords" content="Android,性能,RAM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android版本更新">
-<meta property="og:url" content="https://dywei.top/2019/09/20/Android-版本更新问题/index.html">
+<meta property="og:title" content="性能检测-RAM">
+<meta property="og:url" content="https://dywei.top/2019/09/20/性能检测-RAM/index.html">
 <meta property="og:site_name" content="Mr.戴">
-<meta property="og:description" content="问题1234567private void installApk(Context context, File file) &amp;#123;   Intent install = new Intent();   install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);   install.setAction(Intent.ACTION_VIEW);   insta">
+<meta property="og:description" content="简介CPU、FPS 都已介绍过了，自然避免不了要介绍一波内存。 内存分为两大类：RAM 和 ROM。  RAM：RAM 为运行内存，比如，手机助手的悬浮窗，经常提示的运行内存超过 80% 之类的，指的都是运行内存。 ROM：ROM 为存储数据的内存，比如，系统设置界面显示的“总空间128G，剩余32.2G”，指的是 ROM。  本篇所说的性能检测-内存，主要说的就是 RAM。 实现原理在你对某件事">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0/1.png">
-<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0/2.png">
-<meta property="og:updated_time" content="2020-07-30T02:29:41.592Z">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E6%80%A7%E8%83%BD/ram_2.jpg">
+<meta property="og:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E6%80%A7%E8%83%BD/ram_1.jpg">
+<meta property="og:updated_time" content="2020-10-16T09:28:27.703Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android版本更新">
-<meta name="twitter:description" content="问题1234567private void installApk(Context context, File file) &amp;#123;   Intent install = new Intent();   install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);   install.setAction(Intent.ACTION_VIEW);   insta">
-<meta name="twitter:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0/1.png">
+<meta name="twitter:title" content="性能检测-RAM">
+<meta name="twitter:description" content="简介CPU、FPS 都已介绍过了，自然避免不了要介绍一波内存。 内存分为两大类：RAM 和 ROM。  RAM：RAM 为运行内存，比如，手机助手的悬浮窗，经常提示的运行内存超过 80% 之类的，指的都是运行内存。 ROM：ROM 为存储数据的内存，比如，系统设置界面显示的“总空间128G，剩余32.2G”，指的是 ROM。  本篇所说的性能检测-内存，主要说的就是 RAM。 实现原理在你对某件事">
+<meta name="twitter:image" content="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E6%80%A7%E8%83%BD/ram_2.jpg">
 
 
 
@@ -160,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="https://dywei.top/2019/09/20/Android-版本更新问题/">
+  <link rel="canonical" href="https://dywei.top/2019/09/20/性能检测-RAM/">
 
 
 
 
 
-  <title>Android版本更新 | Mr.戴</title>
+  <title>性能检测-RAM | Mr.戴</title>
   
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dywei.top/2019/09/20/Android-版本更新问题/">
+    <link itemprop="mainEntityOfPage" href="https://dywei.top/2019/09/20/性能检测-RAM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.戴">
@@ -362,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android版本更新</h1>
+          <h1 class="post-title" itemprop="name headline">性能检测-RAM</h1>
         
 
         <div class="post-meta">
@@ -408,8 +408,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/问题排查/" itemprop="url" rel="index">
-                    <span itemprop="name">问题排查</span>
+                  <a href="/categories/Android/性能/" itemprop="url" rel="index">
+                    <span itemprop="name">性能</span>
                   </a>
                 </span>
 
@@ -426,8 +426,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/20/Android-版本更新问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/20/Android-版本更新问题/" itemprop="commentCount"></span>
+                <a href="/2019/09/20/性能检测-RAM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/20/性能检测-RAM/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -449,7 +449,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  692
+                  595
                 </span>
               
 
@@ -465,7 +465,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  2
                 </span>
               
             </div>
@@ -486,47 +486,27 @@
       
 
       
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">installApk</span><span class="params">(Context context, File file)</span> </span>&#123;</span><br><span class="line">   Intent install = <span class="keyword">new</span> Intent();</span><br><span class="line">   install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">   install.setAction(Intent.ACTION_VIEW);</span><br><span class="line">   install.setDataAndType(Uri.fromFile(file), <span class="string">"application/vnd.android.package-archive"</span>);</span><br><span class="line">   context.getApplicationContext().startActivity(install);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>下载新的apk后，安装apk时，大部分都用的这段代码。</p>
-<p>这段代码在Android 7.0之前是没有问题的，但在7.0之后的手机上，可能会报一下的错：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android.os.FileUriExposedException: file:<span class="comment">///storage/emulated/0/a/test.apk exposed beyond app through Intent.getData()</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="方案一（不推荐）"><a href="#方案一（不推荐）" class="headerlink" title="方案一（不推荐）"></a>方案一（不推荐）</h3><p>检查 targetSdkVersion ，并把他降到23(&lt;=23)。</p>
-<p>如果应用百分百不打算上架的话，就这么改吧，多方便 [囧]。</p>
-<h3 id="方案二（推荐）"><a href="#方案二（推荐）" class="headerlink" title="方案二（推荐）"></a>方案二（推荐）</h3><p>官方文档：<a href="https://developer.android.google.cn/about/versions/nougat/android-7.0-changes" target="_blank" rel="noopener">Android7.0行为变更</a></p>
-<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0/1.png" alt="image"></p>
-<h4 id="代码修改"><a href="#代码修改" class="headerlink" title="代码修改"></a>代码修改</h4><h5 id="修改清单文件"><a href="#修改清单文件" class="headerlink" title="修改清单文件"></a>修改清单文件</h5><p>在 application节点下增加 provider</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;manifest&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;application&gt;</span><br><span class="line">        ...</span><br><span class="line">        &lt;provider</span><br><span class="line">            android:name=<span class="string">"android.support.v4.content.FileProvider"</span></span><br><span class="line">            android:authorities=<span class="string">"$&#123;applicationId&#125;.fileprovider"</span></span><br><span class="line">            android:exported=<span class="string">"false"</span></span><br><span class="line">            android:grantUriPermissions=<span class="string">"true"</span>&gt;</span><br><span class="line">            &lt;meta-data</span><br><span class="line">                android:name=<span class="string">"android.support.FILE_PROVIDER_PATHS"</span></span><br><span class="line">                android:resource=<span class="string">"@xml/provider_paths"</span>/&gt;</span><br><span class="line">        &lt;/provider&gt;</span><br><span class="line">        &lt;/provider&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/application&gt;</span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure>
-
-<h5 id="在res文件夹下，新建xml文件夹，新建文件provider-paths"><a href="#在res文件夹下，新建xml文件夹，新建文件provider-paths" class="headerlink" title="在res文件夹下，新建xml文件夹，新建文件provider_paths"></a>在res文件夹下，新建xml文件夹，新建文件provider_paths</h5><p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/Android%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0/2.png" alt="image"></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;paths&gt;</span><br><span class="line">    &lt;external-path</span><br><span class="line">        name=<span class="string">"external"</span></span><br><span class="line">        path=<span class="string">"."</span> /&gt;</span><br><span class="line">    &lt;files-path</span><br><span class="line">        name=<span class="string">"files"</span></span><br><span class="line">        path=<span class="string">"."</span> /&gt;</span><br><span class="line">    &lt;cache-path</span><br><span class="line">        name=<span class="string">"cache"</span></span><br><span class="line">        path=<span class="string">"."</span> /&gt;</span><br><span class="line">    &lt;external-files-path</span><br><span class="line">        name=<span class="string">"external_file_path"</span></span><br><span class="line">        path=<span class="string">"."</span> /&gt;</span><br><span class="line">    &lt;external-cache-path</span><br><span class="line">        name=<span class="string">"external_cache_path"</span></span><br><span class="line">        path=<span class="string">"."</span> /&gt;</span><br><span class="line">&lt;/paths&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>解释：</strong></p>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>CPU、FPS 都已介绍过了，自然避免不了要介绍一波内存。</p>
+<p>内存分为两大类：RAM 和 ROM。</p>
 <ul>
-<li>external-path的路径对应的是 Environment.getExternalStorageDirectory()路径<ul>
-<li>cache-path:getCacheDir()</li>
-<li>files-path:Context.getFilesDir()</li>
-<li>external-files-path:Context#getExternalFilesDir(String) Context.getExternalFilesDir(null)</li>
-<li>external-cache-path:Context.getExternalCacheDir()</li>
-<li>external-media-path:Context.getExternalMediaDirs()</li>
+<li>RAM：RAM 为运行内存，比如，手机助手的悬浮窗，经常提示的运行内存超过 80% 之类的，指的都是运行内存。</li>
+<li>ROM：ROM 为存储数据的内存，比如，系统设置界面显示的“总空间128G，剩余32.2G”，指的是 ROM。</li>
 </ul>
-</li>
-<li>path=”.”表示的是Environment.getExternalStorageDirectory()下的所有文件夹<ul>
-<li>如果想指定某一个文件夹,例如images：应该这样写 path=“images/”</li>
-</ul>
-</li>
-</ul>
-<h5 id="修改安装apk的代码"><a href="#修改安装apk的代码" class="headerlink" title="修改安装apk的代码"></a>修改安装apk的代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">installApk</span><span class="params">(Activity activity,File file)</span> </span>&#123;</span><br><span class="line">       Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);</span><br><span class="line">       <span class="keyword">if</span> (Build.VERSION.SDK_INT &lt; Build.VERSION_CODES.N) &#123;</span><br><span class="line">           intent.setDataAndType(Uri.fromFile(file), <span class="string">"application/vnd.android.package-archive"</span>);</span><br><span class="line">           intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="comment">// 声明需要的临时的权限</span></span><br><span class="line">           intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);</span><br><span class="line">           <span class="comment">// 第二个参数，容易导错包，清单文件和module要保持一致</span></span><br><span class="line">           Uri contentUri = FileProvider.getUriForFile(activity, activity.getPackageName() + <span class="string">".core.fileprovider"</span>, file);</span><br><span class="line">           </span><br><span class="line">           intent.setDataAndType(contentUri, <span class="string">"application/vnd.android.package-archive"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       activity.startActivity(intent);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>本篇所说的性能检测-内存，主要说的就是 RAM。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>在你对某件事无从下手的时候，不妨去看看大佬们的写法。</p>
+<h3 id="Debug-MemoryInfo"><a href="#Debug-MemoryInfo" class="headerlink" title="Debug.MemoryInfo"></a>Debug.MemoryInfo</h3><p>这个类我们或许都没听说过，不过从大佬们的源码中，不难发现，检测内存的方法主要依赖于此类。</p>
+<p>既然主要依赖此类，我们不妨看看此类主要功能？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This class is used to retrieved various statistics about the memory mappings for this</span></span><br><span class="line"><span class="comment"> * process. The returned info is broken down by dalvik, native, and other. All results are in kB.</span></span><br><span class="line"><span class="comment"> * 翻译：这个类用于检索关于这个进程的内存映射的各种统计信息。返回的信息包括 dalvik、native 和 other。所有结果都以kB为单位。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MemoryInfo</span> <span class="keyword">implements</span> <span class="title">Parcelable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//此处省略部分代码</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>over，测试一下，发现7.0的手机安装没问题了，但在 &gt;=8.0 上安装，还是有问题，只不过不是包之前的错了，而是app没有反应，一闪而过。</p>
-<h4 id="gt-8-0-安装不了的问题"><a href="#gt-8-0-安装不了的问题" class="headerlink" title="&gt;=8.0 安装不了的问题"></a>&gt;=8.0 安装不了的问题</h4><h5 id="增加新权限"><a href="#增加新权限" class="headerlink" title="增加新权限"></a>增加新权限</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.REQUEST_INSTALL_PACKAGES"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>从官方文档的解释中我们可以看出，要检测 RAM 可以从这个类出发。</p>
+<h3 id="Debug-getMemoryInfo"><a href="#Debug-getMemoryInfo" class="headerlink" title="Debug.getMemoryInfo()"></a>Debug.getMemoryInfo()</h3><p>要想要使用 MemoryInfo 来检测 RAM,我们首先要能够获取到 MemoryInfo。</p>
+<p>我们可以很轻松的发现 Debug 类中有获取 MemoryInfo 的方法：</p>
+<p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E6%80%A7%E8%83%BD/ram_2.jpg" alt="RAM"></p>
+<h3 id="ActivityManager"><a href="#ActivityManager" class="headerlink" title="ActivityManager"></a>ActivityManager</h3><p><img src="https://per-dyw-images-1253993905.cos.ap-chengdu.myqcloud.com/Android/%E6%80%A7%E8%83%BD/ram_1.jpg" alt="RAM"></p>
+<p>从上图中可以看出，此方法对 Android Q 不太友好，因此我们只能在 sdk&lt;=28 的时候使用此方法。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> memoryData: <span class="built_in">Float</span></span><br><span class="line">    <span class="keyword">get</span>() &#123;</span><br><span class="line">        <span class="keyword">var</span> mem = <span class="number">0.0f</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> memInfo: Debug.MemoryInfo? = <span class="literal">null</span></span><br><span class="line">            <span class="comment">//28 为Android P</span></span><br><span class="line">            <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt; <span class="number">28</span>) &#123;</span><br><span class="line">                <span class="comment">// 统计进程的内存信息 totalPss</span></span><br><span class="line">                memInfo = Debug.MemoryInfo()</span><br><span class="line">                Debug.getMemoryInfo(memInfo)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// As of Android Q, for regular apps this method will only return information about the memory info for the processes running as the caller's uid;</span></span><br><span class="line">                <span class="comment">// no other process memory info is available and will be zero. Also of Android Q the sample rate allowed by this API is significantly limited, if called faster the limit you will receive the same data as the previous call.</span></span><br><span class="line">                <span class="keyword">val</span> memInfos = mActivityManager.getProcessMemoryInfo(intArrayOf(Process.myPid()))</span><br><span class="line">                <span class="keyword">if</span> (memInfos != <span class="literal">null</span> &amp;&amp; memInfos.size &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    memInfo = memInfos[<span class="number">0</span>]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">val</span> totalPss = memInfo?.totalPss ?: <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> (totalPss &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// Mem in MB</span></span><br><span class="line">                mem = totalPss / <span class="number">1024.0f</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">            e.printStackTrace()</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mem</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="把-ACTION-VIEW-改为-ACTION-INSTALL-PACKAGE"><a href="#把-ACTION-VIEW-改为-ACTION-INSTALL-PACKAGE" class="headerlink" title="把 ACTION_VIEW 改为 ACTION_INSTALL_PACKAGE"></a>把 ACTION_VIEW 改为 ACTION_INSTALL_PACKAGE</h5><p>如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW)</span><br><span class="line"></span><br><span class="line"><span class="comment">//改为</span></span><br><span class="line"></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_INSTALL_PACKAGE);</span><br></pre></td></tr></table></figure>
-
-<h5 id="完整代码如下"><a href="#完整代码如下" class="headerlink" title="完整代码如下"></a>完整代码如下</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">installApk</span><span class="params">(Activity activity,File file)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_INSTALL_PACKAGE);</span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &lt; Build.VERSION_CODES.N) &#123;</span><br><span class="line">            intent.setDataAndType(Uri.fromFile(file), <span class="string">"application/vnd.android.package-archive"</span>);</span><br><span class="line">            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 声明需要的临时的权限</span></span><br><span class="line">            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);</span><br><span class="line">            <span class="comment">// 第二个参数，容易导错包，清单文件和module要保持一致</span></span><br><span class="line">            Uri contentUri = FileProvider.getUriForFile(activity, activity.getPackageName() + <span class="string">".core.fileprovider"</span>, file);</span><br><span class="line">            </span><br><span class="line">            intent.setDataAndType(contentUri, <span class="string">"application/vnd.android.package-archive"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        activity.startActivity(intent);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
+<p><code>上文若存在问题，欢迎指出！</code></p>
 
       
     </div>
@@ -553,12 +533,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2019/09/20/Android-版本更新问题/">Android版本更新</a></p>
+  <p><span>本文标题:</span><a href="/2019/09/20/性能检测-RAM/">性能检测-RAM</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Mr.戴 的个人博客">Mr.戴</a></p>
   <p><span>发布时间:</span>2019年09月20日</p>
-  <p><span>最后更新:</span>2020年07月30日</p>
-  <p><span>原始链接:</span><a href="/2019/09/20/Android-版本更新问题/" title="Android版本更新">https://dywei.top/2019/09/20/Android-版本更新问题/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://dywei.top/2019/09/20/Android-版本更新问题/" aria-label="复制成功！"></i></span>
+  <p><span>最后更新:</span>2020年10月16日</p>
+  <p><span>原始链接:</span><a href="/2019/09/20/性能检测-RAM/" title="性能检测-RAM">https://dywei.top/2019/09/20/性能检测-RAM/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://dywei.top/2019/09/20/性能检测-RAM/" aria-label="复制成功！"></i></span>
   </p>
   <p>转载请保留原文链接及作者。</p>  
 </div>
@@ -620,9 +600,9 @@
           
             <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
           
-            <a href="/tags/文件获取/" rel="tag"><i class="fa fa-tag"></i> 文件获取</a>
+            <a href="/tags/性能/" rel="tag"><i class="fa fa-tag"></i> 性能</a>
           
-            <a href="/tags/版本更新/" rel="tag"><i class="fa fa-tag"></i> 版本更新</a>
+            <a href="/tags/RAM/" rel="tag"><i class="fa fa-tag"></i> RAM</a>
           
         </div>
       
@@ -635,8 +615,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/20/性能检测-CPU/" rel="next" title="性能检测-CPU">
-                <i class="fa fa-chevron-left"></i> 性能检测-CPU
+              <a href="/2019/09/20/华为智慧屏适配/" rel="next" title="华为智慧屏适配">
+                <i class="fa fa-chevron-left"></i> 华为智慧屏适配
               </a>
             
           </div>
@@ -645,8 +625,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/26/Dialog-区域外可响应点击事件/" rel="prev" title="Dialog 区域外可响应点击事件">
-                Dialog 区域外可响应点击事件 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/20/性能检测-FPS/" rel="prev" title="性能检测-FPS">
+                性能检测-FPS <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -812,7 +792,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">1.1.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案一（不推荐）"><span class="nav-number">1.1.1.</span> <span class="nav-text">方案一（不推荐）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方案二（推荐）"><span class="nav-number">1.1.2.</span> <span class="nav-text">方案二（推荐）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码修改"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">代码修改</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#修改清单文件"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">修改清单文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在res文件夹下，新建xml文件夹，新建文件provider-paths"><span class="nav-number">1.1.2.1.2.</span> <span class="nav-text">在res文件夹下，新建xml文件夹，新建文件provider_paths</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改安装apk的代码"><span class="nav-number">1.1.2.1.3.</span> <span class="nav-text">修改安装apk的代码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gt-8-0-安装不了的问题"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">&gt;=8.0 安装不了的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#增加新权限"><span class="nav-number">1.1.2.2.1.</span> <span class="nav-text">增加新权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#把-ACTION-VIEW-改为-ACTION-INSTALL-PACKAGE"><span class="nav-number">1.1.2.2.2.</span> <span class="nav-text">把 ACTION_VIEW 改为 ACTION_INSTALL_PACKAGE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#完整代码如下"><span class="nav-number">1.1.2.2.3.</span> <span class="nav-text">完整代码如下</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">2.1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Debug-MemoryInfo"><span class="nav-number">2.1.1.</span> <span class="nav-text">Debug.MemoryInfo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Debug-getMemoryInfo"><span class="nav-number">2.1.2.</span> <span class="nav-text">Debug.getMemoryInfo()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ActivityManager"><span class="nav-number">2.1.3.</span> <span class="nav-text">ActivityManager</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">2.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></div>
             
 
           </div>
